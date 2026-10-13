@@ -44,11 +44,14 @@ async def run_ingest(
     pages: List[str],
     source_url: str,
     limit: Optional[int] = None,
+    only: Optional[List[str]] = None,
 ) -> Tuple[RulesFile, dict]:
     """Raises IngestIncomplete if any extraction call failed (nothing is written then)."""
     prin2a = locate_prin2a(pages)
     provisions = split_provisions(prin2a)
     total = len(provisions)
+    if only:
+        provisions = [p for p in provisions if p.provision_id in only]
     if limit:
         provisions = provisions[:limit]
     print(f"split: {total} provisions ({len(provisions)} processed)", flush=True)
@@ -100,6 +103,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     ap = argparse.ArgumentParser(prog="python -m ingest", description=__doc__)
     ap.add_argument("--limit", type=int, help="process only the first N provisions (dev)")
     ap.add_argument("--out", type=Path, default=RULES_PATH, help="output path")
+    ap.add_argument("--only", help="comma-separated provision ids, e.g. 2A.2.3,2A.5.3 (dev)")
     ap.add_argument("--source", default=SOURCE_PDF, help="PDF path or URL (default: PS22/9 on fca.org.uk)")
     args = ap.parse_args(argv)
 
@@ -108,10 +112,11 @@ def main(argv: Optional[List[str]] = None) -> int:
         print("OPENAI_API_KEY is not set (see .env.example)", file=sys.stderr)
         return 2
 
+    only = [x.strip() for x in args.only.split(",")] if args.only else None
     pages = read_pdf_pages(args.source)
     llm = LLM(config)
     try:
-        rules_file, stats = asyncio.run(run_ingest(config, llm, pages, args.source, args.limit))
+        rules_file, stats = asyncio.run(run_ingest(config, llm, pages, args.source, args.limit, only))
     except IngestIncomplete as e:
         print(f"not writing {args.out}: {e}", file=sys.stderr)
         return 1

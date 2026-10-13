@@ -1,6 +1,6 @@
 # Stage 1 — Ingest with shared foundation → `rules.json`
 
-Block: A. Data · Status: built, live run pending (needs `OPENAI_API_KEY`)
+Block: A. Data · Status: done, awaiting human review of the rule set
 
 ## Goal
 Turn PS22/9 (PRIN 2A text in Appendix 1) into a reviewed set of atomic, checkable rules in `data/rules.json`, through a one-time script. Build the minimal shared foundation that ingest and the agent will both use.
@@ -39,5 +39,5 @@ Retry loop (stage 8). Agent runtime code. UI.
 
 ## Execution log
 _Executor model:_ Claude Sonnet 5.5.
-_Review findings:_ No independent review yet. Self-check found one defect: wrapped sub-headings leaked into the previous provision's text (see `NOTES.md`). Done-when items 1–4 are **not met yet**: they need a live run with `OPENAI_API_KEY`; `data/rules.json` does not exist. Item 5 is partly met (provisions total = 169 recorded, rest pending).
-_Fixes:_ Splitter now skips the wrapped second line of a sub-heading. Run `python -m ingest` (optionally `--limit 20` first), then fill the counts in `NOTES.md` and check the three coverage targets.
+_Review findings:_ Second full run is the committed `data/rules.json`: 169 provisions → 15 kept / 154 dropped; 34 rules drafted, 27 approved, 7 rejected (details and per-rule review in `NOTES.md`). Done-when met: `python -m ingest` runs; every approved quote is asserted verbatim; dropped/rejected all carry reasons; coverage for 2A.5.3(1)(c), 2A.5.3(2), 2A.2.3(b), 2A.2.10(2) present. First run had missed 2A.5.3(1)(c) and 2A.5.8; the cause was the extractor quoting bare list items (see below). Open quality issues for the human: vague/overlapping 2A.5.3(1)(c) rules, 2A.5.9(2) one-to-one-dialogue rules (blocking), duplicate 2A.5.7(3), fragmented tags, large run-to-run variance.
+_Fixes:_ Splitter sub-heading wrap; failure handling in filter/extract/critic; `--only` flag; `extract.md` now requires the quote to include the lead-in clause for list items.

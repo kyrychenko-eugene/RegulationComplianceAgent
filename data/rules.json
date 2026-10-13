@@ -1,0 +1,1628 @@
+{
+  "meta": {
+    "source": "FCA PS22/9, Appendix 1 (Consumer Duty Instrument 2022, FCA 2022/31): PRIN 2A",
+    "source_url": "https://www.fca.org.uk/publication/policy/ps22-9.pdf",
+    "generated_at": "2026-10-13T16:20:22+00:00",
+    "strong_model": "gpt-6.1-sol",
+    "prompt_versions": {
+      "ingest/filter": "55a35a91",
+      "ingest/extract": "d0ed00a4",
+      "ingest/critic": "8bda76f8"
+    }
+  },
+  "rules": [
+    {
+      "id": "PRIN2A.2.2-a",
+      "source_ref": "PRIN 2A.2.2 R",
+      "source_quote": "Acting in good faith is a standard of conduct characterised by honesty, fair and open dealing and acting consistently with the reasonable expectations of retail customers.",
+      "title": "Honest presentation of claims",
+      "check": "Does the communication avoid misleading representations?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "Honesty is a general standard that applies regardless of the communication's subject matter.",
+      "tags": [],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.2.2: rule -> blocking",
+      "pass_example": "Investments can rise or fall in value. Returns are not guaranteed.",
+      "fail_example": "Your investment returns are guaranteed. You could lose money if markets fall.",
+      "critic": {
+        "notes": "Faithful: Avoiding misleading representations is an obvious reading of honesty, though the quote does not expressly state this test. Atomic: Tests one condition—whether representations are misleading. Checkable from text: Verifying representations generally requires external facts about the product; the contradictory fail example does not make the general check text-verifiable.",
+        "faithful": 2,
+        "atomic": 3,
+        "checkable_from_text": 1
+      },
+      "attempts": 1,
+      "status": "rejected",
+      "rejection_reason": "critic: checkable_from_text=1 (Faithful: Avoiding misleading representations is an obvious reading of honesty, though the quote does not expressly state this test. Atomic: Tests one condition—whether representations are misleading. Checkable from text: Verifying representations generally requires external facts about the product; the contradictory fail example does not make the general check text-verifiable.)"
+    },
+    {
+      "id": "PRIN2A.2.2-b",
+      "source_ref": "PRIN 2A.2.2 R",
+      "source_quote": "Acting in good faith is a standard of conduct characterised by honesty, fair and open dealing and acting consistently with the reasonable expectations of retail customers.",
+      "title": "Fair dealing through wording",
+      "check": "Does the communication avoid unfairly manipulative wording?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "Fair dealing applies to the way any marketing communication addresses retail customers.",
+      "tags": [],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.2.2: rule -> blocking",
+      "pass_example": "Explore our investment options and decide whether they suit your needs.",
+      "fail_example": "If you really care about your family's future, you'll invest with us today.",
+      "critic": {
+        "notes": "faithful: Avoiding unfairly manipulative wording is a reasonable reading of fair dealing, but is narrower than the quoted standard. atomic: Tests one condition—whether wording is unfairly manipulative. checkable_from_text: Assessable from the wording with reasonable judgement about its effect on an average UK retail customer.",
+        "faithful": 2,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.2.2-c",
+      "source_ref": "PRIN 2A.2.2 R",
+      "source_quote": "Acting in good faith is a standard of conduct characterised by honesty, fair and open dealing and acting consistently with the reasonable expectations of retail customers.",
+      "title": "Open presentation of qualifications",
+      "check": "Does the communication present material qualifications to its claims openly?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "Open dealing is a general communication standard rather than a requirement limited to a particular product or claim type.",
+      "tags": [],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.2.2: rule -> blocking",
+      "pass_example": "Get a £20 welcome bonus when you deposit £100 and keep it invested for 90 days.",
+      "fail_example": "Get a £20 welcome bonus—no strings attached! Fine print: you must deposit £100 and keep it invested for 90 days.",
+      "critic": {
+        "notes": "Faithful: The check adds a specific requirement to present material claim qualifications openly; the quote states a broader standard of good-faith conduct. Atomic: It tests one condition—open presentation of material qualifications. Checkable from text: Claims, qualifications and their presentation can be assessed from the communication itself.",
+        "faithful": 1,
+        "atomic": 3,
+        "checkable_from_text": 3
+      },
+      "attempts": 1,
+      "status": "rejected",
+      "rejection_reason": "critic: faithful=1 (Faithful: The check adds a specific requirement to present material claim qualifications openly; the quote states a broader standard of good-faith conduct. Atomic: It tests one condition—open presentation of material qualifications. Checkable from text: Claims, qualifications and their presentation can be assessed from the communication itself.)"
+    },
+    {
+      "id": "PRIN2A.2.3-a-a",
+      "source_ref": "PRIN 2A.2.3(a) G",
+      "source_quote": "Examples of where a firm is not acting in good faith would include: (a) failing to take account of retail customers’ interests, for example in the way it designs a product or presents information;",
+      "title": "Customer interests in information presentation",
+      "check": "Does the presentation of information take account of retail customers’ interests?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "The guidance identifies disregard for customer interests in presenting information without limiting this to particular communication content.",
+      "tags": [],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.2.3: guidance -> advisory",
+      "pass_example": "Investing can help you pursue long-term goals, but your investments can fall in value. Consider whether you can afford losses before investing.",
+      "fail_example": "The potential upside is all that matters when choosing an investment. Ignore the downsides and start trading today.",
+      "critic": {
+        "notes": "faithful: Matches the quote’s requirement to take account of retail customers’ interests when presenting information. atomic: Tests one condition. checkable_from_text: Wording may indicate disregard for customers’ interests, but verifying that their interests were taken into account requires information beyond the marketing text.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 1
+      },
+      "attempts": 1,
+      "status": "rejected",
+      "rejection_reason": "critic: checkable_from_text=1 (faithful: Matches the quote’s requirement to take account of retail customers’ interests when presenting information. atomic: Tests one condition. checkable_from_text: Wording may indicate disregard for customers’ interests, but verifying that their interests were taken into account requires information beyond the marketing text.)"
+    },
+    {
+      "id": "PRIN2A.2.3-b-a",
+      "source_ref": "PRIN 2A.2.3(b) G",
+      "source_quote": "Examples of where a firm is not acting in good faith would include: (a) failing to take account of retail customers’ interests, for example in the way it designs a product or presents information; (b) seeking inappropriately to manipulate or exploit retail customers, for example by manipulating or exploiting their emotions or behavioural biases to mis-lead or create a demand for a product; (c) taking advantage of a retail customer or their circumstances, for example any characteristics of vulnerability, in a manner which is likely to cause detriment; (d) carrying out the same activity to a higher standard or more quickly when it benefits the firm than when it benefits the retail customer, without objective justification.",
+      "title": "Avoid inappropriate customer manipulation",
+      "check": "Does the communication avoid inappropriate manipulation or exploitation of retail customers?",
+      "applies_when": "marketing communications using persuasive appeals to customers’ emotions or behavioural biases",
+      "scope": "conditional",
+      "scope_rationale": "This text-based check is relevant where persuasive content could manipulate or exploit customers.",
+      "tags": [
+        "emotional_or_behavioural_appeals"
+      ],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.2.3: guidance -> advisory",
+      "pass_example": "Explore our investment range at your own pace. Decide whether investing suits your financial goals and tolerance for risk.",
+      "fail_example": "Everyone else is getting rich while you fall behind. Don't be the failure in your family—start trading now.",
+      "critic": {
+        "notes": "faithful: The check directly reflects the quote’s prohibition on inappropriate manipulation or exploitation. atomic: Manipulation or exploitation forms one closely unified condition, not separate independent tests. checkable_from_text: Requires reasonable judgement about how persuasive wording would affect an average UK retail customer, rather than external evidence.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.2.3-c-a",
+      "source_ref": "PRIN 2A.2.3(c) G",
+      "source_quote": "Examples of where a firm is not acting in good faith would include: (a) failing to take account of retail customers’ interests, for example in the way it designs a product or presents information; (b) seeking inappropriately to manipulate or exploit retail customers, for example by manipulating or exploiting their emotions or behavioural biases to mis-lead or create a demand for a product; (c) taking advantage of a retail customer or their circumstances, for example any characteristics of vulnerability, in a manner which is likely to cause detriment; (d) carrying out the same activity to a higher standard or more quickly when it benefits the firm than when it benefits the retail customer, without objective justification.",
+      "title": "Avoid detrimental exploitation of circumstances",
+      "check": "Does the communication avoid taking advantage of a retail customer’s circumstances in a manner likely to cause detriment?",
+      "applies_when": "marketing communications referring to customer circumstances that could be exploited, including characteristics of vulnerability",
+      "scope": "conditional",
+      "scope_rationale": "The requirement is assessable from the text where it appeals to identifiable customer circumstances or vulnerabilities.",
+      "tags": [
+        "vulnerable_customers",
+        "customer_circumstances"
+      ],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.2.3: guidance -> advisory",
+      "pass_example": "If you're struggling to pay essential bills, investing may not be appropriate for you. Free debt advice is available from MoneyHelper.",
+      "fail_example": "Behind on rent? Put your remaining savings into leveraged trades for a chance to clear your arrears today.",
+      "critic": {
+        "notes": "Faithful: The check directly reflects paragraph (c)'s prohibition on exploiting customer circumstances in a manner likely to cause detriment. Atomic: It tests one condition, qualified by the likelihood of detriment. Checkable from text: Exploitative framing can be assessed from the communication, but judging likely detriment requires reasonable judgement about retail customers.",
+        "faithful": 3,
+        "atomic": 2,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.2.8-a",
+      "source_ref": "PRIN 2A.2.8 R",
+      "source_quote": "A firm must avoid causing foreseeable harm to retail customers.",
+      "title": "Avoid foreseeable harm to customers",
+      "check": "Does the communication avoid content that could foreseeably harm retail customers?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "The obligation to avoid foreseeable harm applies regardless of the communication's subject matter.",
+      "tags": [],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.2.8: rule -> blocking",
+      "pass_example": "Invest only money you can afford to lose. Keep funds needed for essential living costs out of trading.",
+      "fail_example": "Put your rent money to work with leveraged trading and win back your losses today.",
+      "critic": {
+        "notes": "faithful: Narrows the general duty to harmful communication content, a reasonable application to marketing. atomic: Tests one condition—whether the content could foreseeably harm retail customers. checkable_from_text: Requires reasonable judgement about how an average UK retail customer might understand and act on the content.",
+        "faithful": 2,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.2.10-1-a",
+      "source_ref": "PRIN 2A.2.10(1) G",
+      "source_quote": "Avoiding causing foreseeable harm to retail customers includes: (1) ensuring all aspects of the design, terms, marketing, sale of and support for its products avoid causing foreseeable harm;",
+      "title": "Avoid foreseeable harm in marketing",
+      "check": "Does the communication avoid content likely to cause foreseeable harm to retail customers?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "The provision expressly includes marketing within the aspects of a product that should avoid causing foreseeable harm.",
+      "tags": [],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.2.10: guidance -> advisory",
+      "pass_example": "Invest only money you can afford to put at risk. Keep funds needed for essential expenses separate from your investments.",
+      "fail_example": "Use your rent money to trade today—you can make it back before your landlord needs it.",
+      "critic": {
+        "notes": "Faithful: “Likely to cause” introduces a likelihood threshold; foreseeable harm need not be likely. Atomic: Tests one condition—whether the communication avoids harmful content. Checkable from text: Requires reasonable judgement about foreseeable harm to an average UK retail customer, rather than a purely textual check.",
+        "faithful": 1,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "rejected",
+      "rejection_reason": "critic: faithful=1 (Faithful: “Likely to cause” introduces a likelihood threshold; foreseeable harm need not be likely. Atomic: Tests one condition—whether the communication avoids harmful content. Checkable from text: Requires reasonable judgement about foreseeable harm to an average UK retail customer, rather than a purely textual check.)"
+    },
+    {
+      "id": "PRIN2A.2.10-2-a",
+      "source_ref": "PRIN 2A.2.10(2) G",
+      "source_quote": "Avoiding causing foreseeable harm to retail customers includes: (1) ensuring all aspects of the design, terms, marketing, sale of and support for its products avoid causing foreseeable harm; (2) ensuring that no aspect of its business involves unfairly exploiting behavioural biases displayed or characteristics of vulnerability held by retail customers; (3) identifying the potential for harm that might arise if it withdraws a product, its products change or its understanding about the impact on retail customers changes; (4) responding to emerging trends that identify new sources of harm, including FCA supervisory action and/or communications; and (5) taking appropriate action to mitigate the risk of actual or foreseeable harm, including for example by: (i) updating or otherwise amending the design of the product or distribution strategy; (ii) updating information about a product or updating investment advice; (iii) ensuring that retail customers do not face unreasonable barriers (including unreasonable additional costs), for example when they want to switch products or providers or to complain; (iv) allowing time and support for retail customers to find suitable alternatives where a product is withdrawn.",
+      "title": "Avoid unfairly exploiting behavioural biases",
+      "check": "Does the communication avoid unfairly exploiting retail customers' behavioural biases?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "The prohibition on unfair exploitation applies to marketing regardless of its particular subject matter.",
+      "tags": [],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.2.10: guidance -> advisory",
+      "pass_example": "Explore the investments available on our platform. Take time to decide whether they suit your needs.",
+      "fail_example": "Lost money on your last trade? Double your next stake now to win it back.",
+      "critic": {
+        "notes": "Faithful: The check directly applies the prohibition on unfairly exploiting behavioural biases to communications, an aspect of the firm's business. Atomic: It tests one condition—unfair exploitation of behavioural biases. Checkable from text: Assessing whether wording unfairly exploits a bias requires reasonable judgement about how an average UK retail customer would understand it.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.2.10-2-b",
+      "source_ref": "PRIN 2A.2.10(2) G",
+      "source_quote": "Avoiding causing foreseeable harm to retail customers includes: (1) ensuring all aspects of the design, terms, marketing, sale of and support for its products avoid causing foreseeable harm; (2) ensuring that no aspect of its business involves unfairly exploiting behavioural biases displayed or characteristics of vulnerability held by retail customers; (3) identifying the potential for harm that might arise if it withdraws a product, its products change or its understanding about the impact on retail customers changes; (4) responding to emerging trends that identify new sources of harm, including FCA supervisory action and/or communications; and (5) taking appropriate action to mitigate the risk of actual or foreseeable harm, including for example by: (i) updating or otherwise amending the design of the product or distribution strategy; (ii) updating information about a product or updating investment advice; (iii) ensuring that retail customers do not face unreasonable barriers (including unreasonable additional costs), for example when they want to switch products or providers or to complain; (iv) allowing time and support for retail customers to find suitable alternatives where a product is withdrawn.",
+      "title": "Avoid unfairly exploiting customer vulnerability",
+      "check": "Does the communication avoid unfairly exploiting characteristics of vulnerability held by retail customers?",
+      "applies_when": "communications that address or appeal to characteristics of customer vulnerability",
+      "scope": "conditional",
+      "scope_rationale": "This text-level check is relevant where the communication invokes a characteristic of vulnerability.",
+      "tags": [
+        "vulnerable_customers"
+      ],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.2.10: guidance -> advisory",
+      "pass_example": "If financial difficulties are affecting you, consider whether investing is appropriate before committing any money.",
+      "fail_example": "Struggling to pay your bills? Put your remaining savings into leveraged trading for a quick way out.",
+      "critic": {
+        "notes": "Faithful: The check directly applies the quoted prohibition on unfairly exploiting customer vulnerability to communications, without adding requirements. Atomic: It tests one condition—unfair exploitation of vulnerability. Checkable from text: The wording can be assessed, but deciding whether an appeal unfairly exploits vulnerability requires reasonable judgement about retail customer understanding.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.2.10-5iii-a",
+      "source_ref": "PRIN 2A.2.10(5)(iii) G",
+      "source_quote": "Avoiding causing foreseeable harm to retail customers includes: (1) ensuring all aspects of the design, terms, marketing, sale of and support for its products avoid causing foreseeable harm; (2) ensuring that no aspect of its business involves unfairly exploiting behavioural biases displayed or characteristics of vulnerability held by retail customers; (3) identifying the potential for harm that might arise if it withdraws a product, its products change or its understanding about the impact on retail customers changes; (4) responding to emerging trends that identify new sources of harm, including FCA supervisory action and/or communications; and (5) taking appropriate action to mitigate the risk of actual or foreseeable harm, including for example by: (i) updating or otherwise amending the design of the product or distribution strategy; (ii) updating information about a product or updating investment advice; (iii) ensuring that retail customers do not face unreasonable barriers (including unreasonable additional costs), for example when they want to switch products or providers or to complain; (iv) allowing time and support for retail customers to find suitable alternatives where a product is withdrawn.",
+      "title": "Avoid unreasonable barriers to customer action",
+      "check": "Does the communication avoid imposing unreasonable barriers to the customer actions it describes?",
+      "applies_when": "communications describing conditions for switching products, switching providers or making a complaint",
+      "scope": "conditional",
+      "scope_rationale": "A marketing text can reveal unreasonable barriers when it states conditions governing these customer actions.",
+      "tags": [
+        "switching_and_complaints"
+      ],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.2.10: guidance -> advisory",
+      "pass_example": "You can submit a complaint through our online form at no charge.",
+      "fail_example": "Before we accept your complaint, you must pay a £150 complaint-handling fee.",
+      "critic": {
+        "notes": "Faithful: Minor reframing of the duty to prevent unreasonable barriers as a check on conditions stated in a communication. Atomic: Tests one condition—whether the described customer actions face unreasonable barriers. Checkable from text: Stated barriers can be assessed, but judging whether they are unreasonable requires reasonable customer-perspective judgement.",
+        "faithful": 2,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.2.20-1-a",
+      "source_ref": "PRIN 2A.2.20(1) G",
+      "source_quote": "Enabling and supporting retail customers to pursue their financial objectives includes acting to empower retail customers to make good choices in their interests, including by: (1) ensuring all aspects of the design, terms, marketing, sale of and support for its products meet and not frustrate the objectives and interests of retail customers;",
+      "title": "Support customers’ financial objectives",
+      "check": "Does the communication support retail customers in pursuing their financial objectives?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "The provision expressly covers all aspects of marketing, irrespective of the content promoted.",
+      "tags": [],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.2.20: guidance -> advisory",
+      "pass_example": "Investing is for longer-term goals, not money you need for immediate expenses. Explore investments that suit your goals and ability to bear losses.",
+      "fail_example": "Need to pay next month’s rent? Put your emergency savings into leveraged trades to aim for a quick profit.",
+      "critic": {
+        "notes": "Faithful: Broadly reflects the quote, but paraphrases marketing meeting and not frustrating customers’ objectives and interests as supporting their financial objectives. Atomic: Tests one condition—whether the communication supports customers’ financial objectives. Checkable from text: Establishing whether customers’ objectives are supported requires information about those objectives beyond the marketing text.",
+        "faithful": 2,
+        "atomic": 3,
+        "checkable_from_text": 1
+      },
+      "attempts": 1,
+      "status": "rejected",
+      "rejection_reason": "critic: checkable_from_text=1 (Faithful: Broadly reflects the quote, but paraphrases marketing meeting and not frustrating customers’ objectives and interests as supporting their financial objectives. Atomic: Tests one condition—whether the communication supports customers’ financial objectives. Checkable from text: Establishing whether customers’ objectives are supported requires information about those objectives beyond the marketing text.)"
+    },
+    {
+      "id": "PRIN2A.2.20-2-a",
+      "source_ref": "PRIN 2A.2.20(2) G",
+      "source_quote": "Enabling and supporting retail customers to pursue their financial objectives includes acting to empower retail customers to make good choices in their interests, including by: (1) ensuring all aspects of the design, terms, marketing, sale of and support for its products meet and not frustrate the objectives and interests of retail customers; (2) making sure retail customers have the information and support they need, when they need it, to make and act on informed decisions;",
+      "title": "Provide information for informed decisions",
+      "check": "Does the communication provide the information retail customers need to make an informed decision about what it promotes?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "The information requirement applies generally to communications supporting customer decisions, rather than only to a specified content category.",
+      "tags": [],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.2.20: guidance -> advisory",
+      "pass_example": "Our UK share dealing service charges £5 per trade, with no platform fee. Investment values can fall as well as rise, so you could get back less than you invest.",
+      "fail_example": "Our UK share dealing service is the perfect way to grow your money. Buy now—we’ll explain the charges and investment risks after your first trade.",
+      "critic": {
+        "notes": "faithful: Recasts customers having needed information as the communication providing it, a minor marketing-focused interpretation. atomic: Tests one condition—whether the information is sufficient for an informed decision. checkable_from_text: Requires reasonable judgement about what an average UK retail customer needs to understand the promoted offering.",
+        "faithful": 2,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.3-1a-a",
+      "source_ref": "PRIN 2A.5.3(1)(a) R",
+      "source_quote": "(1) A firm must support retail customer understanding so that its communications: (a) meet the information needs of retail customers;",
+      "title": "Meet customer information needs",
+      "check": "Does the communication provide the information retail customers need to understand what is being promoted?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "Meeting retail customers' information needs is a requirement for all communications, irrespective of their subject matter.",
+      "tags": [],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.5.3: rule -> blocking",
+      "pass_example": "Our investment account lets you buy shares and funds. Investment values can fall, and dealing charges apply as described in our linked fee schedule.",
+      "fail_example": "Our new investment account has everything you need. Sign up to discover what it actually offers.",
+      "critic": {
+        "notes": "Faithful: Narrowing information needs to understanding what is promoted is a reasonable contextual reading, rather than the quote’s exact wording. Atomic: Tests one condition—whether the communication supplies needed information. Checkable from text: Requires reasonable judgement about what an average UK retail customer needs to understand the promotion.",
+        "faithful": 2,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.3-1b-a",
+      "source_ref": "PRIN 2A.5.3(1)(b) R",
+      "source_quote": "(1) A firm must support retail customer understanding so that its communications: (a) meet the information needs of retail customers; (b) are likely to be understood by retail customers;",
+      "title": "Use customer understandable language",
+      "check": "Is the communication worded in a way retail customers are likely to understand?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "The requirement that communications be understandable applies regardless of the content being promoted.",
+      "tags": [],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.5.3: rule -> blocking",
+      "pass_example": "Leverage means taking a larger market position using a smaller deposit. It increases the size of potential losses as well as gains.",
+      "fail_example": "Optimise directional exposure through margined notional amplification and dynamic collateralisation.",
+      "critic": {
+        "notes": "faithful: No problem; the check directly reflects the requirement that communications are likely to be understood by retail customers. atomic: No problem; it tests one condition, understandable wording. checkable_from_text: Requires reasonable judgement about what an average UK retail customer would understand, but no external information.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.3-1c-a",
+      "source_ref": "PRIN 2A.5.3(1)(c) R",
+      "source_quote": "(1) A firm must support retail customer understanding so that its communications: (a) meet the information needs of retail customers; (b) are likely to be understood by retail customers; and (c) equip retail customers to make decisions that are effective, timely and properly informed.",
+      "title": "Support effective customer decisions",
+      "check": "Does the communication give retail customers a usable basis for deciding how to proceed?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "Supporting effective decisions is a general communication requirement rather than one limited to a particular type of claim.",
+      "tags": [],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.5.3: rule -> blocking",
+      "pass_example": "Compare the investments available, their risks and their charges on our product pages before choosing whether to open an account.",
+      "fail_example": "Choose your investment now: Fund A, Fund B or Fund C. No descriptions are available before you choose.",
+      "critic": {
+        "notes": "faithful: 'Usable basis' is a reasonable simplification, but does not explicitly capture effective, timely and properly informed decisions. atomic: Tests one condition—whether the communication supports a decision about how to proceed. checkable_from_text: Requires reasonable judgement about whether an average UK retail customer could use the information to decide.",
+        "faithful": 2,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "rejected",
+      "rejection_reason": "Manual review: vague (\"usable basis for deciding how to proceed\") and overlaps PRIN2A.5.3-1c-c, which tests the same limb more precisely."
+    },
+    {
+      "id": "PRIN2A.5.3-1c-b",
+      "source_ref": "PRIN 2A.5.3(1)(c) R",
+      "source_quote": "(1) A firm must support retail customer understanding so that its communications: (a) meet the information needs of retail customers; (b) are likely to be understood by retail customers; and (c) equip retail customers to make decisions that are effective, timely and properly informed.",
+      "title": "Support timely customer decisions",
+      "check": "Does the communication give retail customers the information needed to make any decision it presents in time?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "The obligation to support timely decisions applies generally, although timing omissions are particularly relevant to time-limited offers.",
+      "tags": [],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.5.3: rule -> blocking",
+      "pass_example": "The reduced dealing fee ends at 5pm on 30 June. Review the offer terms before deciding whether to participate.",
+      "fail_example": "Your chance to claim our reduced dealing fee expires soon. We will reveal the closing date after you apply.",
+      "critic": {
+        "notes": "faithful: The check reasonably interprets timely, properly informed decision-making, but narrows it to decisions presented in the communication. atomic: Information sufficiency is one condition with a closely tied timing qualifier. checkable_from_text: The reviewer can judge the stated information and timing, using reasonable judgement about retail customer understanding.",
+        "faithful": 2,
+        "atomic": 2,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.3-1c-c",
+      "source_ref": "PRIN 2A.5.3(1)(c) R",
+      "source_quote": "(1) A firm must support retail customer understanding so that its communications: (a) meet the information needs of retail customers; (b) are likely to be understood by retail customers; and (c) equip retail customers to make decisions that are effective, timely and properly informed.",
+      "title": "Support properly informed decisions",
+      "check": "Does the communication provide a sufficiently complete basis for retail customers to make an informed decision about its offer?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "The requirement to support properly informed decisions applies to communications generally, not just to specified product claims.",
+      "tags": [],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.5.3: rule -> blocking",
+      "pass_example": "This fund invests in company shares and is intended for long-term investing. You could lose money, so review its risks and charges before deciding whether to invest.",
+      "fail_example": "Invest in this fund today. Its investment strategy, risks and charges will only be disclosed after you commit.",
+      "critic": {
+        "notes": "Faithful: “Sufficiently complete basis” is a reasonable interpretation of “properly informed,” but the check omits effective and timely decisions. Atomic: Tests one condition—the adequacy of information for an informed decision. Checkable from text: Requires reasonable judgement about whether an average UK retail customer has enough information to decide.",
+        "faithful": 2,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.3-2-a",
+      "source_ref": "PRIN 2A.5.3(2) R",
+      "source_quote": "(2) A firm must communicate information to retail customers in a way which is clear, fair and not misleading.",
+      "title": "Communicate information clearly",
+      "check": "Is the information in the communication expressed clearly?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "The requirement for clarity applies to all information communicated to retail customers.",
+      "tags": [],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.5.3: rule -> blocking",
+      "pass_example": "We charge £5 for each UK share trade.",
+      "fail_example": "A £5 charge applies per applicable event, subject to the relevant transactional categorisation.",
+      "critic": {
+        "notes": "faithful: No added requirement; the check isolates the quote’s clarity requirement. atomic: Tests only whether the information is expressed clearly. checkable_from_text: Requires reasonable judgement about what an average UK retail customer would understand.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.3-2-b",
+      "source_ref": "PRIN 2A.5.3(2) R",
+      "source_quote": "(2) A firm must communicate information to retail customers in a way which is clear, fair and not misleading.",
+      "title": "Present information fairly",
+      "check": "Does the communication present its subject matter fairly rather than giving a one-sided impression?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "Fair presentation is required for all retail customer communications, regardless of their subject matter.",
+      "tags": [],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.5.3: rule -> blocking",
+      "pass_example": "Share investing offers potential growth, but prices can fall and you could lose money.",
+      "fail_example": "Share investing is your route to financial freedom. Focus on the upside—losses are not worth worrying about.",
+      "critic": {
+        "notes": "Faithful: Treating fairness as avoiding a one-sided impression is a reasonable interpretation, but the quote does not expressly require balance. Atomic: Tests one condition—fair presentation; the contrast clarifies that condition. Checkable from text: Assessing whether the impression is unfairly one-sided requires reasonable judgement about an average UK retail customer's understanding.",
+        "faithful": 2,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.3-2-c",
+      "source_ref": "PRIN 2A.5.3(2) R",
+      "source_quote": "(2) A firm must communicate information to retail customers in a way which is clear, fair and not misleading.",
+      "title": "Avoid misleading customer impressions",
+      "check": "Does the communication avoid creating a misleading impression?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "The prohibition on misleading communication applies universally rather than only when particular claims appear.",
+      "tags": [],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.5.3: rule -> blocking",
+      "pass_example": "There is no account subscription fee. Each share trade costs £5.",
+      "fail_example": "Trade completely free with our account. Each share trade costs £5.",
+      "critic": {
+        "notes": "faithful: The check directly reflects the requirement not to mislead, without adding obligations. atomic: It tests one condition—whether the communication creates a misleading impression. checkable_from_text: Assessing the impression requires reasonable judgement about what an average UK retail customer would understand.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.7-1-a",
+      "source_ref": "PRIN 2A.5.7(1) G",
+      "source_quote": "In supporting the understanding of retail customers through its communications, a firm should: (1) explain or present information in a logical manner;",
+      "title": "Present information in logical order",
+      "check": "Does the communication present information in a logical manner?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "Logical presentation is relevant to every marketing communication.",
+      "tags": [],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.5.7: guidance -> advisory",
+      "pass_example": "Choose your investments, review the dealing fee, then confirm your order.",
+      "fail_example": "Confirm your order first. Before that, choose your investments, but review the dealing fee after confirming.",
+      "critic": {
+        "notes": "Faithful: The check directly matches the quote’s requirement to present information logically. Atomic: It tests one condition—logical presentation. Checkable from text: The communication’s logical structure can be assessed from the text alone.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 3
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.7-2-a",
+      "source_ref": "PRIN 2A.5.7(2) G",
+      "source_quote": "In supporting the understanding of retail customers through its communications, a firm should: (1) explain or present information in a logical manner; (2) use plain and intelligible language and, where use of jargon or technical terms is unavoidable, explain the meaning of any jargon or technical terms as simply as possible;",
+      "title": "Use plain and intelligible language",
+      "check": "Does the communication use plain and intelligible language?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "The expectation to use understandable language applies to every marketing communication.",
+      "tags": [],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.5.7: guidance -> advisory",
+      "pass_example": "Buy and sell investments through our app. You pay £3 for each trade.",
+      "fail_example": "Facilitate investment acquisition and disposal through our application, subject to a per-transaction pecuniary consideration of £3.",
+      "critic": {
+        "notes": "Faithful: The check directly reflects the quoted plain-and-intelligible-language requirement without additions. Atomic: It tests one condition—language clarity. Checkable_from_text: Assessable from the communication, using reasonable judgement about what an average UK retail customer would understand.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.7-2-b",
+      "source_ref": "PRIN 2A.5.7(2) G",
+      "source_quote": "In supporting the understanding of retail customers through its communications, a firm should: (1) explain or present information in a logical manner; (2) use plain and intelligible language and, where use of jargon or technical terms is unavoidable, explain the meaning of any jargon or technical terms as simply as possible;",
+      "title": "Explain jargon in simple terms",
+      "check": "Does the communication explain any jargon or technical terms it uses as simply as possible?",
+      "applies_when": "communications containing jargon or technical terms",
+      "scope": "conditional",
+      "scope_rationale": "The explanation requirement is triggered when the communication uses jargon or technical terms.",
+      "tags": [
+        "jargon_or_technical_terms"
+      ],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.5.7: guidance -> advisory",
+      "pass_example": "A limit order lets you set the highest price you will pay to buy an investment.",
+      "fail_example": "Take control of your trading with limit orders.",
+      "critic": {
+        "notes": "Faithful: Requires explanations for all jargon or technical terms, omitting the source’s qualifier that their use is unavoidable. Atomic: Tests one requirement—explaining jargon or technical terms simply. Checkable from text: Requires reasonable judgement about whether explanations are as simple as possible for an average UK retail customer.",
+        "faithful": 1,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "rejected",
+      "rejection_reason": "critic: faithful=1 (Faithful: Requires explanations for all jargon or technical terms, omitting the source’s qualifier that their use is unavoidable. Atomic: Tests one requirement—explaining jargon or technical terms simply. Checkable from text: Requires reasonable judgement about whether explanations are as simple as possible for an average UK retail customer.)"
+    },
+    {
+      "id": "PRIN2A.5.7-3-a",
+      "source_ref": "PRIN 2A.5.7(3) G",
+      "source_quote": "In supporting the understanding of retail customers through its communications, a firm should: (1) explain or present information in a logical manner; (2) use plain and intelligible language and, where use of jargon or technical terms is unavoidable, explain the meaning of any jargon or technical terms as simply as possible; (3) make key information prominent and easy to identify, including by means of headings and layout, display and font attributes of text, and by use of design devices such as tables, bullet points, graphs, graphics, audio-visuals and interactive media;",
+      "title": "Make key information prominent",
+      "check": "Does the communication give key information prominence?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "Prominence of key information is a general expectation for customer communications, not one limited to particular content.",
+      "tags": [],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.5.7: guidance -> advisory",
+      "pass_example": "Invest in shares from £3 per trade. Your investments can fall in value, so you could lose money.",
+      "fail_example": "INVEST IN SHARES TODAY! Explore our tools, market news and watchlists to start your journey; tucked away at the end of the promotional footer: investments can fall in value and you could lose money.",
+      "critic": {
+        "notes": "Faithful: The check directly reflects the quoted requirement to make key information prominent, without adding requirements. Atomic: It tests one condition—prominence of key information. Checkable from text: Prominence can be assessed from the communication itself, including its wording and presentation.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 3
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.7-3-b",
+      "source_ref": "PRIN 2A.5.7(3) G",
+      "source_quote": "In supporting the understanding of retail customers through its communications, a firm should: (1) explain or present information in a logical manner; (2) use plain and intelligible language and, where use of jargon or technical terms is unavoidable, explain the meaning of any jargon or technical terms as simply as possible; (3) make key information prominent and easy to identify, including by means of headings and layout, display and font attributes of text, and by use of design devices such as tables, bullet points, graphs, graphics, audio-visuals and interactive media;",
+      "title": "Make key information identifiable",
+      "check": "Is key information easy to identify in the communication?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "Making key information easy to identify applies irrespective of the particular subject of the communication.",
+      "tags": [],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.5.7: guidance -> advisory",
+      "pass_example": "Trading fee: £3 per trade. Investment risk: you could lose money.",
+      "fail_example": "£3, market updates, per trade, watchlists, your money, new tools, could be lost, daily news.",
+      "critic": {
+        "notes": "Faithful: The check directly reflects the requirement to make key information easy to identify, without adding requirements. Atomic: It tests one condition—whether key information is easy to identify. Checkable from text: The reviewer can assess identifiability from the communication itself, without external information.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 3
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.7-4-a",
+      "source_ref": "PRIN 2A.5.7(4) G",
+      "source_quote": "In supporting the understanding of retail customers through its communications, a firm should: (1) explain or present information in a logical manner; (2) use plain and intelligible language and, where use of jargon or technical terms is unavoidable, explain the meaning of any jargon or technical terms as simply as possible; (3) make key information prominent and easy to identify, including by means of headings and layout, display and font attributes of text, and by use of design devices such as tables, bullet points, graphs, graphics, audio-visuals and interactive media; (4) avoid unnecessary disclaimers;",
+      "title": "Avoid unnecessary disclaimers",
+      "check": "Does the communication avoid unnecessary disclaimers?",
+      "applies_when": "communications containing disclaimers",
+      "scope": "conditional",
+      "scope_rationale": "Unnecessary disclaimers can only arise where the communication contains disclaimers.",
+      "tags": [
+        "disclaimers"
+      ],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.5.7: guidance -> advisory",
+      "pass_example": "Invest in shares through our app. Investments can fall in value and you could lose money.",
+      "fail_example": "Invest in shares through our app. We do not guarantee that the decorative colours used in this advertisement will match your personal preferences.",
+      "critic": {
+        "notes": "Faithful: The check directly matches the quoted requirement to avoid unnecessary disclaimers. Atomic: It tests a single condition. Checkable_from_text: Identifying unnecessary disclaimers requires reasonable judgement about their relevance to an average UK retail customer's understanding.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.7-5-a",
+      "source_ref": "PRIN 2A.5.7(5) G",
+      "source_quote": "In supporting the understanding of retail customers through its communications, a firm should: (1) explain or present information in a logical manner; (2) use plain and intelligible language and, where use of jargon or technical terms is unavoidable, explain the meaning of any jargon or technical terms as simply as possible; (3) make key information prominent and easy to identify, including by means of headings and layout, display and font attributes of text, and by use of design devices such as tables, bullet points, graphs, graphics, audio-visuals and interactive media; (4) avoid unnecessary disclaimers; and (5) provide relevant information with an appropriate level of detail, to avoid providing too much information such that it may prevent retail customers from making effective decisions.",
+      "title": "Provide decision-relevant information",
+      "check": "Does the communication provide information relevant to the retail customer decision it addresses?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "Providing relevant information is a general expectation for communications supporting customer understanding.",
+      "tags": [],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.5.7: guidance -> advisory",
+      "pass_example": "Considering our share-dealing account? Trades cost £3 each, and investments can fall in value.",
+      "fail_example": "Considering our share-dealing account? Our office has blue walls and opened on a sunny Tuesday.",
+      "critic": {
+        "notes": "faithful: The check directly reflects the requirement to provide relevant information without adding obligations. atomic: It tests one condition—relevance to the customer decision. checkable_from_text: Relevance can be assessed from the communication using reasonable judgement about a retail customer's decision needs.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.7-5-b",
+      "source_ref": "PRIN 2A.5.7(5) G",
+      "source_quote": "In supporting the understanding of retail customers through its communications, a firm should: (1) explain or present information in a logical manner; (2) use plain and intelligible language and, where use of jargon or technical terms is unavoidable, explain the meaning of any jargon or technical terms as simply as possible; (3) make key information prominent and easy to identify, including by means of headings and layout, display and font attributes of text, and by use of design devices such as tables, bullet points, graphs, graphics, audio-visuals and interactive media; (4) avoid unnecessary disclaimers; and (5) provide relevant information with an appropriate level of detail, to avoid providing too much information such that it may prevent retail customers from making effective decisions.",
+      "title": "Use an appropriate detail level",
+      "check": "Does the communication provide an appropriate level of detail for the retail customer decision it addresses?",
+      "applies_when": "all marketing communications",
+      "scope": "always",
+      "scope_rationale": "An appropriate level of detail is relevant to every communication supporting customer understanding.",
+      "tags": [],
+      "severity": "advisory",
+      "severity_basis": "Marker G on PRIN 2A.5.7: guidance -> advisory",
+      "pass_example": "Our share-dealing account charges £3 per trade with no monthly account fee. Investments can fall in value and you could lose money.",
+      "fail_example": "Open our account now: charges apply. The charges are calculated according to the applicable charging arrangements.",
+      "critic": {
+        "notes": "faithful: The check directly reflects the quoted requirement for an appropriate level of detail. atomic: It tests one condition—the appropriateness of the detail level. checkable_from_text: Requires reasonable judgement about how much detail an average UK retail customer needs for the decision addressed.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.8-1-a",
+      "source_ref": "PRIN 2A.5.8(1) R",
+      "source_quote": "In supporting the understanding of retail customers, the firm must tailor communications provided to retail customers, taking into account: (1) the characteristics of retail customers, including any characteristics of vulnerability;",
+      "title": "Tailor wording to identified customers",
+      "check": "Is the communication worded suitably for the retail customer characteristics identified in the text?",
+      "applies_when": "the communication identifies characteristics of its intended retail audience, including vulnerability",
+      "scope": "conditional",
+      "scope_rationale": "Suitability for customer characteristics can be assessed from the text alone when those characteristics are identified in the communication.",
+      "tags": [
+        "customer_characteristics",
+        "vulnerable_customers"
+      ],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.5.8: rule -> blocking",
+      "pass_example": "New to investing? A share is a small ownership stake in a company, and its value can fall as well as rise.",
+      "fail_example": "New to investing? Optimise your portfolio through delta-neutral positioning and volatility harvesting.",
+      "critic": {
+        "notes": "Faithful: Restricts tailoring to customer characteristics identified in the text, a limitation absent from the source. Atomic: Tests one condition—suitability of wording for the identified audience. Checkable from text: Suitability can be judged from the wording and stated audience characteristics, using reasonable judgement about customer understanding.",
+        "faithful": 1,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "rejected",
+      "rejection_reason": "critic: faithful=1 (Faithful: Restricts tailoring to customer characteristics identified in the text, a limitation absent from the source. Atomic: Tests one condition—suitability of wording for the identified audience. Checkable from text: Suitability can be judged from the wording and stated audience characteristics, using reasonable judgement about customer understanding.)"
+    },
+    {
+      "id": "PRIN2A.5.8-2-a",
+      "source_ref": "PRIN 2A.5.8(2) R",
+      "source_quote": "In supporting the understanding of retail customers, the firm must tailor communications provided to retail customers, taking into account: (1) the characteristics of retail customers, including any characteristics of vulnerability; (2) the complexity of the product; (3) the communication channel(s) used; and (4) the role of the firm, including whether the firm is providing regulated advice or information only.",
+      "title": "Tailor explanations to product complexity",
+      "check": "Is the communication's explanation of the product understandable given the complexity evident from the text?",
+      "applies_when": "the communication describes a product whose complexity is evident from the text",
+      "scope": "conditional",
+      "scope_rationale": "The reviewer can assess tailoring to product complexity where the communication itself describes the product's complex features.",
+      "tags": [
+        "complex_products",
+        "product_features"
+      ],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.5.8: rule -> blocking",
+      "pass_example": "A CFD lets you trade on price movements without owning the underlying asset. Leverage increases your exposure, magnifying both gains and losses.",
+      "fail_example": "Access CFDs with leveraged notional exposure, dynamic margining and mark-to-market P&L.",
+      "critic": {
+        "notes": "faithful: Understandability relative to product complexity is a reasonable reading of tailoring communications to support understanding, rather than the quote’s exact requirement. atomic: Tests one condition—whether the product explanation is understandable given its complexity. checkable_from_text: Requires reasonable judgement about what an average UK retail customer would understand, but no external information.",
+        "faithful": 2,
+        "atomic": 3,
+        "checkable_from_text": 2
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.8-4-a",
+      "source_ref": "PRIN 2A.5.8(4) R",
+      "source_quote": "In supporting the understanding of retail customers, the firm must tailor communications provided to retail customers, taking into account: (1) the characteristics of retail customers, including any characteristics of vulnerability; (2) the complexity of the product; (3) the communication channel(s) used; and (4) the role of the firm, including whether the firm is providing regulated advice or information only.",
+      "title": "Match wording to stated firm role",
+      "check": "Is the communication's wording consistent with the firm's stated advisory or information-only role?",
+      "applies_when": "the communication identifies the firm as providing regulated advice or information only",
+      "scope": "conditional",
+      "scope_rationale": "Consistency with the firm's role is assessable from a single text when that role is stated in the communication.",
+      "tags": [
+        "advice_or_information"
+      ],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.5.8: rule -> blocking",
+      "pass_example": "We provide information, not personal investment advice. Explore our fund factsheets to help you make your own investment decisions.",
+      "fail_example": "We provide information only, not personal investment advice. Based on your circumstances, we recommend that you invest your savings in this fund.",
+      "critic": {
+        "notes": "Faithful: Wording consistency with a stated role is a reasonable but narrower interpretation of tailoring communications to take account of the firm's role. Atomic: Tests one condition—consistency between wording and the stated role. Checkable from text: Both the stated role and the wording being assessed are available in the communication; no external verification is required.",
+        "faithful": 2,
+        "atomic": 3,
+        "checkable_from_text": 3
+      },
+      "attempts": 1,
+      "status": "approved",
+      "rejection_reason": null
+    },
+    {
+      "id": "PRIN2A.5.9-2-a",
+      "source_ref": "PRIN 2A.5.9(2) R",
+      "source_quote": "When a firm is interacting directly with a retail customer on a one-to-one basis, such as in branch, during a telephone conversation or other interactive dialogue, the firm must, where appropriate: (1) tailor the communication to meet the information needs of that retail customer, taking into account whether they have characteristics of vulnerability; and (2) ask the retail customer whether they understand the information and if they have any further questions, particularly if the information is reasonably regarded as key information, such as where it prompts that retail customer to make a decision.",
+      "title": "Ask whether the customer understands",
+      "check": "Does the communication ask the retail customer whether they understand the information provided?",
+      "applies_when": "the communication is part of a direct one-to-one interactive dialogue with a retail customer where checking understanding is appropriate, particularly when key information prompts a decision",
+      "scope": "conditional",
+      "scope_rationale": "The obligation applies where appropriate in direct one-to-one interactions rather than to marketing communications generally.",
+      "tags": [
+        "one_to_one_interactions"
+      ],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.5.9: rule -> blocking",
+      "pass_example": "In answer to your question, this investment could lose value, so you could get back less than you invest. Before deciding whether to proceed, do you understand this risk?",
+      "fail_example": "In answer to your question, this investment could lose value, so you could get back less than you invest. Would you like to proceed?",
+      "critic": {
+        "notes": "Faithful: The check directly reflects the quoted requirement to ask whether the customer understands the information. Atomic: It tests one condition—whether an understanding question is asked. Checkable from text: The reviewer can identify that question in the communication itself.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 3
+      },
+      "attempts": 1,
+      "status": "rejected",
+      "rejection_reason": "Manual review: one-to-one dialogue duty (asking the customer whether they understand); not checkable on a marketing text, would wrongly FAIL ordinary ads."
+    },
+    {
+      "id": "PRIN2A.5.9-2-b",
+      "source_ref": "PRIN 2A.5.9(2) R",
+      "source_quote": "When a firm is interacting directly with a retail customer on a one-to-one basis, such as in branch, during a telephone conversation or other interactive dialogue, the firm must, where appropriate: (1) tailor the communication to meet the information needs of that retail customer, taking into account whether they have characteristics of vulnerability; and (2) ask the retail customer whether they understand the information and if they have any further questions, particularly if the information is reasonably regarded as key information, such as where it prompts that retail customer to make a decision.",
+      "title": "Ask about further customer questions",
+      "check": "Does the communication ask the retail customer whether they have any further questions about the information provided?",
+      "applies_when": "the communication is part of a direct one-to-one interactive dialogue with a retail customer where inviting further questions is appropriate, particularly when key information prompts a decision",
+      "scope": "conditional",
+      "scope_rationale": "The obligation applies where appropriate in direct one-to-one interactions rather than to marketing communications generally.",
+      "tags": [
+        "one_to_one_interactions"
+      ],
+      "severity": "blocking",
+      "severity_basis": "Marker R on PRIN 2A.5.9: rule -> blocking",
+      "pass_example": "In answer to your question, this investment could lose value, so you could get back less than you invest. Before deciding whether to proceed, do you have any further questions about this information?",
+      "fail_example": "In answer to your question, this investment could lose value, so you could get back less than you invest. Do you understand this risk?",
+      "critic": {
+        "notes": "faithful: The check directly captures the quoted requirement to ask about further questions, with the relevant scope preserved in 'Applies when'. atomic: Tests only whether the customer is asked about further questions. checkable_from_text: The presence or absence of that question is observable in the communication itself.",
+        "faithful": 3,
+        "atomic": 3,
+        "checkable_from_text": 3
+      },
+      "attempts": 1,
+      "status": "rejected",
+      "rejection_reason": "Manual review: one-to-one dialogue duty (asking for further questions); not checkable on a marketing text, would wrongly FAIL ordinary ads."
+    }
+  ],
+  "dropped_provisions": [
+    {
+      "provision_id": "2A.1.1",
+      "marker": "R",
+      "rationale": "This provision clarifies that references to Principle 12 obligations include the rules in PRIN 2A. It is an interpretive provision and imposes no requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.1.2",
+      "marker": "R",
+      "rationale": "This provision clarifies that references to PRIN 2A obligations include Principle 12. It is an interpretive rule and imposes no communication requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.1.3",
+      "marker": "G",
+      "rationale": "The provision explains the scope of Principle 12 and its relationship with Principles 6 and 7. It does not set requirements for the content or presentation of a marketing text."
+    },
+    {
+      "provision_id": "2A.1.4",
+      "marker": "G",
+      "rationale": "This provision defines “product” to include both products and services for Consumer Duty purposes. It is an interpretive provision, not a requirement that can be checked against a marketing text."
+    },
+    {
+      "provision_id": "2A.1.5",
+      "marker": "G",
+      "rationale": "This provision defines retail customers to include prospective customers for the purposes of the Consumer Duty. It concerns scope rather than requirements that can be checked in a marketing text."
+    },
+    {
+      "provision_id": "2A.1.6",
+      "marker": "G",
+      "rationale": "This provision sets the standard for interpreting Principle 12 and PRIN 2A, including how firms should account for retail customers’ needs and characteristics. It does not impose a specific communication requirement that can be checked from a standalone marketing text."
+    },
+    {
+      "provision_id": "2A.1.7",
+      "marker": "R",
+      "rationale": "This provision defines the scope of references to regulated activities, including payment services, electronic money issuance and connected activities. It imposes no requirements on the content or presentation of marketing communications."
+    },
+    {
+      "provision_id": "2A.1.8",
+      "marker": "G",
+      "rationale": "The provision explains the general purpose of Principle 12 and the FCA’s expectation of retail customer protection. It does not set a communication-specific standard that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.1.9",
+      "marker": "G",
+      "rationale": "The provision explains why retail customers warrant a high level of protection, citing bargaining weaknesses, behavioural biases, limited expertise and information asymmetries. It provides background to the rules rather than a requirement about communication content that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.1.10",
+      "marker": "G",
+      "rationale": "This provision describes the structure of the Consumer Duty and signposts where its obligations are set out. It imposes no communication-specific requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.1.11",
+      "marker": "G",
+      "rationale": "The provision clarifies that Principle 12 does not create fiduciary relationships or require firms to provide advice or other regulated activities. It concerns the interpretation of the Duty rather than requirements checkable from a marketing text."
+    },
+    {
+      "provision_id": "2A.1.12",
+      "marker": "G",
+      "rationale": "This provision points firms to supplementary FCA guidance on interpreting and complying with the Consumer Duty. It does not set any requirements for the content or presentation of a marketing text."
+    },
+    {
+      "provision_id": "2A.1.13",
+      "marker": "G",
+      "rationale": "The provision explains the scope of Principle 12, including its application beyond client relationships and limits based on a firm’s role in the distribution chain. It does not set requirements for the content of marketing communications that can be checked from a single text."
+    },
+    {
+      "provision_id": "2A.1.14",
+      "marker": "G",
+      "rationale": "This provision explains how to interpret firms’ obligations according to their role and influence in a product’s distribution chain. It does not set requirements for the content of a marketing communication that can be checked from the text alone."
+    },
+    {
+      "provision_id": "2A.1.15",
+      "marker": "G",
+      "rationale": "The provision explains how a firm’s role and influence over customer outcomes determine its responsibilities, including in indirect customer relationships. It concerns scope and accountability rather than requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.1.16",
+      "marker": "G",
+      "rationale": "This provision explains that guidance cannot exhaustively cover the implications of the Principles. It concerns interpretation rather than requirements that can be checked in a marketing text."
+    },
+    {
+      "provision_id": "2A.1.17",
+      "marker": "G",
+      "rationale": "This provision explains the higher standard and broader application of Principle 12 and how firms should interpret existing guidance on Principles 6 and 7. It does not specify communication requirements that can be checked from a standalone marketing text."
+    },
+    {
+      "provision_id": "2A.1.18",
+      "marker": "G",
+      "rationale": "The provision clarifies how Principles 6 and 7 apply to activities outside Principle 12. It is an application rule, not a communication standard that can be checked against an individual marketing text."
+    },
+    {
+      "provision_id": "2A.2.4",
+      "marker": "G",
+      "rationale": "The provision clarifies that good faith permits legitimate commercial interests and does not create a fiduciary duty. It interprets the obligation rather than setting requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.2.5",
+      "marker": "R",
+      "rationale": "This provision requires firms to rectify identified foreseeable harm, including providing redress where appropriate. It concerns remedial action after harm has occurred, which cannot be assessed from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.2.6",
+      "marker": "R",
+      "rationale": "This provision creates an exception to the foreseeable-harm obligation where customers understood and accepted risks inherent in a product. It does not prescribe communication content, and the firm's reasonable belief about customer understanding and acceptance cannot be assessed from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.2.7",
+      "marker": "G",
+      "rationale": "This guidance explains how to assess whether a firm’s belief is reasonable, using factors including product design, communications, customer needs and legal compliance. It does not set a standalone communication standard, and the reasonableness of that belief cannot be assessed from one marketing text."
+    },
+    {
+      "provision_id": "2A.2.9",
+      "marker": "R",
+      "rationale": "The provision explains that foreseeable harm can arise through acts or omissions, including across a distribution chain. It clarifies the scope of responsibility rather than setting a communication standard checkable from a single marketing text."
+    },
+    {
+      "provision_id": "2A.2.11",
+      "marker": "G",
+      "rationale": "This guidance describes the duration of a firm's duty to avoid foreseeable harm during an ongoing product relationship. It does not specify communication requirements that can be checked from a single marketing text."
+    },
+    {
+      "provision_id": "2A.2.12",
+      "marker": "G",
+      "rationale": "This provision limits a firm's duty to address harm that becomes foreseeable only after its involvement with a product has ended. It concerns the temporal scope of the obligation, not requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.2.13",
+      "marker": "G",
+      "rationale": "This guidance explains the limits of the foreseeable-harm obligation where customers understand and accept inherent product risks. Although it mentions the adequacy of communications, it does not specify requirements assessable from a single marketing text; it concerns interpreting the obligation and assessing the firm’s reasonable belief."
+    },
+    {
+      "provision_id": "2A.2.15",
+      "marker": "G",
+      "rationale": "This guidance explains how the type of product affects the conclusions a firm can draw about customers’ financial objectives. It does not set requirements for the content or presentation of a marketing text."
+    },
+    {
+      "provision_id": "2A.2.16",
+      "marker": "G",
+      "rationale": "This guidance explains what execution-only or non-advised firms may assume about customers’ financial objectives. It does not set requirements for the content or presentation of marketing communications that can be checked from a single text."
+    },
+    {
+      "provision_id": "2A.2.17",
+      "marker": "G",
+      "rationale": "This provision describes when firms providing advisory or discretionary services may rely on customers’ disclosed objectives. It concerns the use of customer information in service delivery, not requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.2.18",
+      "marker": "G",
+      "rationale": "The provision explains how legally required customer information informs whether a firm knew or should have known about a customer's different financial objectives. It does not prescribe marketing content, and compliance cannot be assessed from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.2.19",
+      "marker": "G",
+      "rationale": "The provision concerns tailoring interactions to support a retail customer’s specific financial objective once the firm knows or should know it. Compliance depends on customer-specific knowledge and the wider interaction, rather than requirements checkable from a standalone marketing text."
+    },
+    {
+      "provision_id": "2A.2.21",
+      "marker": "G",
+      "rationale": "This guidance concerns information and support offered after declining a customer a product, including checking the independence and reliability of third-party information. These are customer-support and due-diligence duties that cannot be assessed from a standalone marketing text."
+    },
+    {
+      "provision_id": "2A.2.22",
+      "marker": "G",
+      "rationale": "This guidance interprets the limits of a firm's obligation to support customers’ financial objectives by reference to prudent conduct and reasonable expectations of product delivery. It does not set requirements for the content or presentation of a marketing text."
+    },
+    {
+      "provision_id": "2A.2.23",
+      "marker": "G",
+      "rationale": "The provision explains when the cross-cutting obligations apply and requires ongoing product review and proactive or reactive action. These are application and firm-process matters that cannot be checked from a single marketing text."
+    },
+    {
+      "provision_id": "2A.2.24",
+      "marker": "G",
+      "rationale": "The provision explains whether the cross-cutting obligations apply at target-market or individual-customer level. Although it mentions designing communications, it is guidance on application rather than a requirement about content that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.2.26",
+      "marker": "R",
+      "rationale": "This provision defines the relationship between the cross-cutting obligations and Principle 12. It is an interpretive rule and imposes no requirement that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.2.27",
+      "marker": "G",
+      "rationale": "This provision describes the general purpose of the cross-cutting obligations, rather than setting a standard for customer communications. It cannot be assessed from a standalone marketing text."
+    },
+    {
+      "provision_id": "2A.2.28",
+      "marker": "G",
+      "rationale": "This provision explains how the outcomes rules relate to Principle 12 and the cross-cutting obligations. It is interpretive guidance and sets no communication requirement that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.3.1",
+      "marker": "G",
+      "rationale": "This provision explains how general product governance obligations interact with other legal or regulatory obligations. Although it mentions marketing restrictions, it does not specify any communication standard that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.3.2",
+      "marker": "R",
+      "rationale": "The provision requires manufacturers to maintain and review a product approval process before marketing or distribution. This is an internal product-governance duty whose compliance cannot be assessed from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.3.3",
+      "marker": "G",
+      "rationale": "This provision clarifies the scope of the products and services rules, including their application to future marketing or distribution of existing products. It does not set requirements for the content of a marketing text."
+    },
+    {
+      "provision_id": "2A.3.4",
+      "marker": "R",
+      "rationale": "This provision sets requirements for manufacturers’ product approval procedures, including target-market identification, risk assessment, product design and distribution strategy. These are product governance duties, not requirements that can be checked from a standalone marketing text."
+    },
+    {
+      "provision_id": "2A.3.5",
+      "marker": "R",
+      "rationale": "The provision requires manufacturers to maintain and review an assessment process for closed products and specifies exemptions from other product rules. These are internal product-review obligations, not requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.3.6",
+      "marker": "R",
+      "rationale": "The provision requires manufacturers to assess and regularly review how closed products affect different customer groups, particularly vulnerable customers. It concerns product-review processes and outcomes, not requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.3.7",
+      "marker": "R",
+      "rationale": "The provision requires manufacturers to review product suitability for the target market, including vulnerable customers, and the appropriateness of distribution strategies. These are product governance and review duties that cannot be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.3.8",
+      "marker": "R",
+      "rationale": "This provision requires manufacturers to mitigate product-related harm and, where appropriate, notify relevant parties in the distribution chain. These remedial and inter-firm duties cannot be assessed from a single retail marketing text."
+    },
+    {
+      "provision_id": "2A.3.9",
+      "marker": "R",
+      "rationale": "This provision requires manufacturers to test products and assess their suitability for the target market, including vulnerable customers. These product-testing and design obligations cannot be checked from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.3.10",
+      "marker": "R",
+      "rationale": "This provision requires manufacturers to withhold, stop distributing or modify products when testing shows they do not meet target-market needs. Although it requires marketing to cease in certain circumstances, compliance depends on product-testing results and cannot be assessed from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.3.11",
+      "marker": "R",
+      "rationale": "This provision requires collaborating product manufacturers to document their roles and responsibilities in the product approval process. It concerns inter-firm arrangements, not requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.3.12",
+      "marker": "R",
+      "rationale": "The provision governs manufacturers’ selection of distribution channels and provision of product and approval information to distributors. These are distribution-chain duties between firms, not requirements that can be checked from a retail marketing text."
+    },
+    {
+      "provision_id": "2A.3.13",
+      "marker": "R",
+      "rationale": "This provision imposes distribution duties where the manufacturer is not subject to the product and service rules. It concerns distribution-chain compliance rather than requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.3.14",
+      "marker": "R",
+      "rationale": "This provision governs maintaining, operating and reviewing product distribution arrangements, including harm mitigation, conflicts management and target-market considerations. These are distribution-process duties that cannot be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.3.15",
+      "marker": "G",
+      "rationale": "This guidance clarifies the scope of the product-distribution rule, including existing products and contract renewals. It sets no requirements for the content of marketing communications that could be checked from a single text."
+    },
+    {
+      "provision_id": "2A.3.16",
+      "marker": "R",
+      "rationale": "This provision requires distributors to obtain product and target-market information from manufacturers and establish appropriate distribution arrangements. These are internal and inter-firm duties that cannot be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.3.17",
+      "marker": "R",
+      "rationale": "The provision requires a distributor’s supplementary distribution strategy to align with the manufacturer’s strategy and identified target market. These distribution arrangements cannot be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.3.18",
+      "marker": "R",
+      "rationale": "This provision requires distributors to provide manufacturers with information supporting product reviews, including sales and distribution-review information. It concerns inter-firm information sharing and review processes, not requirements checkable from a marketing text."
+    },
+    {
+      "provision_id": "2A.3.19",
+      "marker": "R",
+      "rationale": "The provision requires distributors to review distribution arrangements and verify that products reach only the identified target market. These are distribution oversight duties that cannot be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.3.20",
+      "marker": "R",
+      "rationale": "This provision requires distributors to address issues identified through reviews by amending distribution arrangements, mitigating harm and informing others in the distribution chain. These are operational and inter-firm duties, not requirements that can be checked from a standalone marketing text."
+    },
+    {
+      "provision_id": "2A.3.21",
+      "marker": "R",
+      "rationale": "This provision limits the remedial action required for existing contracts, allowing firms to retain vested contractual rights unless they identify a breach of the rules in force at the time. It does not impose requirements on the content of marketing communications."
+    },
+    {
+      "provision_id": "2A.3.22",
+      "marker": "G",
+      "rationale": "This provision explains what counts as vested contractual rights, including payments due, remuneration and early termination charges. It is interpretive guidance and does not impose requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.3.23",
+      "marker": "G",
+      "rationale": "The provision concerns interpreting contracts to determine whether a right is vested. It does not set requirements for customer communications and cannot be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.3.24",
+      "marker": "R",
+      "rationale": "This provision sets an exemption from PRIN 2A.3 for firms and products covered by specified PROD chapters. It concerns regulatory application, not requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.3.25",
+      "marker": "G",
+      "rationale": "The provision clarifies which products fall within the scope of PROD, including adapted products and certain legacy products. It sets no requirements for the content or presentation of retail marketing communications."
+    },
+    {
+      "provision_id": "2A.3.26",
+      "marker": "R",
+      "rationale": "This provision specifies which product rules apply to closed products not already subject to PROD. It concerns the application of product-related requirements, not communication content that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.3.27",
+      "marker": "G",
+      "rationale": "The provision explains when closed products are already subject to PROD based on product type and manufacturing date. It concerns regulatory scope, not requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.3.28",
+      "marker": "R",
+      "rationale": "The provision excludes certain funds undergoing winding up or termination from the application of PRIN 2A.3. It concerns regulatory scope, not requirements for the content of a marketing text."
+    },
+    {
+      "provision_id": "2A.3.29",
+      "marker": "G",
+      "rationale": "This guidance explains when firms may choose between PROD and PRIN 2A.3 product-governance processes. It concerns regulatory application and internal processes, not requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.3.30",
+      "marker": "E",
+      "rationale": "This provision sets out which firms are covered and how breaches of PROD 3 or PROD 4 may evidence breaches of the Consumer Duty’s products and services requirements. It imposes no communication-content requirements that can be checked from a single marketing text."
+    },
+    {
+      "provision_id": "2A.4.1",
+      "marker": "R",
+      "rationale": "The provision defines value and fair value for the price-and-value outcome. It concerns the relationship between product price and benefits, not how these must be presented in marketing, so compliance cannot be assessed from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.4.2",
+      "marker": "R",
+      "rationale": "The provision requires manufacturers to ensure products provide fair value and to conduct and regularly review value assessments. These are product-value and assessment duties, not requirements that can be checked from an individual marketing text."
+    },
+    {
+      "provision_id": "2A.4.3",
+      "marker": "R",
+      "rationale": "This provision requires an initial value assessment before a product or significant adaptation is marketed or distributed. It concerns an internal assessment process, whose completion cannot be checked from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.4.4",
+      "marker": "G",
+      "rationale": "The provision clarifies the product scope and meaning of future marketing or distribution activity under the price and value rules. It does not prescribe communication content that can be assessed from an individual marketing text."
+    },
+    {
+      "provision_id": "2A.4.5",
+      "marker": "R",
+      "rationale": "The provision requires manufacturers to assess whether a product will provide fair value for a reasonably foreseeable period, including following renewal. This is a product-value assessment duty, not a requirement that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.4.6",
+      "marker": "G",
+      "rationale": "This guidance explains the period to consider when assessing a product’s price and value, including expected holding time and renewals. It does not set requirements for customer communications that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.4.7",
+      "marker": "R",
+      "rationale": "This rule requires manufacturers to ensure fair value for each component product and the overall package. It concerns product design and value assessment, not communication requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.4.8",
+      "marker": "R",
+      "rationale": "The provision specifies the factors a manufacturer must consider in its fair value assessment, including benefits, limitations, total costs and customer vulnerability. It does not impose requirements on how those matters are presented in marketing, so compliance cannot be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.4.9",
+      "marker": "G",
+      "rationale": "The provision identifies factors a manufacturer may consider in assessing a product’s fair value. It concerns pricing and value assessment, not how prices or benefits must be communicated, so compliance cannot be checked from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.4.10",
+      "marker": "G",
+      "rationale": "The provision explains non-financial benefits and costs relevant to assessing a product’s value, including extra customer assistance and permissions to use personal data. It does not prescribe how those benefits or costs must be presented in marketing, so compliance cannot be checked from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.4.11",
+      "marker": "G",
+      "rationale": "The provision guides manufacturers’ fair value assessments across target-market groups, including vulnerable customers and groups charged different prices. It concerns product value and pricing assessment rather than requirements that can be checked from a single marketing text."
+    },
+    {
+      "provision_id": "2A.4.12",
+      "marker": "G",
+      "rationale": "This guidance concerns a manufacturer's fair-value assessment and its consideration of other Consumer Duty obligations. It does not impose a communication requirement that can be checked from a single marketing text."
+    },
+    {
+      "provision_id": "2A.4.13",
+      "marker": "R",
+      "rationale": "The provision requires collaborating product manufacturers to document their roles and responsibilities for a value assessment. It concerns inter-firm arrangements, not the content of retail marketing communications, and cannot be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.4.14",
+      "marker": "R",
+      "rationale": "The provision assigns responsibility for price and value obligations when a firm co-manufactures a product with a non-firm. It concerns manufacturing accountability rather than requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.4.15",
+      "marker": "R",
+      "rationale": "This provision requires manufacturers to give distributing firms information about the product’s intended value. It concerns information sharing between firms, not requirements that can be checked from a retail marketing text."
+    },
+    {
+      "provision_id": "2A.4.16",
+      "marker": "R",
+      "rationale": "The provision concerns distributors’ arrangements and obtaining manufacturer information to assess fair value, including distribution-chain remuneration. These duties cannot be assessed from a standalone marketing text."
+    },
+    {
+      "provision_id": "2A.4.17",
+      "marker": "R",
+      "rationale": "This provision imposes distributor duties where the manufacturer is outside the scope of the price and value rules, by reference to PRIN 2A.4.16R. It does not set requirements for the content of a retail marketing communication and cannot be checked from that text alone."
+    },
+    {
+      "provision_id": "2A.4.18",
+      "marker": "R",
+      "rationale": "This provision concerns distributors’ fair value obligations, sharing value-assessment information within the distribution chain, and identifying co-manufacturer responsibilities. These are product and distribution duties that cannot be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.4.19",
+      "marker": "R",
+      "rationale": "The provision assigns manufacturers and distributors duties to consider fair value assessments during product approval, target-market identification and distribution strategy. These are product and distribution processes, not requirements that can be checked from a single marketing text."
+    },
+    {
+      "provision_id": "2A.4.20",
+      "marker": "R",
+      "rationale": "The provision requires firms to conduct their own fair value assessments rather than rely on individual customers’ judgments. It concerns an internal assessment responsibility, not a requirement that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.4.21",
+      "marker": "R",
+      "rationale": "This provision extends manufacturers’ fair-value obligations to closed products and clarifies how the target-market reference applies to them. It concerns product assessment and rule interpretation, not requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.4.22",
+      "marker": "G",
+      "rationale": "The provision concerns the timing and inputs of manufacturers’ fair value assessments for closed or existing products. It does not impose requirements on marketing content that a reviewer could check from a single text."
+    },
+    {
+      "provision_id": "2A.4.24",
+      "marker": "R",
+      "rationale": "The provision requires manufacturers to review product value assessments and distributors to review distribution arrangements throughout a product’s life. These are ongoing assessment and review duties, not requirements that can be checked from a single marketing text."
+    },
+    {
+      "provision_id": "2A.4.25",
+      "marker": "R",
+      "rationale": "The provision requires manufacturers to mitigate or remediate harm and prevent new harm when a value assessment review finds a product no longer provides fair value. It concerns product-value review and remedial action, rather than requirements checkable from a marketing text."
+    },
+    {
+      "provision_id": "2A.4.26",
+      "marker": "R",
+      "rationale": "This provision requires manufacturers to notify distributors about product issues and remedial changes to the product and distribution strategy. These are duties between firms, not requirements that can be assessed from a retail marketing text."
+    },
+    {
+      "provision_id": "2A.4.27",
+      "marker": "R",
+      "rationale": "This provision requires distributors to address failures of fair value through mitigation, redress and notification to other firms in the distribution chain. These are operational and distribution-chain duties that cannot be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.4.28",
+      "marker": "G",
+      "rationale": "The provision concerns distributors’ corrective action and how their role in the distribution chain affects their ability to mitigate a situation. It does not set requirements for customer-facing communication that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.4.29",
+      "marker": "R",
+      "rationale": "This provision limits the remedial action required for closed or pre-existing products by preserving firms’ vested contractual rights in certain cases. It does not impose requirements on the content or presentation of marketing communications."
+    },
+    {
+      "provision_id": "2A.4.30",
+      "marker": "G",
+      "rationale": "The provision clarifies what counts as vested contractual rights for another price-and-value rule. It is interpretive guidance about contractual entitlements, not a requirement that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.4.31",
+      "marker": "G",
+      "rationale": "The provision concerns interpreting contracts to determine whether a right is vested. It does not set requirements for the content or presentation of marketing communications that can be checked from a single text."
+    },
+    {
+      "provision_id": "2A.4.32",
+      "marker": "R",
+      "rationale": "This provision sets exemptions from the price and value rules and identifies alternative PROD or COLL rules that firms must apply. It concerns regulatory scope, not requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.4.33",
+      "marker": "R",
+      "rationale": "This provision excludes certain funds undergoing winding up or termination from the price and value rules. It concerns the rules’ scope rather than requirements for retail marketing communications, so compliance cannot be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.4.34",
+      "marker": "R",
+      "rationale": "This provision specifies which price-and-value rules apply to certain closed funeral plan products. It is an application provision and imposes no requirements checkable from a retail investment platform’s marketing text."
+    },
+    {
+      "provision_id": "2A.4.35",
+      "marker": "E",
+      "rationale": "This provision links breaches of funeral-plan fair-value requirements to evidence of breaches of PRIN 2A.4 for certain closed products. It does not impose communication requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.4.36",
+      "marker": "R",
+      "rationale": "The provision governs how firms use and respond to independent governance value-for-money assessments, including explaining disagreements and applying the prescribed assessment framework. These are value-assessment obligations, not requirements that can be checked from a standalone marketing text."
+    },
+    {
+      "provision_id": "2A.5.1",
+      "marker": "R",
+      "rationale": "This provision defines which firms, communications and channels fall within the consumer understanding section. It sets scope rather than requirements for the content or presentation of an individual marketing text."
+    },
+    {
+      "provision_id": "2A.5.2",
+      "marker": "G",
+      "rationale": "The provision defines which retail customers are covered by this section. It does not impose a requirement on the content or presentation of a marketing text."
+    },
+    {
+      "provision_id": "2A.5.5",
+      "marker": "R",
+      "rationale": "The provision requires information to be communicated at appropriate times before purchase and throughout the product lifecycle. Compliance depends on when communications are delivered, which cannot be assessed from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.5.10",
+      "marker": "R",
+      "rationale": "The provision requires testing and monitoring communications, investigating identified issues, and correcting deficiencies or taking remedial action. These are process duties whose compliance cannot be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.5.11",
+      "marker": "G",
+      "rationale": "The provision describes when a firm should test communications and monitor their impact based on its role and customer interactions. These are process responsibilities, not requirements that can be checked from a single marketing text."
+    },
+    {
+      "provision_id": "2A.5.12",
+      "marker": "G",
+      "rationale": "This provision sets out factors for deciding whether to test a communication, rather than requirements for the communication’s content or presentation. Compliance with that testing decision cannot be assessed from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.5.13",
+      "marker": "G",
+      "rationale": "The provision concerns adapting communications in response to identified misunderstandings or poor outcomes, and using customer response rates to assess understanding. Compliance depends on evidence about customer outcomes and the firm's review process, rather than the content of a single marketing text."
+    },
+    {
+      "provision_id": "2A.5.14",
+      "marker": "R",
+      "rationale": "The provision requires a firm to notify another firm in its distribution chain when it identifies a communication that is not delivering good customer outcomes. This is an inter-firm notification duty, not a requirement that can be assessed from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.5.15",
+      "marker": "R",
+      "rationale": "This provision requires timely information sharing between firms in a distribution chain to enable onward communication to retail customers. It governs inter-firm duties, not the content of a marketing text, so compliance cannot be assessed from that text alone."
+    },
+    {
+      "provision_id": "2A.6.1",
+      "marker": "R",
+      "rationale": "This provision sets the scope of the consumer support rules, identifying the firms, channels and support activities covered. It does not impose requirements on the content of a marketing text that a reviewer could check."
+    },
+    {
+      "provision_id": "2A.6.2",
+      "marker": "R",
+      "rationale": "The provision governs the design and delivery of customer support, including appropriate journey friction and avoiding unreasonable barriers to using, changing or ending a product. These service and journey requirements cannot be assessed from a standalone marketing text."
+    },
+    {
+      "provision_id": "2A.6.3",
+      "marker": "G",
+      "rationale": "The provision explains unreasonable barriers and additional costs in customer-support journeys, including burdensome steps, unnecessary information requests and exit fees. It concerns service design and customer treatment rather than requirements that can be assessed from a standalone marketing text."
+    },
+    {
+      "provision_id": "2A.6.4",
+      "marker": "G",
+      "rationale": "The provision concerns customer-support practices, including prioritisation, call waiting times and delays in payments or processing information. These operational service outcomes cannot be assessed from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.6.5",
+      "marker": "R",
+      "rationale": "The provision requires equivalent customer support for authorised representatives, with an exception where the representative is itself a firm. It concerns service delivery rather than requirements checkable from an individual marketing text."
+    },
+    {
+      "provision_id": "2A.6.6",
+      "marker": "R",
+      "rationale": "The provision requires timely and effective handling of requests from other firms so they can support retail customers. This inter-firm support duty cannot be assessed from a marketing text."
+    },
+    {
+      "provision_id": "2A.7.1",
+      "marker": "R",
+      "rationale": "This provision sets the standard for interpreting Principle 12 and PRIN 2A by reference to a prudent firm and relevant customer characteristics. It is an interpretive rule, not a requirement about communication content that can be checked from a single marketing text."
+    },
+    {
+      "provision_id": "2A.7.3",
+      "marker": "G",
+      "rationale": "The provision describes how a prudent firm should evaluate solutions across affected retail customers and consider additional mitigating actions. These internal decision-making expectations cannot be assessed from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.7.4",
+      "marker": "G",
+      "rationale": "The provision concerns identifying and responding to customer vulnerability, including target-market considerations, staff capability and disclosure processes. It does not specify requirements for the content or presentation of marketing communications that can be checked from a single text."
+    },
+    {
+      "provision_id": "2A.7.5",
+      "marker": "G",
+      "rationale": "The provision concerns firms’ awareness of links between protected characteristics and vulnerability, and their duty to consider emerging evidence in assessing compliance. It does not specify requirements for customer communications that can be checked from a single marketing text."
+    },
+    {
+      "provision_id": "2A.8.1",
+      "marker": "R",
+      "rationale": "This provision concerns embedding Consumer Duty obligations in firm strategies, governance, staff policies, risk controls and internal audit. These internal organisational requirements cannot be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.8.2",
+      "marker": "G",
+      "rationale": "The provision concerns internal staff incentives, performance management and remuneration structures that support good customer outcomes. These arrangements cannot be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.8.3",
+      "marker": "R",
+      "rationale": "The provision requires an internal report to the firm’s governing body on monitoring results and resulting actions. It does not impose requirements on marketing text that a reviewer could check from the communication itself."
+    },
+    {
+      "provision_id": "2A.8.4",
+      "marker": "R",
+      "rationale": "This provision requires annual governing-body review of customer outcomes, confirmation of compliance, and assessment of business strategy. These are internal governance duties that cannot be checked from an individual marketing text."
+    },
+    {
+      "provision_id": "2A.8.5",
+      "marker": "R",
+      "rationale": "The provision requires the governing body to agree remedial actions and business-strategy amendments when approving the firm’s report. These are internal governance obligations that cannot be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.9.1",
+      "marker": "R",
+      "rationale": "This provision introduces firms’ general obligation to monitor the outcomes retail customers experience from their products. It does not impose requirements that can be assessed from an individual marketing text."
+    },
+    {
+      "provision_id": "2A.9.2",
+      "marker": "G",
+      "rationale": "The provision explains the purpose of firms’ monitoring obligations: identifying risks of failing to deliver good consumer outcomes. It does not impose requirements on the content of a marketing text that a reviewer could check."
+    },
+    {
+      "provision_id": "2A.9.3",
+      "marker": "G",
+      "rationale": "This provision describes how a firm should determine the frequency of outcome monitoring and the information it collects. These are internal monitoring processes, not requirements that can be checked from an individual marketing text."
+    },
+    {
+      "provision_id": "2A.9.4",
+      "marker": "G",
+      "rationale": "The provision concerns proportionate monitoring of consumer outcomes and obtaining outcome information by firms without direct retail customer contact. These are distribution-chain monitoring duties that cannot be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.9.5",
+      "marker": "G",
+      "rationale": "The provision explains how specific monitoring and reviews feed into general consumer-outcome monitoring and an internal report. It imposes no requirements on the content of a marketing communication that could be checked from the text alone."
+    },
+    {
+      "provision_id": "2A.9.6",
+      "marker": "G",
+      "rationale": "The provision points to requirements for testing and monitoring retail customer communications, rather than specifying standards for their content. Compliance with those processes cannot be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.9.7",
+      "marker": "G",
+      "rationale": "This guidance allows firms to use monitoring or reviews conducted under other rules to meet their Consumer Duty monitoring obligations. It concerns internal compliance processes, not requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.9.8",
+      "marker": "R",
+      "rationale": "The provision requires firms to regularly monitor customer outcomes from products, communications and customer support. This is an internal monitoring obligation, not a requirement that can be assessed from a single marketing text."
+    },
+    {
+      "provision_id": "2A.9.9",
+      "marker": "R",
+      "rationale": "The provision sets requirements for monitoring consumer outcomes, including product suitability, fair value, information and support. It does not prescribe the content of an individual marketing communication, so compliance cannot be assessed from that text alone."
+    },
+    {
+      "provision_id": "2A.9.10",
+      "marker": "R",
+      "rationale": "This provision requires firm-level monitoring to identify compliance, differences in customer outcomes and customer harm. It does not set requirements for the content of an individual marketing communication and cannot be assessed from that text alone."
+    },
+    {
+      "provision_id": "2A.9.11",
+      "marker": "R",
+      "rationale": "The provision requires internal processes to identify the root causes of failures to deliver consumer outcomes. Those processes cannot be assessed from an individual marketing text."
+    },
+    {
+      "provision_id": "2A.9.12",
+      "marker": "R",
+      "rationale": "The provision requires firms to take corrective action when monitoring identifies poor or unequal customer outcomes or non-compliance with Consumer Duty obligations. It does not specify requirements for the content of a marketing communication that can be checked from that text alone."
+    },
+    {
+      "provision_id": "2A.9.13",
+      "marker": "G",
+      "rationale": "This guidance limits a firm's duty to take remedial action for inherent product risks understood and accepted by the customer. It does not set requirements for the content of a marketing communication and cannot be assessed from that text alone."
+    },
+    {
+      "provision_id": "2A.9.14",
+      "marker": "G",
+      "rationale": "The provision guides firms on considering appropriate action under the consumer-outcomes monitoring rules by referring to PRIN 2A.10. It does not specify requirements for the content or presentation of a marketing text."
+    },
+    {
+      "provision_id": "2A.9.15",
+      "marker": "G",
+      "rationale": "This provision concerns firms’ record-keeping obligations under the Consumer Duty. It does not impose requirements on the content of retail marketing communications that can be checked from a single text."
+    },
+    {
+      "provision_id": "2A.9.16",
+      "marker": "G",
+      "rationale": "The provision reminds firms of their obligation to notify the FCA of matters it would reasonably expect notice of. This is a regulatory reporting duty, not a requirement that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.9.17",
+      "marker": "R",
+      "rationale": "This provision requires firms to notify the FCA of potential non-compliance by another firm in their distribution chain. It is a reporting obligation, not a requirement that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.10.1",
+      "marker": "G",
+      "rationale": "This provision explains the purpose of the section on firms’ actions after identifying that foreseeable harm has been caused to retail customers. It does not set requirements for the content of a marketing text."
+    },
+    {
+      "provision_id": "2A.10.2",
+      "marker": "R",
+      "rationale": "This provision governs investigating identified harm, handling complaints and providing remedial action or redress. Its fair, clear and not misleading requirement applies to explanations of harm and remediation decisions, not marketing texts, so compliance cannot be assessed from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.10.3",
+      "marker": "R",
+      "rationale": "This provision requires firms to take reasonable steps to notify customers about identified foreseeable harm where they lack a client relationship or contact details. It concerns remedial notification duties, not requirements that can be assessed from a standalone marketing text."
+    },
+    {
+      "provision_id": "2A.10.4",
+      "marker": "G",
+      "rationale": "This guidance concerns remedial steps, including contacting a product distributor to pass information to a retail customer. It does not set requirements for the content of marketing communications and cannot be checked from a marketing text alone."
+    },
+    {
+      "provision_id": "2A.10.5",
+      "marker": "R",
+      "rationale": "This provision requires firms to notify another firm in the distribution chain when it caused or contributed to customer harm. It concerns inter-firm notification and remediation processes, not requirements that can be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.11.1",
+      "marker": "R",
+      "rationale": "The provision defines when the rules on sale and purchase of product books apply. It imposes no requirements on the content of retail marketing communications that could be checked from a marketing text."
+    },
+    {
+      "provision_id": "2A.11.2",
+      "marker": "R",
+      "rationale": "This provision sets the application of Consumer Duty requirements to product books purchased before 31 July 2023, including a best-endeavours qualification for certain chapters. It does not impose requirements on the content of marketing communications that can be checked from a single text."
+    },
+    {
+      "provision_id": "2A.11.3",
+      "marker": "G",
+      "rationale": "This provision explains how firms applying product-design and fair-value requirements to product books on a ‘best endeavours’ basis should interpret the RPPD. It does not impose requirements that can be checked from an individual marketing text."
+    },
+    {
+      "provision_id": "2A.11.4",
+      "marker": "R",
+      "rationale": "This rule governs information sharing and due diligence between firms selling and purchasing product books, including vulnerability, product approval and fair value assessments. These transaction and internal assessment duties cannot be checked from a single retail marketing text."
+    },
+    {
+      "provision_id": "2A.11.5",
+      "marker": "R",
+      "rationale": "This provision determines which rules apply when a firm purchases a product book based on the dates of its purchase and first sale. It concerns product-book transactions and rule application, not requirements that can be checked from a marketing text."
+    }
+  ]
+}
