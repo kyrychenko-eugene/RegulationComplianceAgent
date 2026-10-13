@@ -90,3 +90,70 @@ class RuleResult(BaseModel):
     downgraded: bool = False
     latency_ms: int = 0
     usage: TokenUsage = Field(default_factory=TokenUsage)
+    # Rule metadata copied in by `agent.check` so a RunResult is self-contained (report, log, UI).
+    title: str = ""
+    source_ref: str = ""
+    severity: Literal["blocking", "advisory"] = "blocking"  # unknown severity is treated conservatively
+    # Run log material (spec §7): the full prompt sent and the model's raw structured answer.
+    prompt: str = ""
+    raw_response: Optional[dict] = None
+
+
+Verdict = Literal["PASS", "FAIL", "NEEDS_HUMAN_REVIEW"]
+
+
+class ModelsUsed(BaseModel):
+    fast: str = ""
+    strong: str = ""
+
+
+class ClassifierInfo(BaseModel):
+    status: str = "not_run"  # ok | fallback | not_run
+    probabilities: dict = Field(default_factory=dict)
+    threshold: float = 0.0
+    tags: List[str] = Field(default_factory=list)
+    fallback_all_rules: bool = False
+
+
+class Timings(BaseModel):
+    total_ms: int = 0
+    classify_ms: int = 0
+    prewarm_ms: int = 0
+    checks_wall_ms: int = 0
+    rule_latency_avg_ms: int = 0
+    rule_latency_max_ms: int = 0
+    judge_ms: Optional[int] = None
+
+
+class RunUsage(TokenUsage):
+    cost_usd: float = 0.0
+
+
+class JudgeInfo(BaseModel):
+    """Filled in stage 6; until then `status` is `not_run`."""
+
+    status: Literal["not_run", "ok", "unavailable"] = "not_run"
+    rating: Optional[Literal["agree", "partial", "disagree"]] = None
+    missed_rules: List[dict] = Field(default_factory=list)
+    disputed_verdicts: List[dict] = Field(default_factory=list)
+    reasoning: str = ""
+
+
+class RunResult(BaseModel):
+    """What `agent.check(text)` always returns (spec §7)."""
+
+    run_id: str
+    started_at: str
+    finished_at: str
+    input_text: str
+    models: ModelsUsed = Field(default_factory=ModelsUsed)
+    rules_hash: str = ""
+    classifier: ClassifierInfo = Field(default_factory=ClassifierInfo)
+    selected_rules: List[str] = Field(default_factory=list)
+    results: List[RuleResult] = Field(default_factory=list)
+    verdict: Verdict
+    summary: str
+    errors: List[str] = Field(default_factory=list)
+    timings: Timings = Field(default_factory=Timings)
+    usage: RunUsage = Field(default_factory=RunUsage)
+    judge: JudgeInfo = Field(default_factory=JudgeInfo)

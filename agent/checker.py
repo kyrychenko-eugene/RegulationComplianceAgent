@@ -79,10 +79,11 @@ def _usage(u: Usage) -> TokenUsage:
 async def _check_one(llm: LLM, prefix: list, rule: Rule, text: str) -> RuleResult:
     t0 = time.perf_counter()
     try:
+        rule_text = render_rule(rule)
         res = await asyncio.wait_for(
             llm.parse_input(
                 model=llm.config.fast_model,
-                input=prefix + [{"role": "user", "content": render_rule(rule)}],
+                input=prefix + [{"role": "user", "content": rule_text}],
                 schema=CheckResponse,
             ),
             CALL_TIMEOUT_S,
@@ -90,7 +91,10 @@ async def _check_one(llm: LLM, prefix: list, rule: Rule, text: str) -> RuleResul
         usage = _usage(res.usage)
         log.info("rule=%s cached_tokens=%d cache_write_tokens=%d input=%d",
                  rule.id, usage.cached, usage.cache_write, usage.input)
-        return validate_answer(rule.id, res.parsed, text, latency_ms=res.latency_ms, usage=usage)  # type: ignore[arg-type]
+        result = validate_answer(rule.id, res.parsed, text, latency_ms=res.latency_ms, usage=usage)  # type: ignore[arg-type]
+        result.prompt = "\n\n".join(part["text"] for part in prefix[0]["content"]) + "\n\n" + rule_text
+        result.raw_response = res.parsed.model_dump()
+        return result
     except Exception as e:  # noqa: BLE001 - error contract: nothing escapes
         return technical_result(rule.id, f"{type(e).__name__}: {e}" or type(e).__name__,
                                 int((time.perf_counter() - t0) * 1000))

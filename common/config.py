@@ -38,3 +38,15 @@ def load_config() -> Config:
         max_concurrency=int(env("MAX_CONCURRENCY", "5")),
         prompt_cache=env("PROMPT_CACHE", "on").strip().lower() == "on",
     )
+
+
+# USD per 1M tokens (input, output). Source: OpenAI developer docs, checked 2026-10-13.
+# Cache reads cost 0.1x the input rate, cache writes 1.25x (spec §5.5).
+PRICES_DATE = "2026-10-13"
+PRICES = {
+    "gpt-6-luna": (0.10, 0.50),
+    "gpt-6.1-sol": (2.00, 10.00),
+    "gpt-6-astra": (10.00, 50.00),
+}
+CACHE_READ_FACTOR = 0.1
+CACHE_WRITE_FACTOR = 1.25

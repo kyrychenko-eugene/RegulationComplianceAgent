@@ -1,0 +1,581 @@
+{
+  "run_id": "0bdcd794-9731-4f20-a68b-b9230907d1cd",
+  "started_at": "2026-10-13T16:37:02+00:00",
+  "finished_at": "2026-10-13T16:37:20+00:00",
+  "input_text": "Install our app and get rich tomorrow 🚀🚀🚀",
+  "models": {
+    "fast": "gpt-6-luna",
+    "strong": "gpt-6.1-sol"
+  },
+  "rules_hash": "3bd9936b4891",
+  "classifier": {
+    "status": "ok",
+    "probabilities": {
+      "emotional_or_behavioural_appeals": 0.89,
+      "vulnerable_customers": 0.0,
+      "customer_circumstances": 0.0,
+      "switching_and_complaints": 0.0,
+      "disclaimers": 0.0,
+      "complex_products": 0.0,
+      "product_features": 0.0,
+      "advice_or_information": 0.0
+    },
+    "threshold": 0.2,
+    "tags": [
+      "emotional_or_behavioural_appeals"
+    ],
+    "fallback_all_rules": false
+  },
+  "selected_rules": [
+    "PRIN2A.2.2-b",
+    "PRIN2A.2.3-b-a",
+    "PRIN2A.2.8-a",
+    "PRIN2A.2.10-2-a",
+    "PRIN2A.2.20-2-a",
+    "PRIN2A.5.3-1a-a",
+    "PRIN2A.5.3-1b-a",
+    "PRIN2A.5.3-1c-b",
+    "PRIN2A.5.3-1c-c",
+    "PRIN2A.5.3-2-a",
+    "PRIN2A.5.3-2-b",
+    "PRIN2A.5.3-2-c",
+    "PRIN2A.5.7-1-a",
+    "PRIN2A.5.7-2-a",
+    "PRIN2A.5.7-3-a",
+    "PRIN2A.5.7-3-b",
+    "PRIN2A.5.7-5-a",
+    "PRIN2A.5.7-5-b"
+  ],
+  "results": [
+    {
+      "rule_id": "PRIN2A.2.2-b",
+      "verdict": "fail",
+      "unclear_reason": null,
+      "reasoning": "The phrase “get rich tomorrow” uses an unrealistic promise of rapid wealth to encourage a retail customer to install the app. The rocket emojis reinforce the promotional push. This is not fair and open dealing and is unfairly manipulative wording.",
+      "violation_type": "content",
+      "evidence_quote": "get rich tomorrow",
+      "span": [
+        20,
+        37
+      ],
+      "downgraded": false,
+      "latency_ms": 3007,
+      "usage": {
+        "input": 951,
+        "cached": 0,
+        "cache_write": 0,
+        "output": 166
+      },
+      "title": "Fair dealing through wording",
+      "source_ref": "PRIN 2A.2.2 R",
+      "severity": "blocking",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.2.2-b — Fair dealing through wording (PRIN 2A.2.2 R)\nCheck: Does the communication avoid unfairly manipulative wording?\nApplies when: all marketing communications\nSource: \"Acting in good faith is a standard of conduct characterised by honesty, fair and open dealing and acting consistently with the reasonable expectations of retail customers.\"\nExample that fails: \"If you really care about your family's future, you'll invest with us today.\"\nExample that passes: \"Explore our investment options and decide whether they suit your needs.\"\n",
+      "raw_response": {
+        "reasoning": "The phrase “get rich tomorrow” uses an unrealistic promise of rapid wealth to encourage a retail customer to install the app. The rocket emojis reinforce the promotional push. This is not fair and open dealing and is unfairly manipulative wording.",
+        "violation_type": "content",
+        "evidence_quote": "get rich tomorrow",
+        "verdict": "fail"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.2.3-b-a",
+      "verdict": "fail",
+      "unclear_reason": null,
+      "reasoning": "The rule requires the communication to avoid manipulating or exploiting customers’ emotions or behavioural biases to mislead them or create demand. “Get rich tomorrow” uses an appeal to the desire for rapid wealth and presents an unrealistic prospect of becoming rich immediately, which could mislead customers and encourage them to use the app. The rocket emojis reinforce the promotional appeal.",
+      "violation_type": "content",
+      "evidence_quote": "get rich tomorrow",
+      "span": [
+        20,
+        37
+      ],
+      "downgraded": false,
+      "latency_ms": 2764,
+      "usage": {
+        "input": 1092,
+        "cached": 1089,
+        "cache_write": 0,
+        "output": 182
+      },
+      "title": "Avoid inappropriate customer manipulation",
+      "source_ref": "PRIN 2A.2.3(b) G",
+      "severity": "advisory",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.2.3-b-a — Avoid inappropriate customer manipulation (PRIN 2A.2.3(b) G)\nCheck: Does the communication avoid inappropriate manipulation or exploitation of retail customers?\nApplies when: marketing communications using persuasive appeals to customers’ emotions or behavioural biases\nSource: \"Examples of where a firm is not acting in good faith would include: (a) failing to take account of retail customers’ interests, for example in the way it designs a product or presents information; (b) seeking inappropriately to manipulate or exploit retail customers, for example by manipulating or exploiting their emotions or behavioural biases to mis-lead or create a demand for a product; (c) taking advantage of a retail customer or their circumstances, for example any characteristics of vulnerability, in a manner which is likely to cause detriment; (d) carrying out the same activity to a higher standard or more quickly when it benefits the firm than when it benefits the retail customer, without objective justification.\"\nExample that fails: \"Everyone else is getting rich while you fall behind. Don't be the failure in your family—start trading now.\"\nExample that passes: \"Explore our investment range at your own pace. Decide whether investing suits your financial goals and tolerance for risk.\"\n",
+      "raw_response": {
+        "reasoning": "The rule requires the communication to avoid manipulating or exploiting customers’ emotions or behavioural biases to mislead them or create demand. “Get rich tomorrow” uses an appeal to the desire for rapid wealth and presents an unrealistic prospect of becoming rich immediately, which could mislead customers and encourage them to use the app. The rocket emojis reinforce the promotional appeal.",
+        "violation_type": "content",
+        "evidence_quote": "get rich tomorrow",
+        "verdict": "fail"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.2.8-a",
+      "verdict": "fail",
+      "unclear_reason": null,
+      "reasoning": "The phrase “get rich tomorrow” suggests customers can quickly become wealthy by installing the app. For an average retail customer, this could encourage unrealistic expectations and impulsive financial decisions, creating foreseeable harm. The communication does not avoid that harmful content.",
+      "violation_type": "content",
+      "evidence_quote": "get rich tomorrow",
+      "span": [
+        20,
+        37
+      ],
+      "downgraded": false,
+      "latency_ms": 2861,
+      "usage": {
+        "input": 946,
+        "cached": 0,
+        "cache_write": 0,
+        "output": 143
+      },
+      "title": "Avoid foreseeable harm to customers",
+      "source_ref": "PRIN 2A.2.8 R",
+      "severity": "blocking",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.2.8-a — Avoid foreseeable harm to customers (PRIN 2A.2.8 R)\nCheck: Does the communication avoid content that could foreseeably harm retail customers?\nApplies when: all marketing communications\nSource: \"A firm must avoid causing foreseeable harm to retail customers.\"\nExample that fails: \"Put your rent money to work with leveraged trading and win back your losses today.\"\nExample that passes: \"Invest only money you can afford to lose. Keep funds needed for essential living costs out of trading.\"\n",
+      "raw_response": {
+        "reasoning": "The phrase “get rich tomorrow” suggests customers can quickly become wealthy by installing the app. For an average retail customer, this could encourage unrealistic expectations and impulsive financial decisions, creating foreseeable harm. The communication does not avoid that harmful content.",
+        "violation_type": "content",
+        "evidence_quote": "get rich tomorrow",
+        "verdict": "fail"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.2.10-2-a",
+      "verdict": "fail",
+      "unclear_reason": null,
+      "reasoning": "The rule requires marketing to avoid unfairly exploiting behavioural biases. “Get rich tomorrow” appeals to optimism and the desire for rapid gains, and presents immediate wealth as an enticing outcome of installing the app without any qualification. This risks unfairly exploiting customers’ biases.",
+      "violation_type": "content",
+      "evidence_quote": "get rich tomorrow",
+      "span": [
+        20,
+        37
+      ],
+      "downgraded": false,
+      "latency_ms": 3007,
+      "usage": {
+        "input": 1160,
+        "cached": 1157,
+        "cache_write": 0,
+        "output": 152
+      },
+      "title": "Avoid unfairly exploiting behavioural biases",
+      "source_ref": "PRIN 2A.2.10(2) G",
+      "severity": "advisory",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.2.10-2-a — Avoid unfairly exploiting behavioural biases (PRIN 2A.2.10(2) G)\nCheck: Does the communication avoid unfairly exploiting retail customers' behavioural biases?\nApplies when: all marketing communications\nSource: \"Avoiding causing foreseeable harm to retail customers includes: (1) ensuring all aspects of the design, terms, marketing, sale of and support for its products avoid causing foreseeable harm; (2) ensuring that no aspect of its business involves unfairly exploiting behavioural biases displayed or characteristics of vulnerability held by retail customers; (3) identifying the potential for harm that might arise if it withdraws a product, its products change or its understanding about the impact on retail customers changes; (4) responding to emerging trends that identify new sources of harm, including FCA supervisory action and/or communications; and (5) taking appropriate action to mitigate the risk of actual or foreseeable harm, including for example by: (i) updating or otherwise amending the design of the product or distribution strategy; (ii) updating information about a product or updating investment advice; (iii) ensuring that retail customers do not face unreasonable barriers (including unreasonable additional costs), for example when they want to switch products or providers or to complain; (iv) allowing time and support for retail customers to find suitable alternatives where a product is withdrawn.\"\nExample that fails: \"Lost money on your last trade? Double your next stake now to win it back.\"\nExample that passes: \"Explore the investments available on our platform. Take time to decide whether they suit your needs.\"\n",
+      "raw_response": {
+        "reasoning": "The rule requires marketing to avoid unfairly exploiting behavioural biases. “Get rich tomorrow” appeals to optimism and the desire for rapid gains, and presents immediate wealth as an enticing outcome of installing the app without any qualification. This risks unfairly exploiting customers’ biases.",
+        "violation_type": "content",
+        "evidence_quote": "get rich tomorrow",
+        "verdict": "fail"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.2.20-2-a",
+      "verdict": "fail",
+      "unclear_reason": null,
+      "reasoning": "The text says “Install our app and get rich tomorrow,” but gives no information about what the app or promoted service offers, how it works, or any relevant costs and risks. Retail customers need enough information to judge what they are being encouraged to use and make an informed decision; the unsupported promise of getting rich does not supply that information.",
+      "violation_type": "omission",
+      "evidence_quote": null,
+      "span": null,
+      "downgraded": false,
+      "latency_ms": 3834,
+      "usage": {
+        "input": 1064,
+        "cached": 1061,
+        "cache_write": 0,
+        "output": 276
+      },
+      "title": "Provide information for informed decisions",
+      "source_ref": "PRIN 2A.2.20(2) G",
+      "severity": "advisory",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.2.20-2-a — Provide information for informed decisions (PRIN 2A.2.20(2) G)\nCheck: Does the communication provide the information retail customers need to make an informed decision about what it promotes?\nApplies when: all marketing communications\nSource: \"Enabling and supporting retail customers to pursue their financial objectives includes acting to empower retail customers to make good choices in their interests, including by: (1) ensuring all aspects of the design, terms, marketing, sale of and support for its products meet and not frustrate the objectives and interests of retail customers; (2) making sure retail customers have the information and support they need, when they need it, to make and act on informed decisions;\"\nExample that fails: \"Our UK share dealing service is the perfect way to grow your money. Buy now—we’ll explain the charges and investment risks after your first trade.\"\nExample that passes: \"Our UK share dealing service charges £5 per trade, with no platform fee. Investment values can fall as well as rise, so you could get back less than you invest.\"\n",
+      "raw_response": {
+        "reasoning": "The text says “Install our app and get rich tomorrow,” but gives no information about what the app or promoted service offers, how it works, or any relevant costs and risks. Retail customers need enough information to judge what they are being encouraged to use and make an informed decision; the unsupported promise of getting rich does not supply that information.",
+        "violation_type": "omission",
+        "evidence_quote": null,
+        "verdict": "fail"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.5.3-1a-a",
+      "verdict": "fail",
+      "unclear_reason": null,
+      "reasoning": "The text says, “Install our app,” but does not explain what the app offers or how customers would use it to invest or trade. “Get rich tomorrow” does not provide that information and may leave customers without enough understanding of what is being promoted. The communication therefore omits information retail customers need to understand the promotion.",
+      "violation_type": "omission",
+      "evidence_quote": null,
+      "span": null,
+      "downgraded": false,
+      "latency_ms": 4035,
+      "usage": {
+        "input": 979,
+        "cached": 0,
+        "cache_write": 0,
+        "output": 228
+      },
+      "title": "Meet customer information needs",
+      "source_ref": "PRIN 2A.5.3(1)(a) R",
+      "severity": "blocking",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.5.3-1a-a — Meet customer information needs (PRIN 2A.5.3(1)(a) R)\nCheck: Does the communication provide the information retail customers need to understand what is being promoted?\nApplies when: all marketing communications\nSource: \"(1) A firm must support retail customer understanding so that its communications: (a) meet the information needs of retail customers;\"\nExample that fails: \"Our new investment account has everything you need. Sign up to discover what it actually offers.\"\nExample that passes: \"Our investment account lets you buy shares and funds. Investment values can fall, and dealing charges apply as described in our linked fee schedule.\"\n",
+      "raw_response": {
+        "reasoning": "The text says, “Install our app,” but does not explain what the app offers or how customers would use it to invest or trade. “Get rich tomorrow” does not provide that information and may leave customers without enough understanding of what is being promoted. The communication therefore omits information retail customers need to understand the promotion.",
+        "violation_type": "omission",
+        "evidence_quote": null,
+        "verdict": "fail"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.5.3-1b-a",
+      "verdict": "pass",
+      "unclear_reason": null,
+      "reasoning": "The message says, “Install our app and get rich tomorrow.” The wording is simple and likely to be understood by an average retail customer; it does not use technical or complex language. Whether the promise is accurate is not part of this check.",
+      "violation_type": "none",
+      "evidence_quote": null,
+      "span": null,
+      "downgraded": false,
+      "latency_ms": 2570,
+      "usage": {
+        "input": 985,
+        "cached": 0,
+        "cache_write": 0,
+        "output": 138
+      },
+      "title": "Use customer understandable language",
+      "source_ref": "PRIN 2A.5.3(1)(b) R",
+      "severity": "blocking",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.5.3-1b-a — Use customer understandable language (PRIN 2A.5.3(1)(b) R)\nCheck: Is the communication worded in a way retail customers are likely to understand?\nApplies when: all marketing communications\nSource: \"(1) A firm must support retail customer understanding so that its communications: (a) meet the information needs of retail customers; (b) are likely to be understood by retail customers;\"\nExample that fails: \"Optimise directional exposure through margined notional amplification and dynamic collateralisation.\"\nExample that passes: \"Leverage means taking a larger market position using a smaller deposit. It increases the size of potential losses as well as gains.\"\n",
+      "raw_response": {
+        "reasoning": "The message says, “Install our app and get rich tomorrow.” The wording is simple and likely to be understood by an average retail customer; it does not use technical or complex language. Whether the promise is accurate is not part of this check.",
+        "violation_type": "none",
+        "evidence_quote": null,
+        "verdict": "pass"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.5.3-1c-b",
+      "verdict": "fail",
+      "unclear_reason": null,
+      "reasoning": "“Install our app” presents a decision to install, but the text gives no information about what the app offers or the terms, costs or risks relevant to deciding whether to install it. The claim “get rich tomorrow” does not equip a retail customer to make an effective, timely and properly informed decision.",
+      "violation_type": "omission",
+      "evidence_quote": null,
+      "span": null,
+      "downgraded": false,
+      "latency_ms": 3605,
+      "usage": {
+        "input": 1012,
+        "cached": 0,
+        "cache_write": 0,
+        "output": 240
+      },
+      "title": "Support timely customer decisions",
+      "source_ref": "PRIN 2A.5.3(1)(c) R",
+      "severity": "blocking",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.5.3-1c-b — Support timely customer decisions (PRIN 2A.5.3(1)(c) R)\nCheck: Does the communication give retail customers the information needed to make any decision it presents in time?\nApplies when: all marketing communications\nSource: \"(1) A firm must support retail customer understanding so that its communications: (a) meet the information needs of retail customers; (b) are likely to be understood by retail customers; and (c) equip retail customers to make decisions that are effective, timely and properly informed.\"\nExample that fails: \"Your chance to claim our reduced dealing fee expires soon. We will reveal the closing date after you apply.\"\nExample that passes: \"The reduced dealing fee ends at 5pm on 30 June. Review the offer terms before deciding whether to participate.\"\n",
+      "raw_response": {
+        "reasoning": "“Install our app” presents a decision to install, but the text gives no information about what the app offers or the terms, costs or risks relevant to deciding whether to install it. The claim “get rich tomorrow” does not equip a retail customer to make an effective, timely and properly informed decision.",
+        "violation_type": "omission",
+        "evidence_quote": null,
+        "verdict": "fail"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.5.3-1c-c",
+      "verdict": "fail",
+      "unclear_reason": null,
+      "reasoning": "The communication says, “Install our app and get rich tomorrow 🚀🚀🚀”, but gives no information about what the app offers or how customers could achieve this outcome. It also omits relevant risks, including the possibility of losing money, and other information needed to assess the offer. A retail customer is not given a sufficiently complete basis to make a properly informed decision.",
+      "violation_type": "omission",
+      "evidence_quote": null,
+      "span": null,
+      "downgraded": false,
+      "latency_ms": 3481,
+      "usage": {
+        "input": 1021,
+        "cached": 0,
+        "cache_write": 0,
+        "output": 246
+      },
+      "title": "Support properly informed decisions",
+      "source_ref": "PRIN 2A.5.3(1)(c) R",
+      "severity": "blocking",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.5.3-1c-c — Support properly informed decisions (PRIN 2A.5.3(1)(c) R)\nCheck: Does the communication provide a sufficiently complete basis for retail customers to make an informed decision about its offer?\nApplies when: all marketing communications\nSource: \"(1) A firm must support retail customer understanding so that its communications: (a) meet the information needs of retail customers; (b) are likely to be understood by retail customers; and (c) equip retail customers to make decisions that are effective, timely and properly informed.\"\nExample that fails: \"Invest in this fund today. Its investment strategy, risks and charges will only be disclosed after you commit.\"\nExample that passes: \"This fund invests in company shares and is intended for long-term investing. You could lose money, so review its risks and charges before deciding whether to invest.\"\n",
+      "raw_response": {
+        "reasoning": "The communication says, “Install our app and get rich tomorrow 🚀🚀🚀”, but gives no information about what the app offers or how customers could achieve this outcome. It also omits relevant risks, including the possibility of losing money, and other information needed to assess the offer. A retail customer is not given a sufficiently complete basis to make a properly informed decision.",
+        "violation_type": "omission",
+        "evidence_quote": null,
+        "verdict": "fail"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.5.3-2-a",
+      "verdict": "pass",
+      "unclear_reason": null,
+      "reasoning": "The wording “Install our app and get rich tomorrow” is brief and uses ordinary language, so an average retail customer can understand the claim being made. Although “rich” is imprecise and the claim may raise concerns under other requirements, the information is expressed clearly for this check.",
+      "violation_type": "none",
+      "evidence_quote": null,
+      "span": null,
+      "downgraded": false,
+      "latency_ms": 5786,
+      "usage": {
+        "input": 948,
+        "cached": 0,
+        "cache_write": 0,
+        "output": 484
+      },
+      "title": "Communicate information clearly",
+      "source_ref": "PRIN 2A.5.3(2) R",
+      "severity": "blocking",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.5.3-2-a — Communicate information clearly (PRIN 2A.5.3(2) R)\nCheck: Is the information in the communication expressed clearly?\nApplies when: all marketing communications\nSource: \"(2) A firm must communicate information to retail customers in a way which is clear, fair and not misleading.\"\nExample that fails: \"A £5 charge applies per applicable event, subject to the relevant transactional categorisation.\"\nExample that passes: \"We charge £5 for each UK share trade.\"\n",
+      "raw_response": {
+        "reasoning": "The wording “Install our app and get rich tomorrow” is brief and uses ordinary language, so an average retail customer can understand the claim being made. Although “rich” is imprecise and the claim may raise concerns under other requirements, the information is expressed clearly for this check.",
+        "violation_type": "none",
+        "evidence_quote": null,
+        "verdict": "pass"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.5.3-2-b",
+      "verdict": "fail",
+      "unclear_reason": null,
+      "reasoning": "The phrase “get rich tomorrow” presents an exceptionally rapid wealth outcome without qualification or any balancing information. The rule requires information to be communicated fairly, rather than creating a one-sided impression. This wording gives a misleadingly optimistic impression of the likely outcome of using the app.",
+      "violation_type": "content",
+      "evidence_quote": "get rich tomorrow",
+      "span": [
+        20,
+        37
+      ],
+      "downgraded": false,
+      "latency_ms": 2591,
+      "usage": {
+        "input": 965,
+        "cached": 0,
+        "cache_write": 0,
+        "output": 152
+      },
+      "title": "Present information fairly",
+      "source_ref": "PRIN 2A.5.3(2) R",
+      "severity": "blocking",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.5.3-2-b — Present information fairly (PRIN 2A.5.3(2) R)\nCheck: Does the communication present its subject matter fairly rather than giving a one-sided impression?\nApplies when: all marketing communications\nSource: \"(2) A firm must communicate information to retail customers in a way which is clear, fair and not misleading.\"\nExample that fails: \"Share investing is your route to financial freedom. Focus on the upside—losses are not worth worrying about.\"\nExample that passes: \"Share investing offers potential growth, but prices can fall and you could lose money.\"\n",
+      "raw_response": {
+        "reasoning": "The phrase “get rich tomorrow” presents an exceptionally rapid wealth outcome without qualification or any balancing information. The rule requires information to be communicated fairly, rather than creating a one-sided impression. This wording gives a misleadingly optimistic impression of the likely outcome of using the app.",
+        "violation_type": "content",
+        "evidence_quote": "get rich tomorrow",
+        "verdict": "fail"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.5.3-2-c",
+      "verdict": "fail",
+      "unclear_reason": null,
+      "reasoning": "The rule requires information to be clear, fair and not misleading. “Get rich tomorrow” gives an average retail customer the impression that installing the app can make them wealthy by the next day, an unrealistic and unsupported outcome presented as a promise. The rockets reinforce the promotional impression, so the communication is misleading.",
+      "violation_type": "content",
+      "evidence_quote": "get rich tomorrow",
+      "span": [
+        20,
+        37
+      ],
+      "downgraded": false,
+      "latency_ms": 2277,
+      "usage": {
+        "input": 949,
+        "cached": 0,
+        "cache_write": 0,
+        "output": 135
+      },
+      "title": "Avoid misleading customer impressions",
+      "source_ref": "PRIN 2A.5.3(2) R",
+      "severity": "blocking",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.5.3-2-c — Avoid misleading customer impressions (PRIN 2A.5.3(2) R)\nCheck: Does the communication avoid creating a misleading impression?\nApplies when: all marketing communications\nSource: \"(2) A firm must communicate information to retail customers in a way which is clear, fair and not misleading.\"\nExample that fails: \"Trade completely free with our account. Each share trade costs £5.\"\nExample that passes: \"There is no account subscription fee. Each share trade costs £5.\"\n",
+      "raw_response": {
+        "reasoning": "The rule requires information to be clear, fair and not misleading. “Get rich tomorrow” gives an average retail customer the impression that installing the app can make them wealthy by the next day, an unrealistic and unsupported outcome presented as a promise. The rockets reinforce the promotional impression, so the communication is misleading.",
+        "violation_type": "content",
+        "evidence_quote": "get rich tomorrow",
+        "verdict": "fail"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.5.7-1-a",
+      "verdict": "pass",
+      "unclear_reason": null,
+      "reasoning": "The communication says, “Install our app and get rich tomorrow,” presenting the action before the stated outcome in a straightforward order. The rule requires information to be presented logically, and this short message has no information presented in a confusing or illogical sequence.",
+      "violation_type": "none",
+      "evidence_quote": null,
+      "span": null,
+      "downgraded": false,
+      "latency_ms": 2959,
+      "usage": {
+        "input": 962,
+        "cached": 0,
+        "cache_write": 0,
+        "output": 146
+      },
+      "title": "Present information in logical order",
+      "source_ref": "PRIN 2A.5.7(1) G",
+      "severity": "advisory",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.5.7-1-a — Present information in logical order (PRIN 2A.5.7(1) G)\nCheck: Does the communication present information in a logical manner?\nApplies when: all marketing communications\nSource: \"In supporting the understanding of retail customers through its communications, a firm should: (1) explain or present information in a logical manner;\"\nExample that fails: \"Confirm your order first. Before that, choose your investments, but review the dealing fee after confirming.\"\nExample that passes: \"Choose your investments, review the dealing fee, then confirm your order.\"\n",
+      "raw_response": {
+        "reasoning": "The communication says, “Install our app and get rich tomorrow,” presenting the action before the stated outcome in a straightforward order. The rule requires information to be presented logically, and this short message has no information presented in a confusing or illogical sequence.",
+        "violation_type": "none",
+        "evidence_quote": null,
+        "verdict": "pass"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.5.7-2-a",
+      "verdict": "pass",
+      "unclear_reason": null,
+      "reasoning": "The rule requires marketing language to be plain and intelligible. “Install our app and get rich tomorrow” uses ordinary, easily understood words and presents a simple call to action; it contains no jargon or technical terms needing explanation. Whether the claim is otherwise appropriate is outside this rule.",
+      "violation_type": "none",
+      "evidence_quote": null,
+      "span": null,
+      "downgraded": false,
+      "latency_ms": 2073,
+      "usage": {
+        "input": 1005,
+        "cached": 0,
+        "cache_write": 0,
+        "output": 85
+      },
+      "title": "Use plain and intelligible language",
+      "source_ref": "PRIN 2A.5.7(2) G",
+      "severity": "advisory",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.5.7-2-a — Use plain and intelligible language (PRIN 2A.5.7(2) G)\nCheck: Does the communication use plain and intelligible language?\nApplies when: all marketing communications\nSource: \"In supporting the understanding of retail customers through its communications, a firm should: (1) explain or present information in a logical manner; (2) use plain and intelligible language and, where use of jargon or technical terms is unavoidable, explain the meaning of any jargon or technical terms as simply as possible;\"\nExample that fails: \"Facilitate investment acquisition and disposal through our application, subject to a per-transaction pecuniary consideration of £3.\"\nExample that passes: \"Buy and sell investments through our app. You pay £3 for each trade.\"\n",
+      "raw_response": {
+        "reasoning": "The rule requires marketing language to be plain and intelligible. “Install our app and get rich tomorrow” uses ordinary, easily understood words and presents a simple call to action; it contains no jargon or technical terms needing explanation. Whether the claim is otherwise appropriate is outside this rule.",
+        "violation_type": "none",
+        "evidence_quote": null,
+        "verdict": "pass"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.5.7-3-a",
+      "verdict": "fail",
+      "unclear_reason": null,
+      "reasoning": "The message prominently says “get rich tomorrow”, but it gives no risk information or qualification to help customers understand that investing can result in losses and that returns are not assured. Key information about the risk is therefore absent, rather than made prominent and easy to identify.",
+      "violation_type": "omission",
+      "evidence_quote": null,
+      "span": null,
+      "downgraded": false,
+      "latency_ms": 4025,
+      "usage": {
+        "input": 1076,
+        "cached": 1073,
+        "cache_write": 0,
+        "output": 303
+      },
+      "title": "Make key information prominent",
+      "source_ref": "PRIN 2A.5.7(3) G",
+      "severity": "advisory",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.5.7-3-a — Make key information prominent (PRIN 2A.5.7(3) G)\nCheck: Does the communication give key information prominence?\nApplies when: all marketing communications\nSource: \"In supporting the understanding of retail customers through its communications, a firm should: (1) explain or present information in a logical manner; (2) use plain and intelligible language and, where use of jargon or technical terms is unavoidable, explain the meaning of any jargon or technical terms as simply as possible; (3) make key information prominent and easy to identify, including by means of headings and layout, display and font attributes of text, and by use of design devices such as tables, bullet points, graphs, graphics, audio-visuals and interactive media;\"\nExample that fails: \"INVEST IN SHARES TODAY! Explore our tools, market news and watchlists to start your journey; tucked away at the end of the promotional footer: investments can fall in value and you could lose money.\"\nExample that passes: \"Invest in shares from £3 per trade. Your investments can fall in value, so you could lose money.\"\n",
+      "raw_response": {
+        "reasoning": "The message prominently says “get rich tomorrow”, but it gives no risk information or qualification to help customers understand that investing can result in losses and that returns are not assured. Key information about the risk is therefore absent, rather than made prominent and easy to identify.",
+        "violation_type": "omission",
+        "evidence_quote": null,
+        "verdict": "fail"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.5.7-3-b",
+      "verdict": "pass",
+      "unclear_reason": null,
+      "reasoning": "The only message, “Install our app and get rich tomorrow”, is brief and immediately visible; there is no other information competing with or obscuring it. The rule requires key information to be prominent and easy to identify, and the text presents its central message plainly. Whether the promise is accurate or otherwise compliant is outside this check.",
+      "violation_type": "none",
+      "evidence_quote": null,
+      "span": null,
+      "downgraded": false,
+      "latency_ms": 4507,
+      "usage": {
+        "input": 1055,
+        "cached": 1052,
+        "cache_write": 0,
+        "output": 343
+      },
+      "title": "Make key information identifiable",
+      "source_ref": "PRIN 2A.5.7(3) G",
+      "severity": "advisory",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.5.7-3-b — Make key information identifiable (PRIN 2A.5.7(3) G)\nCheck: Is key information easy to identify in the communication?\nApplies when: all marketing communications\nSource: \"In supporting the understanding of retail customers through its communications, a firm should: (1) explain or present information in a logical manner; (2) use plain and intelligible language and, where use of jargon or technical terms is unavoidable, explain the meaning of any jargon or technical terms as simply as possible; (3) make key information prominent and easy to identify, including by means of headings and layout, display and font attributes of text, and by use of design devices such as tables, bullet points, graphs, graphics, audio-visuals and interactive media;\"\nExample that fails: \"£3, market updates, per trade, watchlists, your money, new tools, could be lost, daily news.\"\nExample that passes: \"Trading fee: £3 per trade. Investment risk: you could lose money.\"\n",
+      "raw_response": {
+        "reasoning": "The only message, “Install our app and get rich tomorrow”, is brief and immediately visible; there is no other information competing with or obscuring it. The rule requires key information to be prominent and easy to identify, and the text presents its central message plainly. Whether the promise is accurate or otherwise compliant is outside this check.",
+        "violation_type": "none",
+        "evidence_quote": null,
+        "verdict": "pass"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.5.7-5-a",
+      "verdict": "fail",
+      "unclear_reason": null,
+      "reasoning": "The communication says “Install our app” and claims customers can “get rich tomorrow,” but provides no decision-relevant information about what the app offers or what customers should understand before installing it. The rule requires relevant information at an appropriate level of detail to support the customer’s decision. That information is missing.",
+      "violation_type": "omission",
+      "evidence_quote": null,
+      "span": null,
+      "downgraded": false,
+      "latency_ms": 4027,
+      "usage": {
+        "input": 1098,
+        "cached": 1095,
+        "cache_write": 0,
+        "output": 309
+      },
+      "title": "Provide decision-relevant information",
+      "source_ref": "PRIN 2A.5.7(5) G",
+      "severity": "advisory",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.5.7-5-a — Provide decision-relevant information (PRIN 2A.5.7(5) G)\nCheck: Does the communication provide information relevant to the retail customer decision it addresses?\nApplies when: all marketing communications\nSource: \"In supporting the understanding of retail customers through its communications, a firm should: (1) explain or present information in a logical manner; (2) use plain and intelligible language and, where use of jargon or technical terms is unavoidable, explain the meaning of any jargon or technical terms as simply as possible; (3) make key information prominent and easy to identify, including by means of headings and layout, display and font attributes of text, and by use of design devices such as tables, bullet points, graphs, graphics, audio-visuals and interactive media; (4) avoid unnecessary disclaimers; and (5) provide relevant information with an appropriate level of detail, to avoid providing too much information such that it may prevent retail customers from making effective decisions.\"\nExample that fails: \"Considering our share-dealing account? Our office has blue walls and opened on a sunny Tuesday.\"\nExample that passes: \"Considering our share-dealing account? Trades cost £3 each, and investments can fall in value.\"\n",
+      "raw_response": {
+        "reasoning": "The communication says “Install our app” and claims customers can “get rich tomorrow,” but provides no decision-relevant information about what the app offers or what customers should understand before installing it. The rule requires relevant information at an appropriate level of detail to support the customer’s decision. That information is missing.",
+        "violation_type": "omission",
+        "evidence_quote": null,
+        "verdict": "fail"
+      }
+    },
+    {
+      "rule_id": "PRIN2A.5.7-5-b",
+      "verdict": "fail",
+      "unclear_reason": null,
+      "reasoning": "The message says “Install our app and get rich tomorrow” but gives no relevant detail to help a retail customer understand what using the app involves or assess the decision it urges them to make. For this investment-platform promotion, the claim is not accompanied by information explaining the basis or limitations of the promised outcome. The communication therefore does not provide an appropriate level of detail for the decision it addresses.",
+      "violation_type": "omission",
+      "evidence_quote": null,
+      "span": null,
+      "downgraded": false,
+      "latency_ms": 4533,
+      "usage": {
+        "input": 1108,
+        "cached": 1105,
+        "cache_write": 0,
+        "output": 321
+      },
+      "title": "Use an appropriate detail level",
+      "source_ref": "PRIN 2A.5.7(5) G",
+      "severity": "advisory",
+      "prompt": "# Marketing compliance check\n\nYou are a compliance officer reviewing a marketing communication of a retail investment and trading platform in the United Kingdom. You check it against the FCA Consumer Duty (PRIN 2A), one rule at a time. You will be given the marketing text (below) and then one rule to check.\n\n## Standard of judgment\n\nJudge the text as an average UK retail customer would understand it: someone without specialist financial knowledge who reads the message quickly, on a phone or a web page. Consider the overall impression of the text, including emojis, tone and what it leaves out. Judge only the text you are given; do not assume facts about the product, the firm, or other communications that you cannot see in it.\n\n## How to answer\n\nFill in the fields in this order.\n\n1. `reasoning` — write this first. Quote the relevant words, say what the rule requires, and explain whether the text meets it. If the text fails because something is missing, say exactly what is missing.\n2. `violation_type` — `none` if the text complies or you cannot tell; `content` if something the text says or shows breaches the rule; `omission` if the text breaches the rule by leaving out something it should contain.\n3. `evidence_quote` — for a `content` violation, the words of the marketing text that breach the rule. `null` otherwise.\n4. `verdict` — `pass`, `fail` or `unclear`.\n\n## Verdicts\n\n- `pass` — the text meets the rule. Say why in `reasoning`.\n- `fail` — the text breaches the rule. Use `violation_type` `content` or `omission`; never `none`.\n- `unclear` — the text does not contain enough information to decide, or the rule cannot reasonably be answered from this text. Prefer `unclear` over guessing. Do not use it to avoid a clear call: if the text plainly breaches or plainly meets the rule, say so.\n\n## Content versus omission\n\n- `content`: the text contains the problem. Example: \"Guaranteed 20% a year\" breaches a rule against presenting returns as certain; the quote is \"Guaranteed 20% a year\".\n- `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.\n\n## Quoting rule\n\n`evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.\n\n## The examples in the rule\n\nThe rule may include a passing and a failing example. They illustrate the idea only. They are not the text under review; do not quote them and do not assume the marketing text resembles them.\n\n\n## Marketing text under review\n\nInstall our app and get rich tomorrow 🚀🚀🚀\n\nCheck the marketing text above against this rule.\n\nRule PRIN2A.5.7-5-b — Use an appropriate detail level (PRIN 2A.5.7(5) G)\nCheck: Does the communication provide an appropriate level of detail for the retail customer decision it addresses?\nApplies when: all marketing communications\nSource: \"In supporting the understanding of retail customers through its communications, a firm should: (1) explain or present information in a logical manner; (2) use plain and intelligible language and, where use of jargon or technical terms is unavoidable, explain the meaning of any jargon or technical terms as simply as possible; (3) make key information prominent and easy to identify, including by means of headings and layout, display and font attributes of text, and by use of design devices such as tables, bullet points, graphs, graphics, audio-visuals and interactive media; (4) avoid unnecessary disclaimers; and (5) provide relevant information with an appropriate level of detail, to avoid providing too much information such that it may prevent retail customers from making effective decisions.\"\nExample that fails: \"Open our account now: charges apply. The charges are calculated according to the applicable charging arrangements.\"\nExample that passes: \"Our share-dealing account charges £3 per trade with no monthly account fee. Investments can fall in value and you could lose money.\"\n",
+      "raw_response": {
+        "reasoning": "The message says “Install our app and get rich tomorrow” but gives no relevant detail to help a retail customer understand what using the app involves or assess the decision it urges them to make. For this investment-platform promotion, the claim is not accompanied by information explaining the basis or limitations of the promised outcome. The communication therefore does not provide an appropriate level of detail for the decision it addresses.",
+        "violation_type": "omission",
+        "evidence_quote": null,
+        "verdict": "fail"
+      }
+    }
+  ],
+  "verdict": "FAIL",
+  "summary": "FAIL: 13 of 18 rules failed (7 blocking, 6 advisory); 0 unclear.\n- PRIN 2A.2.2 R [blocking] PRIN2A.2.2-b: The phrase “get rich tomorrow” uses an unrealistic promise of rapid wealth to encourage a retail customer to install the app. The rocket emojis reinforce the promotional push. This is not fair and open dealing and is unfairly manipulative wording. — quote: \"get rich tomorrow\"\n- PRIN 2A.2.3(b) G [advisory] PRIN2A.2.3-b-a: The rule requires the communication to avoid manipulating or exploiting customers’ emotions or behavioural biases to mislead them or create demand. “Get rich tomorrow” uses an appeal to the desire for rapid wealth and presents an unrealistic prospect of becoming rich immediately, which could mislead customers and encourage them to use the app. The rocket emojis reinforce the promotional appeal. — quote: \"get rich tomorrow\"\n- PRIN 2A.2.8 R [blocking] PRIN2A.2.8-a: The phrase “get rich tomorrow” suggests customers can quickly become wealthy by installing the app. For an average retail customer, this could encourage unrealistic expectations and impulsive financial decisions, creating foreseeable harm. The communication does not avoid that harmful content. — quote: \"get rich tomorrow\"\n- PRIN 2A.2.10(2) G [advisory] PRIN2A.2.10-2-a: The rule requires marketing to avoid unfairly exploiting behavioural biases. “Get rich tomorrow” appeals to optimism and the desire for rapid gains, and presents immediate wealth as an enticing outcome of installing the app without any qualification. This risks unfairly exploiting customers’ biases. — quote: \"get rich tomorrow\"\n- PRIN 2A.2.20(2) G [advisory] PRIN2A.2.20-2-a: omission: The text says “Install our app and get rich tomorrow,” but gives no information about what the app or promoted service offers, how it works, or any relevant costs and risks. Retail customers need enough information to judge what they are being encouraged to use and make an informed decision; the unsupported promise of getting rich does not supply that information.\n- PRIN 2A.5.3(1)(a) R [blocking] PRIN2A.5.3-1a-a: omission: The text says, “Install our app,” but does not explain what the app offers or how customers would use it to invest or trade. “Get rich tomorrow” does not provide that information and may leave customers without enough understanding of what is being promoted. The communication therefore omits information retail customers need to understand the promotion.\n- PRIN 2A.5.3(1)(c) R [blocking] PRIN2A.5.3-1c-b: omission: “Install our app” presents a decision to install, but the text gives no information about what the app offers or the terms, costs or risks relevant to deciding whether to install it. The claim “get rich tomorrow” does not equip a retail customer to make an effective, timely and properly informed decision.\n- PRIN 2A.5.3(1)(c) R [blocking] PRIN2A.5.3-1c-c: omission: The communication says, “Install our app and get rich tomorrow 🚀🚀🚀”, but gives no information about what the app offers or how customers could achieve this outcome. It also omits relevant risks, including the possibility of losing money, and other information needed to assess the offer. A retail customer is not given a sufficiently complete basis to make a properly informed decision.\n- PRIN 2A.5.3(2) R [blocking] PRIN2A.5.3-2-b: The phrase “get rich tomorrow” presents an exceptionally rapid wealth outcome without qualification or any balancing information. The rule requires information to be communicated fairly, rather than creating a one-sided impression. This wording gives a misleadingly optimistic impression of the likely outcome of using the app. — quote: \"get rich tomorrow\"\n- PRIN 2A.5.3(2) R [blocking] PRIN2A.5.3-2-c: The rule requires information to be clear, fair and not misleading. “Get rich tomorrow” gives an average retail customer the impression that installing the app can make them wealthy by the next day, an unrealistic and unsupported outcome presented as a promise. The rockets reinforce the promotional impression, so the communication is misleading. — quote: \"get rich tomorrow\"\n- PRIN 2A.5.7(3) G [advisory] PRIN2A.5.7-3-a: omission: The message prominently says “get rich tomorrow”, but it gives no risk information or qualification to help customers understand that investing can result in losses and that returns are not assured. Key information about the risk is therefore absent, rather than made prominent and easy to identify.\n- PRIN 2A.5.7(5) G [advisory] PRIN2A.5.7-5-a: omission: The communication says “Install our app” and claims customers can “get rich tomorrow,” but provides no decision-relevant information about what the app offers or what customers should understand before installing it. The rule requires relevant information at an appropriate level of detail to support the customer’s decision. That information is missing.\n- PRIN 2A.5.7(5) G [advisory] PRIN2A.5.7-5-b: omission: The message says “Install our app and get rich tomorrow” but gives no relevant detail to help a retail customer understand what using the app involves or assess the decision it urges them to make. For this investment-platform promotion, the claim is not accompanied by information explaining the basis or limitations of the promised outcome. The communication therefore does not provide an appropriate level of detail for the decision it addresses.",
+  "errors": [],
+  "timings": {
+    "total_ms": 17701,
+    "classify_ms": 1708,
+    "prewarm_ms": 1875,
+    "checks_wall_ms": 14107,
+    "rule_latency_avg_ms": 3441,
+    "rule_latency_max_ms": 5786,
+    "judge_ms": null
+  },
+  "usage": {
+    "input": 20827,
+    "cached": 7632,
+    "cache_write": 0,
+    "output": 4065,
+    "cost_usd": 0.003428
+  },
+  "judge": {
+    "status": "not_run",
+    "rating": null,
+    "missed_rules": [],
+    "disputed_verdicts": [],
+    "reasoning": ""
+  }
+}

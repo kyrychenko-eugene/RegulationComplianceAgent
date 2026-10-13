@@ -1,6 +1,6 @@
 # Stage 4 — Aggregation, report, CLI, run log
 
-Block: B. Agent · Status: pending
+Block: B. Agent · Status: done
 
 ## Goal
 Turn per-rule results into a deterministic overall verdict and a readable report, expose the public `agent.check(text) -> RunResult`, and record every run with timings.
@@ -31,6 +31,6 @@ Judge block in the log (filled in stage 6; field present with `status: not_run`)
 - Sample report committed in `examples/`.
 
 ## Execution log
-_Executor model:_ —
-_Review findings:_ —
-_Fixes:_ —
+_Executor model:_ Claude Sonnet 5.5 (claude-sonnet-5-5).
+_Review findings:_ none yet (no separate reviewer run); self-checks: 59 offline tests pass; live run on the reference case: FAIL, 18 rules, 13 fail, 0 errors, one line in `runs.jsonl` with every spec §7 key.
+_Fixes:_ none needed after the first live run. Additions beyond the file list: `RuleResult` gained `title`, `source_ref`, `severity`, `prompt`, `raw_response` (copied in by `agent.check` so a `RunResult` is self-contained and the log carries the full prompt/raw response required by §7); `agent/checker.py` records prompt and raw response per call.

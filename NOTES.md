@@ -129,3 +129,14 @@ Also, `2.2-b` and `2.8-a` are `always` rules that every `PASS` case implicitly e
 - The classifier only ever sees conditional tags, so only 1 of 7 conditional rules ran here; 17 always-rules + 1.
 
 **Verification:** 47 offline tests (`python -m pytest`; bare `pytest` fails to import `common` in this venv, as before). New file `tests/test_checker.py` covers every row of the §5.6 table, spans with whitespace differences, threshold/fallback/refusal/missing/garbage answers, selection, Decisions request shape, API outage, missing and broken `rules.json`.
+
+
+## Stage 4 — aggregation, report, CLI, run log
+
+**Reference case via the CLI** (`python -m agent "Install our app and get rich tomorrow 🚀🚀🚀"`, 2026-10-13): **FAIL**, 13 of 18 rules failed (7 blocking, 6 advisory), 0 unclear, 0 errors. Timings: total 17.7 s, classify 1.7 s, prewarm 1.9 s, checks wall 14.1 s, rule latency avg 3.4 s / max 5.8 s. Usage 20.8k input, 7.6k cached, 4.1k output, **$0.0034**. Report and JSON in `examples/reference-case.{md,json}`.
+
+**Surprises**
+- Stage 3 recorded 8 fails on the same text; this run has 13 (5.3(2)-b/c, 2.2-b, 2.8-a, 5.3(1)(c), 5.7(5) and others flip between runs). The checker is not stable run to run at this size; stage 5 should repeat runs before trusting per-rule numbers.
+- `cached` was 7,632 tokens this time although stage 3 saw none: the cache apparently kicked in without a write being reported (`cache_write` = 0). Cost counts `cached` at 0.1x; whether `input_tokens` includes cached tokens is assumed (OpenAI convention), not verified.
+- The spec's "technical problem never PASS" is implemented strictly: any entry in `errors` (including a classifier fallback or failed prewarm, where all rules still ran) caps the verdict at NEEDS_HUMAN_REVIEW. An empty result list is also NEEDS_HUMAN_REVIEW, not PASS (the bare formula would give PASS).
+- `agent.check()` also appends to `runs.jsonl` by default (`log_path=None` disables it, for eval); the `--no-log` CLI flag does the same. Classifier (Decisions API) tokens are added to usage/cost from its response `usage`; the price table has no separate Decisions rate, so it uses the input rate of the classifier model.

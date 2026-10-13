@@ -13,7 +13,7 @@ from typing import Optional, Type, TypeVar
 from openai import AsyncOpenAI
 from pydantic import BaseModel
 
-from common.config import Config
+from common.config import CACHE_READ_FACTOR, CACHE_WRITE_FACTOR, PRICES, Config
 
 T = TypeVar("T", bound=BaseModel)
 
@@ -37,6 +37,25 @@ class Usage:
         self.cache_write += other.cache_write
         self.output += other.output
         return self
+
+
+def cost_usd(model: str, usage: Usage) -> float:
+    """Cost of `usage` at the dated price table; 0.0 for a model missing from the table.
+
+    `input` is the total input token count, of which `cached` were read from and
+    `cache_write` written to the cache.
+    """
+    if model not in PRICES:
+        return 0.0
+    p_in, p_out = PRICES[model]
+    plain = max(usage.input - usage.cached - usage.cache_write, 0)
+    per_million = (
+        plain * p_in
+        + usage.cached * p_in * CACHE_READ_FACTOR
+        + usage.cache_write * p_in * CACHE_WRITE_FACTOR
+        + usage.output * p_out
+    )
+    return per_million / 1_000_000
 
 
 @dataclass
