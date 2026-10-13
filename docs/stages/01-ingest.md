@@ -1,6 +1,6 @@
 # Stage 1 — Ingest with shared foundation → `rules.json`
 
-Block: A. Data · Status: pending
+Block: A. Data · Status: built, live run pending (needs `OPENAI_API_KEY`)
 
 ## Goal
 Turn PS22/9 (PRIN 2A text in Appendix 1) into a reviewed set of atomic, checkable rules in `data/rules.json`, through a one-time script. Build the minimal shared foundation that ingest and the agent will both use.
@@ -9,7 +9,7 @@ Turn PS22/9 (PRIN 2A text in Appendix 1) into a reviewed set of atomic, checkabl
 Stage 0 committed. Spec §3, §4, §10.
 
 ## Produces
-- `common/config.py` — loads `.env` (`OPENAI_API_KEY`, `FAST_MODEL`, `STRONG_MODEL`, `MAX_CONCURRENCY`, `PROMPT_CACHE`, `SOURCE_PDF`), dated price table.
+- `common/config.py` — loads `.env` (`OPENAI_API_KEY`, `FAST_MODEL`, `STRONG_MODEL`, `MAX_CONCURRENCY`, `PROMPT_CACHE`) and the `SOURCE_PDF` default constant. The dated price table moved to stage 4 (first needed for run-log cost).
 - `common/llm.py` — OpenAI client (Responses API, structured outputs via Pydantic), `asyncio.Semaphore(MAX_CONCURRENCY)`, SDK `max_retries`, usage capture (`input`, `cached`, `cache_write`, `output`).
 - `common/schemas.py` — `Rule`, `DroppedProvision`, `RulesFile` (spec §4.3).
 - `ingest/` — `load.py`, `split.py`, `filter.py`, `extract.py`, `gate.py`, `__main__.py`.
@@ -18,7 +18,7 @@ Stage 0 committed. Spec §3, §4, §10.
 - `.env.example`, `requirements.txt` (or `pyproject.toml`).
 
 ## Scope
-1. Load the PDF (`SOURCE_PDF`, path or URL); locate PRIN 2A in Appendix 1 by heading search.
+1. Load the PDF (`SOURCE_PDF` default, `--source` path or URL); locate PRIN 2A in Appendix 1 by heading search.
 2. Split into provisions `{provision_id, marker R|G|E, section, text}`.
 3. Relevance filter per provision against the domain statement (spec §4.1); keep `dropped_provisions` with rationale.
 4. Extract 0..n rules per kept provision; `check` is one atomic yes/no question; propose `scope` + `scope_rationale`, `tags`, pass/fail examples.
@@ -38,6 +38,6 @@ Retry loop (stage 8). Agent runtime code. UI.
 - `NOTES.md` records counts: provisions total / kept / dropped; rules approved / rejected.
 
 ## Execution log
-_Executor model:_ —
-_Review findings:_ —
-_Fixes:_ —
+_Executor model:_ Claude Sonnet 5.5.
+_Review findings:_ No independent review yet. Self-check found one defect: wrapped sub-headings leaked into the previous provision's text (see `NOTES.md`). Done-when items 1–4 are **not met yet**: they need a live run with `OPENAI_API_KEY`; `data/rules.json` does not exist. Item 5 is partly met (provisions total = 169 recorded, rest pending).
+_Fixes:_ Splitter now skips the wrapped second line of a sub-heading. Run `python -m ingest` (optionally `--limit 20` first), then fill the counts in `NOTES.md` and check the three coverage targets.

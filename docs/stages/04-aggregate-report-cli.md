@@ -19,7 +19,7 @@ Stage 3. Spec §5.7–5.9, §7.
 2. **Summary**: code template, e.g. `FAIL: 3 of 18 rules failed (2 blocking, 1 advisory); 1 unclear.` + list of failed/unclear rules with `source_ref`, reasoning, quote or "omission: …".
 3. **Report**: one function → Markdown (verdict, summary, table of all rules, details for fail/unclear) and JSON (full `RunResult`).
 4. **CLI**: `python -m agent "<text>"` or `--file path`; prints Markdown, optional `--json out.json`.
-5. **Run log**: one line per run appended to `runs.jsonl` with all fields in spec §7, including timings (`total_ms`, `classify_ms`, `prewarm_ms`, `checks_wall_ms`, `rule_latency_avg_ms`, `rule_latency_max_ms`), token usage, cost from the dated price table, `rules_hash`.
+5. **Run log**: one line per run appended to `runs.jsonl` with all fields in spec §7, including timings (`total_ms`, `classify_ms`, `prewarm_ms`, `checks_wall_ms`, `rule_latency_avg_ms`, `rule_latency_max_ms`), token usage, cost from the dated price table (add `PRICES` and `cost_usd` to `common/config.py` / `common/llm.py` here; deferred from stage 1), `rules_hash`.
 
 ## Out of scope
 Judge block in the log (filled in stage 6; field present with `status: not_run`). UI.

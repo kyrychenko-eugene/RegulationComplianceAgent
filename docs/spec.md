@@ -82,7 +82,7 @@ LLMs make narrow judgments (which tags, does this one rule pass). Everything tha
 ### 3.1 Document
 
 - PS22/9 PDF: https://www.fca.org.uk/publication/policy/ps22-9.pdf
-- Path or URL is configured via `SOURCE_PDF` so the source is not hard-coded.
+- The default URL is the constant `SOURCE_PDF` in `common/config.py` (not an env var); `python -m ingest --source <path|url>` overrides it, so the source is not hard-coded.
 - Ingest locates Appendix 1 and the PRIN 2A text by heading search, not by hard-coded page numbers.
 - Note for README: the live FCA Handbook has later amendments to PRIN 2A (e.g. 2A.2.4 updated 26/06/2026). We work from the PS22/9 text as published; this is a known, accepted difference.
 
@@ -368,7 +368,6 @@ CLASSIFIER_THRESHOLD=0.2     # select a tag when P(tag) >= threshold; tuned on t
 STRONG_MODEL=gpt-6.1-sol     # strong model: ingest, critic, judge
 MAX_CONCURRENCY=5            # max simultaneous OpenAI requests
 PROMPT_CACHE=on              # explicit prompt caching for rule checks
-SOURCE_PDF=https://www.fca.org.uk/publication/policy/ps22-9.pdf
 ```
 
 Model IDs and prices from OpenAI developer docs (Oct 2026): `gpt-6-luna` $0.10 / $0.50 per 1M input/output tokens; `gpt-6.1-sol` $2 / $10; `gpt-6-astra` $10 / $50 (alternative STRONG_MODEL). Reviewers can substitute any model they have access to.
