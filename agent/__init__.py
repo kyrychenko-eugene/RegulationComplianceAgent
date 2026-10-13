@@ -11,11 +11,12 @@ from pathlib import Path
 from typing import Optional
 
 from agent.aggregate import aggregate
+from agent.judge import run_judge
 from agent.checker import CheckOutcome, run_checks
 from agent.runlog import RUNS_PATH, append_run
 from common.config import RULES_PATH, Config, load_config
 from common.llm import LLM, Usage, cost_usd
-from common.schemas import (ClassifierInfo, ModelsUsed, RunResult, RunUsage, Timings)
+from common.schemas import (ClassifierInfo, JudgeInfo, ModelsUsed, RunResult, RunUsage, Timings)
 
 log = logging.getLogger("agent")
 
@@ -27,7 +28,8 @@ def _now() -> str:
 
 
 def _build_run(text: str, outcome: CheckOutcome, llm: Optional[LLM], config: Optional[Config],
-               run_id: str, started_at: str, total_ms: int) -> RunResult:
+               run_id: str, started_at: str, total_ms: int, judge: Optional[JudgeInfo] = None,
+               judge_ms: Optional[int] = None) -> RunResult:
     by_id = {r.id: r for r in outcome.selected_rules}
     for res in outcome.results:
         rule = by_id.get(res.rule_id)
@@ -60,9 +62,10 @@ def _build_run(text: str, outcome: CheckOutcome, llm: Optional[LLM], config: Opt
             total_ms=total_ms, classify_ms=c.latency_ms if c else 0, prewarm_ms=outcome.prewarm_ms,
             checks_wall_ms=outcome.checks_wall_ms,
             rule_latency_avg_ms=int(sum(latencies) / len(latencies)) if latencies else 0,
-            rule_latency_max_ms=max(latencies, default=0)),
+            rule_latency_max_ms=max(latencies, default=0), judge_ms=judge_ms),
         usage=RunUsage(input=usage.input, cached=usage.cached, cache_write=usage.cache_write,
                        output=usage.output, cost_usd=round(cost, 6)),
+        judge=judge or JudgeInfo(),
     )
 
 
@@ -77,9 +80,12 @@ async def acheck(text: str, *, config: Optional[Config] = None, llm: Optional[LL
         outcome = await run_checks(text, config=config, llm=llm, rules_path=rules_path)
     except Exception as e:  # noqa: BLE001 - error contract
         outcome.errors.append(f"agent: {type(e).__name__}: {e}")
+    judge, judge_ms = JudgeInfo(), None
+    if llm and config and outcome.catalog and outcome.results:  # monitoring only; never touches the verdict
+        judge, judge_ms = await run_judge(llm, config, outcome.text, outcome.catalog, outcome.results)
     try:
         run = _build_run(outcome.text, outcome, llm, config, run_id, started_at,
-                         int((time.perf_counter() - t0) * 1000))
+                         int((time.perf_counter() - t0) * 1000), judge, judge_ms)
     except Exception as e:  # noqa: BLE001
         outcome.errors.append(f"report: {type(e).__name__}: {e}")
         run = RunResult(run_id=run_id, started_at=started_at, finished_at=_now(), input_text=outcome.text,

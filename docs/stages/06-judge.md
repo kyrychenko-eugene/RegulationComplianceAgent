@@ -1,6 +1,6 @@
 # Stage 6 — Judge and calibration
 
-Block: C. Agent verification · Status: pending
+Block: C. Agent verification · Status: implemented, full calibration run pending (human to run `python -m eval run`)
 
 ## Goal
 Add an LLM judge that monitors each run — missed rules (classifier recall) and disputed verdicts — with the rating computed by code and no influence on the agent's verdict. Measure how far the judge can be trusted.
@@ -31,6 +31,7 @@ Multiple judge samples / averaging. Numeric scores.
 - `eval run` prints judge agreement; result noted in `NOTES.md`.
 
 ## Execution log
-_Executor model:_ —
-_Review findings:_ —
-_Fixes:_ —
+_Executor model:_ Sonnet 5.5
+_Review findings:_ none yet (no separate review pass).
+_Fixes:_ existing end-to-end test expected `judge.status == not_run`; its fake client answers the judge call with a `CheckResponse`, so the judge now degrades to `unavailable` there. Test updated; it doubles as a forced-failure check.
+_Not done:_ the 23-case `eval run` was stopped by the user to save cost; only the reference case was run live. Judge agreement over the full golden set is therefore not yet measured.

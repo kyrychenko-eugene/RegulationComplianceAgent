@@ -34,6 +34,7 @@ class CheckOutcome:
     text: str
     rules_hash: str = ""
     classifier: Optional[ClassifierResult] = None
+    catalog: List[Rule] = field(default_factory=list)  # all approved rules (the judge sees what was not run)
     selected_rules: List[Rule] = field(default_factory=list)
     results: List[RuleResult] = field(default_factory=list)
     errors: List[str] = field(default_factory=list)
@@ -113,6 +114,7 @@ async def run_checks(
         except Exception as e:  # noqa: BLE001
             outcome.errors.append(f"rules: cannot load {rules_path}: {type(e).__name__}: {e}")
             return outcome
+        outcome.catalog = rules
         if not rules:
             outcome.errors.append("rules: no approved rules in rules file")
             return outcome

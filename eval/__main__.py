@@ -109,6 +109,46 @@ def run_golden(golden: dict, only: Optional[List[str]] = None, check=None) -> Di
     return runs
 
 
+def judge_calibration(cases: List[dict], rows: list, runs: Dict[str, object]) -> List[str]:
+    """Judge rating vs golden labels (spec §6).
+
+    A case is *agent-wrong* when any of its (expectation, rule) pairs is a false PASS, a rule that was
+    expected to fail but was not run, or a false FAIL. The judge is *consistent* with the labels when it rates
+    `agree` on an agent-right case, or `partial`/`disagree` on an agent-wrong one. Cases whose judge did not
+    return (`status != ok`) are excluded.
+    """
+    out = ["## 8. Judge calibration", ""]
+    wrong = {c["id"] for c, e, _, o in rows
+             if (e["expected"] == "fail" and o in ("pass", "not_run")) or (e["expected"] == "pass" and o == "fail")}
+    judged = [c for c in cases if runs[c["id"]].judge.status == "ok"]
+    out.append(f"Judge returned for {len(judged)}/{len(cases)} cases (the rest: unavailable or not run).")
+    if not judged:
+        out.append("Judge agreement with golden labels: n/a (0 cases judged)")
+        return out
+    consistent = [c for c in judged if (runs[c["id"]].judge.rating == "agree") != (c["id"] in wrong)]
+    out.append(f"- **Judge agreement with golden labels** (agent-right → `agree`, agent-wrong → `partial`/`disagree`): "
+               f"**{_pct(len(consistent), len(judged))}**")
+    right = [c for c in judged if c["id"] not in wrong]
+    bad = [c for c in judged if c["id"] in wrong]
+    flagged_right = [c for c in right if runs[c["id"]].judge.rating != "agree"]
+    caught = [c for c in bad if runs[c["id"]].judge.rating != "agree"]
+    out.append(f"  - agent-wrong cases the judge flagged (recall): {_pct(len(caught), len(bad))}")
+    out.append(f"  - agent-right cases the judge flagged anyway (false alarms): {_pct(len(flagged_right), len(right))}")
+    ratings = Counter(runs[c["id"]].judge.rating for c in judged)
+    out.append("  - ratings: " + ", ".join(f"{k}={ratings.get(k, 0)}" for k in ("agree", "partial", "disagree")))
+    missed = Counter(m["rule_id"] for c in judged for m in runs[c["id"]].judge.missed_rules)
+    out.append(f"  - rules the judge reported as missed (classifier misses): "
+               + (", ".join(f"`{k}`×{v}" for k, v in missed.most_common()) or "none"))
+    out.append("")
+    out.append("| case | agent vs labels | judge rating | missed | disputed | consistent |")
+    out.append("|---|---|---|---|---|---|")
+    for c in judged:
+        j = runs[c["id"]].judge
+        out.append(f"| {c['id']} | {'wrong' if c['id'] in wrong else 'right'} | {j.rating} | {len(j.missed_rules)} | "
+                   f"{len(j.disputed_verdicts)} | {'yes' if c in consistent else '**NO**'} |")
+    return out
+
+
 def eval_report(golden: dict, rules_file: dict, runs: Dict[str, object]) -> str:
     """Build the metrics report; pure function of golden, rules and the runs."""
     rules = {r["id"]: r for r in rules_file["rules"] if r["status"] == "approved"}
@@ -244,6 +284,9 @@ def eval_report(golden: dict, rules_file: dict, runs: Dict[str, object]) -> str:
     gaps = [f"- `{c['id']}`: {e['provision']} — {e.get('gap_note', '')}" for c in cases
             for e in c["expectations"] if e.get("known_gap")]
     out += gaps or ["- (none)"]
+
+    out.append("")
+    out += judge_calibration(cases, rows, runs)
 
     ref = runs.get("get-rich-tomorrow")
     if ref is not None:

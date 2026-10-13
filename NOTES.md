@@ -174,3 +174,16 @@ Diagnosis (from the reasoning of the failing rules): the 11 false FAILs were not
 The trade is real: stricter omission handling now lets a few violations through (`welcome-bonus-no-conditions` 1a-a, `guaranteed-staking` 1c-b); single run, so ±a few pairs of noise. Threshold recommendation unchanged (0.5).
 
 **Remaining 6 overall misses are mostly not checker errors.** `fomo-free-share`, `unexplained-jargon` and `wall-of-text-product-page` are labelled NEEDS_HUMAN_REVIEW in the golden set, which under spec §5.7 means only advisory rules fail. But blocking rules legitimately fire on them (`2.2-b` and `2.8-a` on urgency/FOMO, `5.3-1b-a`/`5.3-2-a` on "overnight swap"), and aggregation then returns FAIL by design. Either the labels are too lenient or blocking severity on those rules is too coarse; that is a golden-set/spec decision, not changed here. Other misses: `compliant-balanced-landing` fails on "ETFs" being unexplained (`5.3-1b-a`, blocking: arguably a harsh reading), `past-performance-with-caveat` fails `5.3-1a-a` ("doesn't say what the portfolio is"), `neutral-market-reminder` gets one `unclear` (can't verify "US markets open in 30 minutes").
+
+
+## Stage 6 — judge
+
+Implemented `agent/judge.py` + `prompts/judge/judge.md`; the judge runs after the checks (before the run is built, so its tokens and `judge_ms` are logged), never changes `verdict`/`errors`, and failure gives `judge.status = unavailable`. 70 offline tests pass (rating for all three outcomes, unknown-id filtering, forced judge failure leaves verdict/summary/errors identical).
+
+**Live, reference case only** (`--cases get-rich-tomorrow`, 2026-10-13): verdict FAIL, judge `ok`, rating `disagree`, `judge_ms` 16.4 s, whole run $0.0149. It disputed two verdicts: 5.3-2-a (fail -> pass, "clarity" vs misleading) and 5.7-3-b (pass -> fail), no missed rules. Plausible disputes, but both rules are unmapped in the golden case.
+
+**Calibration definition (my choice; spec says only "agrees with golden labels"):** a case is agent-wrong if any mapped (expectation, rule) pair is a false PASS, not run, or false FAIL; judge is consistent if it rates `agree` on agent-right cases and `partial`/`disagree` on agent-wrong ones. Consequence seen already: the judge disputing rules the golden set does not map counts as a false alarm, so this metric is harsh. Please confirm or change the definition.
+
+**Not measured:** full-golden-set judge agreement (run stopped to save cost). Run `python -m eval run --out examples/eval_report.md` to produce it.
+
+Extra filtering beyond the spec: judge entries are also dropped when a "missed" rule was actually run, when a disputed rule was not run, or when judge verdict equals the agent's.

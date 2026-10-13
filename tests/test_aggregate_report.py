@@ -77,7 +77,10 @@ def test_check_end_to_end_with_mock_and_log(tmp_path):
     log = tmp_path / "runs.jsonl"
     run = agent.check(TEXT, llm=llm, log_path=log)
     assert run.verdict == "FAIL" and run.results and all(r.title and r.source_ref for r in run.results)
-    assert run.selected_rules and run.rules_hash and run.judge.status == "not_run"
+    assert run.selected_rules and run.rules_hash
+    # this fake client answers the judge call with a CheckResponse: the judge degrades, the run does not
+    assert run.judge.status == "unavailable" and run.timings.judge_ms is not None
+    assert not any("judge" in e for e in run.errors)
     lines = log.read_text().splitlines()
     assert len(lines) == 1
     row = json.loads(lines[0])

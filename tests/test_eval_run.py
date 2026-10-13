@@ -29,3 +29,19 @@ def test_false_pass_not_run_and_threshold():
     assert "| 0.3 | 0 | 0 |" in rep and "| 0.35 | 1 | 0 | get-rich-tomorrow |" in rep
     assert "Recommended `CLASSIFIER_THRESHOLD`: 0.3**" in rep
     assert "Reference case overall verdict: **PASS**" in rep
+
+
+def test_judge_calibration():
+    from common.schemas import JudgeInfo
+    golden = {"cases": [
+        {"id": "right", "expected_overall": "PASS", "text": "x", "expectations": [
+            {"concept": "k", "provision": "P", "expected": "pass", "rule_ids": ["a"], "known_gap": False}]},
+        {"id": "wrong", "expected_overall": "FAIL", "text": "y", "expectations": [
+            {"concept": "k2", "provision": "P", "expected": "fail", "rule_ids": ["a"], "known_gap": False}]},
+        {"id": "unjudged", "expected_overall": "FAIL", "text": "z", "expectations": []}]}
+    r1, r2, r3 = _run("PASS", [("a", "pass")]), _run("PASS", [("a", "pass")]), _run("PASS", [])
+    r1.judge = JudgeInfo(status="ok", rating="agree")
+    r2.judge = JudgeInfo(status="ok", rating="agree")  # judge missed the agent's false PASS
+    rep = eval_report(golden, _rules(), {"right": r1, "wrong": r2, "unjudged": r3})
+    assert "Judge returned for 2/3 cases" in rep
+    assert "**1/2 (50.0%)**" in rep and "recall): 0/1" in rep and "false alarms): 0/1" in rep
