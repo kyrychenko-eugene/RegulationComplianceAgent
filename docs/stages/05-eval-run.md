@@ -1,6 +1,6 @@
 # Stage 5 — Eval run: false PASS rate and per-rule accuracy
 
-Block: C. Agent verification · Status: pending
+Block: C. Agent verification · Status: done
 
 ## Goal
 Measure how well the agent does on the golden set, with false PASS (missed violations) as the primary metric.
@@ -34,6 +34,6 @@ Judge calibration (stage 6). Tuning prompts beyond fixing clear bugs (record ide
 - Results committed as `examples/eval_report.md`; notable failures discussed in `NOTES.md`.
 
 ## Execution log
-_Executor model:_ —
-_Review findings:_ —
-_Fixes:_ —
+_Executor model:_ Claude Sonnet 5.5 (claude-sonnet-5-5).
+_Review findings:_ none (no separate reviewer); 60 offline tests pass; live run of all 23 cases, reference case FAIL, results in `examples/eval_report.md`.
+_Fixes:_ none needed. Recommended threshold 0.5 (sweep saturated, see NOTES.md); httpx teardown noise on stderr left as is.

@@ -26,6 +26,12 @@ Fill in the fields in this order.
 - `content`: the text contains the problem. Example: "Guaranteed 20% a year" breaches a rule against presenting returns as certain; the quote is "Guaranteed 20% a year".
 - `omission`: the problem is what is absent. Example: a message urging customers to buy a leveraged product that says nothing about the risk of loss breaches a rule requiring enough information for an informed decision. There is no offending phrase to quote, so `evidence_quote` is `null`, and `reasoning` must name what is missing.
 
+## Proportionality: judge the message, not a full disclosure document
+
+Marketing messages are often short (a push notification, a social post, a banner). Do not fail a rule merely because the text is not a complete product disclosure. In particular, do not fail an `omission` rule because the text lacks details that the message does not itself make necessary, such as charges, fees, product mechanics or the portfolio's holdings, when the text makes no claim about them and its call to action does not depend on them.
+
+Fail for an `omission` when what is missing is what this particular message makes necessary for a sound decision. Examples: the message promotes returns or urges action and says nothing about the risk of loss; it advertises a "free" offer but hides the condition; it gives a deadline without saying when it ends. If the rule is about one specific thing (risk, timing, a condition) and that thing is present and clear, the rule is met, even if other information a full prospectus would carry is absent. Judge that rule only; other rules cover other points.
+
 ## Quoting rule
 
 `evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.

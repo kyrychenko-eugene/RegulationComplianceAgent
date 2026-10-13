@@ -140,3 +140,37 @@ Also, `2.2-b` and `2.8-a` are `always` rules that every `PASS` case implicitly e
 - `cached` was 7,632 tokens this time although stage 3 saw none: the cache apparently kicked in without a write being reported (`cache_write` = 0). Cost counts `cached` at 0.1x; whether `input_tokens` includes cached tokens is assumed (OpenAI convention), not verified.
 - The spec's "technical problem never PASS" is implemented strictly: any entry in `errors` (including a classifier fallback or failed prewarm, where all rules still ran) caps the verdict at NEEDS_HUMAN_REVIEW. An empty result list is also NEEDS_HUMAN_REVIEW, not PASS (the bare formula would give PASS).
 - `agent.check()` also appends to `runs.jsonl` by default (`log_path=None` disables it, for eval); the `--no-log` CLI flag does the same. Classifier (Decisions API) tokens are added to usage/cost from its response `usage`; the price table has no separate Decisions rate, so it uses the input rate of the classifier model.
+
+
+## Stage 5 — eval run
+
+Command: `python -m eval run [--out PATH] [--cases ID…]` (needs `OPENAI_API_KEY`; ~6 min, $0.12, 23 cases run sequentially through `agent.check(..., log_path=None)`). Committed: `examples/eval_report.md`. One run only; stage 4 showed per-rule verdicts flip between runs, so treat the numbers as ±a few pairs.
+
+**Results (gpt-6-luna, 112 rule/expectation pairs):**
+- **False PASS 5/73 (6.8%)**; none were "not run" (the classifier never dropped a needed rule). At expectation level (no mapped rule failed) **0/34**: every expected violation was caught by at least one of its rules. The 5 misses: `5.3-2-a` on "up to 12%", "guaranteed … zero risk" (!), and the retiree text; `5.7-1-a` and `5.7-5-a` on the wall-of-text page.
+- **False FAIL 11/39 (28.2%)**, and 8 of the 11 are `PRIN2A.5.3-1c-c` (the other 3: `1c-b`). The rule fails texts that do contain a clear risk statement, i.e. the "sufficiently complete basis for an informed decision" wording flagged in stage 1 and predicted in stage 2 behaves as a catch-all. It is `blocking`, so it alone turns compliant texts into FAIL.
+- Unclear 1/112 pairs (7 of all checked rules, all `model`, 0 `technical`).
+- **Overall verdict agreement 16/23 (69.6%).** All 7 misses are the agent being too strict: PASS cases returned FAIL (`compliant-balanced-landing`, `past-performance-with-caveat`), NEEDS_HUMAN_REVIEW cases returned FAIL (`fomo-free-share`, `unexplained-jargon`, `disclaimer-overload`, `wall-of-text-product-page`), and `neutral-market-reminder` (PASS) got NEEDS_HUMAN_REVIEW from one unclear. No case was judged more lenient than expected. Reference case: **FAIL**, 15 of 18 rules failed.
+- Two of the four PASS-expected cases are clean (`service-update-no-promotion`, `compliant-crypto-explained`: 0 fails), so the checker can say PASS; the problem is concentrated in `5.3-1c-b/c`.
+
+**Threshold sweep:** zero misses at every threshold from 0.05 to 0.5; extra checks fall from 40 (0.05) to 24 (0.5). So the recommendation by the stage rule is **0.5**, written to `.env.example`. Caveat: the sweep is saturated at the top of its range (classifier probabilities are bimodal, see stage 3), and only 7 conditional rules / one golden case set back it; 0.5 is "no miss observed", not a safety margin. Spec §5.1 argues for a low threshold since a miss costs a violation and an extra check costs almost nothing (0.2 gives 26 extra checks over 23 cases, ≈ 1 per case). Your call whether to keep 0.2; I followed the Done-when text.
+
+**Surprises / not fixed (ideas only, per stage scope):**
+- Most overall misses come from the rule set, not the model: tighten or merge `5.3-1c-b/c` (stage 8 retry or a manual edit). Unmapped always-rules (`2.2-b`, `2.8-a`) probably also fail on PASS cases; the report does not break out fails on unmapped rules, a useful addition (needs the per-run results, which `eval run` does not save).
+- Because overall FAIL needs just one blocking fail, 23 cases × ~18 rules makes the verdict very sensitive to a single noisy rule.
+- `agent.check()` called repeatedly via `asyncio.run` prints "Event loop is closed" tracebacks from httpx client teardown to stderr after each run (harmless, results unaffected). Cause: a new `LLM` client per call. Not fixed (agent code is out of scope for this stage); output goes to stderr only.
+
+### Stage 5, second run — after a proportionality fix in `prompts/agent/check_system.md`
+
+Diagnosis (from the reasoning of the failing rules): the 11 false FAILs were not "risk statement missing". `5.3-1c-c`, `5.3-1a-a` and `2.20-2-a` failed short ads because they did not list charges, holdings or product mechanics, i.e. the checker held a 2-sentence message to a full-disclosure standard. Fix: a "Proportionality" section in the shared system prompt (fail an omission only when this message makes the missing item necessary). Rules and golden set untouched.
+
+| Metric | Before | After |
+|---|---|---|
+| False FAIL | 11/39 (28.2%) | **4/39 (10.3%)** |
+| False PASS | 5/73 (6.8%) | 7/73 (9.6%) |
+| Expectations with no mapped rule failing | 0/34 | 1/34 |
+| Overall-verdict agreement | 16/23 (69.6%) | **17/23 (73.9%)** |
+
+The trade is real: stricter omission handling now lets a few violations through (`welcome-bonus-no-conditions` 1a-a, `guaranteed-staking` 1c-b); single run, so ±a few pairs of noise. Threshold recommendation unchanged (0.5).
+
+**Remaining 6 overall misses are mostly not checker errors.** `fomo-free-share`, `unexplained-jargon` and `wall-of-text-product-page` are labelled NEEDS_HUMAN_REVIEW in the golden set, which under spec §5.7 means only advisory rules fail. But blocking rules legitimately fire on them (`2.2-b` and `2.8-a` on urgency/FOMO, `5.3-1b-a`/`5.3-2-a` on "overnight swap"), and aggregation then returns FAIL by design. Either the labels are too lenient or blocking severity on those rules is too coarse; that is a golden-set/spec decision, not changed here. Other misses: `compliant-balanced-landing` fails on "ETFs" being unexplained (`5.3-1b-a`, blocking: arguably a harsh reading), `past-performance-with-caveat` fails `5.3-1a-a` ("doesn't say what the portfolio is"), `neutral-market-reminder` gets one `unclear` (can't verify "US markets open in 30 minutes").
