@@ -56,3 +56,37 @@ class RulesFile(BaseModel):
     meta: Meta
     rules: List[Rule]
     dropped_provisions: List[DroppedProvision]
+
+
+class CheckResponse(BaseModel):
+    """Structured output of one rule check (spec §5.4). Field order is intentional: reason, then decide."""
+
+    reasoning: str
+    violation_type: Literal["none", "content", "omission"]
+    evidence_quote: Optional[str] = None
+    verdict: Literal["pass", "fail", "unclear"]
+
+
+UnclearReason = Literal["model", "invalid_answer", "technical"]
+
+
+class TokenUsage(BaseModel):
+    input: int = 0
+    cached: int = 0
+    cache_write: int = 0
+    output: int = 0
+
+
+class RuleResult(BaseModel):
+    """Normalised, code-validated result for one rule (spec §5.6)."""
+
+    rule_id: str
+    verdict: Literal["pass", "fail", "unclear"]
+    unclear_reason: Optional[UnclearReason] = None
+    reasoning: str = ""
+    violation_type: Literal["none", "content", "omission"] = "none"
+    evidence_quote: Optional[str] = None
+    span: Optional[List[int]] = None
+    downgraded: bool = False
+    latency_ms: int = 0
+    usage: TokenUsage = Field(default_factory=TokenUsage)

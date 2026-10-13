@@ -1,6 +1,6 @@
 # Stage 3 — Checker: classifier, parallel checks, validation, error contract
 
-Block: B. Agent · Status: pending
+Block: B. Agent · Status: done
 
 ## Goal
 Given a marketing text, select the relevant approved rules and get a validated per-rule verdict for each, without ever raising an exception.
@@ -32,6 +32,6 @@ Aggregation, report, run log (stage 4). Judge (stage 6).
 - `NOTES.md`: classifier probabilities for the reference case; measured shared-prefix size in tokens and whether prewarm produced `cached_tokens > 0`.
 
 ## Execution log
-_Executor model:_ —
-_Review findings:_ —
-_Fixes:_ —
+_Executor model:_ Claude Sonnet 5.5 (claude-sonnet-5-5).
+_Review findings:_ none yet (no separate reviewer run); self-checks: 47 offline tests pass; live run on the reference case (18 rules, 8 fail, 0 errors).
+_Fixes:_ the first live run exposed a wrong guess for the cache-breakpoint field (`cache_control` -> rejected 400); all 19 calls degraded to `unclear/technical` without an exception, which also proved the error contract. Field fixed to `prompt_cache_breakpoint: {mode: explicit}`.

@@ -114,3 +114,18 @@ Command: `python -m eval coverage` (offline). Result on 24 approved rules × 23 
 Also, `2.2-b` and `2.8-a` are `always` rules that every `PASS` case implicitly exercises only if mapped; they are not, so their false-FAIL rate is unmeasured.
 
 **Surprise:** the 5.3(1)(c) pair and 5.3(2) triple appear in nearly every case, so they dominate the matrix. A single bad rule there will swing most per-rule numbers in stage 5.
+
+
+## Stage 3 — checker
+
+**Reference case live run** ("Install our app and get rich tomorrow 🚀🚀🚀", gpt-6-luna, 2026-10-13): 18 rules selected, **8 fail / 4 pass / 0 unclear**, no errors. R-rule fails: 5.3(2)-a/b/c (quote "get rich tomorrow", span [20,37]) and 5.3(1)(c)-b/c (omission); advisory fails: 2.3(b), 2.10(2)-a. Also failed: 2.2-b, 2.8-a, 2.20-2-a, 5.3(1)(a), 5.7(3)-a, 5.7(5)-a/b. Passed: 5.3(1)(b), 5.7(1)-a, 5.7(2)-a, 5.7(3)-b. 5.7(3)-a fails but its twin 5.7(3)-b passes: the near-duplicate pair from stage 1 disagrees on the same text.
+
+**Classifier probabilities (Decisions API, live):** `emotional_or_behavioural_appeals` **0.89**; all seven other tags **0.00** (`vulnerable_customers`, `customer_circumstances`, `switching_and_complaints`, `disclaimers`, `complex_products`, `product_features`, `advice_or_information`). One call, ~1.8 s. The probabilities are strongly bimodal here, so the 0.2 threshold is not stressed by this case; tuning needs the stage-5 sweep.
+
+**Surprises**
+- The installed SDK (openai 2.48.0) has no `client.decisions` and 3.26.0 is not on PyPI for this environment, but the endpoint is live: I call it with `client.post("/decisions", body=..., cast_to=object)`. Wire format used: request `{model, input, questions:[{type:"predicate", name, instructions}]}`, response `answers:[{type, name, probability}]`, refusal = `{type:"refusal", name}`. Source: third-party summaries plus the live response. No SDK bump needed; `requirements.txt` untouched.
+- Cache breakpoint syntax is not in the spec and my first guess (`cache_control`) was wrong. The live API accepted `{"prompt_cache_breakpoint": {"mode": "explicit"}}` on an `input_text` part (found by probing the 400 messages).
+- **Shared prefix = 691 tokens for this input (system prompt + 38-char text), under the 1,024 minimum.** Prewarm therefore wrote nothing (`cache_write_tokens=0`) and **no call had `cached_tokens > 0`**. Calls whose total input crossed 1,024 (rule block included) reported `cache_write_tokens` ≈ 1,050–1,160 for rule-specific content, which can never be reused by other rules. Per spec §5.5 this means caching is ineffective with the current system prompt; `PROMPT_CACHE=off` saves the prewarm call. Not changed: needs your call (pad the system prompt with useful guidance past ~1,024, or default the switch to off).
+- The classifier only ever sees conditional tags, so only 1 of 7 conditional rules ran here; 17 always-rules + 1.
+
+**Verification:** 47 offline tests (`python -m pytest`; bare `pytest` fails to import `common` in this venv, as before). New file `tests/test_checker.py` covers every row of the §5.6 table, spans with whitespace differences, threshold/fallback/refusal/missing/garbage answers, selection, Decisions request shape, API outage, missing and broken `rules.json`.

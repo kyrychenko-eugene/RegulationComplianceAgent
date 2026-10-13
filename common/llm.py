@@ -84,15 +84,23 @@ class LLM:
         self, *, model: str, system: str, user: str, schema: Type[T]
     ) -> LLMResult:
         """One structured-output call. Raises LLMError if nothing was parsed."""
+        return await self.parse_input(
+            model=model,
+            input=[
+                {"role": "developer", "content": system},
+                {"role": "user", "content": user},
+            ],
+            schema=schema,
+        )
+
+    async def parse_input(
+        self, *, model: str, input: list, schema: Type[T]
+    ) -> LLMResult:
+        """Like `parse`, with the caller building the message list (content parts, cache breakpoints)."""
         async with self._semaphore():
             t0 = time.perf_counter()
             response = await self.client.responses.parse(
-                model=model,
-                input=[
-                    {"role": "developer", "content": system},
-                    {"role": "user", "content": user},
-                ],
-                text_format=schema,
+                model=model, input=input, text_format=schema
             )
             latency_ms = int((time.perf_counter() - t0) * 1000)
         parsed = response.output_parsed
@@ -104,3 +112,14 @@ class LLM:
         self.total_usage.setdefault(model, Usage())
         self.total_usage[model] += usage
         return LLMResult(parsed=parsed, usage=usage, latency_ms=latency_ms, model=model)
+
+    async def prewarm(self, *, model: str, input: list) -> Usage:
+        """Send a shared prefix once, with a minimal output, so later calls can read it from cache."""
+        async with self._semaphore():
+            response = await self.client.responses.create(
+                model=model, input=input, max_output_tokens=16
+            )
+        usage = usage_from_response(response)
+        self.total_usage.setdefault(model, Usage())
+        self.total_usage[model] += usage
+        return usage
