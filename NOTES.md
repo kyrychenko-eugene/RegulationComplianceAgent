@@ -98,3 +98,19 @@ Dropped by section: 2A.1 18/18 · 2A.2 19/28 · 2A.3 30/30 · 2A.4 35/35 · 2A.5
 - Rejected, all plausibly right: 2A.2.3(a) and (c) (checkable_from_text=1: need the firm's intent / customer circumstances), 2A.5.7(2) jargon (faithful=1: the check dropped the "where unavoidable" condition). The jargon rule is a golden-set expectation, so it is a stage-8 retry candidate.
 - Tag seed vocabulary was **not reused**: new tags `emotional_appeals`, `behavioural_biases`, `customer_circumstances`, `jargon_or_technical_terms`, `disclaimers`; none of the 10 seeds appeared. Expect fragmented tags in the full run; a normalisation step or a two-pass tag assignment may be needed before stage 3.
 - Weak spots: near-duplicate rules (2A.5.7(3): "prominent" vs "easy to identify" from the same quote); vague checks ("provide information relevant to the decision"); 2A.2.3(b) is `conditional` while the equivalent 2A.2.10(2) is `always`.
+
+
+## Stage 2 — coverage
+
+Command: `python -m eval coverage` (offline). Result on 24 approved rules × 23 cases × 57 expectations: **0 unmapped, 4 known gaps, 3 approved rules never expected to fail.**
+
+**Mapping choices (mine, to be reviewed).** `rule_ids` follow the provision cited in the expectation, plus rules that match the concept: `2.10-2-b` (vulnerability exploitation) added to the two `2A.2.3(c)` vulnerability cases; `2.20-2-a` (informed decision) added to the welcome-bonus and account-change omissions. Pass expectations list the rules that should pass. Golden texts and provisions were not touched.
+
+**Known gaps (4):** 2A.2.1/2A.2.2 open dealing (2A.2.2-a/-c rejected by the critic; `2.2-b` covers only manipulative wording), 2A.5.8(1) tailoring to customer characteristics (all drafts rejected, faithful=1), 2A.2.3(d) and 2A.5.6(2) (dropped by the ingest filter). Three of the four are ingest losses on provisions the golden set targets; stage 8 (retry with critic feedback) is the natural fix, or a manual rule.
+
+**Approved rules with no failing case (3), left as is:**
+- `PRIN2A.2.2-b` (unfairly manipulative wording) and `PRIN2A.2.8-a` (foreseeable harm): general-standard rules; no golden expectation was written for them. Candidates for a new case, but cases written now would be fitted to rule wording (spec §8.1), so they are recorded, not added.
+- `PRIN2A.5.8-4-a` (wording consistent with advisory/information-only role): no golden case on advice vs information.
+Also, `2.2-b` and `2.8-a` are `always` rules that every `PASS` case implicitly exercises only if mapped; they are not, so their false-FAIL rate is unmeasured.
+
+**Surprise:** the 5.3(1)(c) pair and 5.3(2) triple appear in nearly every case, so they dominate the matrix. A single bad rule there will swing most per-rule numbers in stage 5.

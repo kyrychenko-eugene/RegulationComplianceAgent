@@ -1,6 +1,6 @@
 # Stage 2 — Coverage: golden set ↔ rules
 
-Block: A. Data · Status: pending
+Block: A. Data · Status: done
 
 ## Goal
 Before any agent code exists, answer: do the extracted rules cover what we want to catch? Map golden expectations to approved `rule_id`s and report gaps — a data check with no API calls.
@@ -29,6 +29,6 @@ Running the agent on cases (stage 5).
 - Any expectation without a rule is either a `known_gap` (documented) or triggers a fix in stage 1.
 
 ## Execution log
-_Executor model:_ —
-_Review findings:_ —
-_Fixes:_ —
+_Executor model:_ Claude Sonnet 5.5
+_Review findings:_ No separate reviewer run. Self-check: `python -m eval coverage` prints all four sections offline (run with `OPENAI_API_KEY` unset); 24 tests pass. Mapping is my judgement, so it needs a human read of `eval/golden.json` (`rule_ids` per expectation).
+_Fixes:_ Matrix-cell formatting simplified after a first awkward version. Added optional `gap_note` field to expectations (not in spec §8.1 example) to hold the known-gap note.

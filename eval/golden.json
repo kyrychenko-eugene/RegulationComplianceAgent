@@ -19,7 +19,11 @@
           "marker": "R",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-2-a",
+            "PRIN2A.5.3-2-b",
+            "PRIN2A.5.3-2-c"
+          ],
           "known_gap": false
         },
         {
@@ -28,7 +32,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         },
         {
@@ -37,7 +44,10 @@
           "marker": "G",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.2.3-b-a",
+            "PRIN2A.2.10-2-a"
+          ],
           "known_gap": false
         }
       ]
@@ -55,7 +65,11 @@
           "marker": "R",
           "kind": "content",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-2-a",
+            "PRIN2A.5.3-2-b",
+            "PRIN2A.5.3-2-c"
+          ],
           "known_gap": false
         },
         {
@@ -64,7 +78,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         },
         {
@@ -73,7 +90,9 @@
           "marker": "G",
           "kind": "content",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.2.3-b-a"
+          ],
           "known_gap": false
         }
       ]
@@ -91,7 +110,11 @@
           "marker": "R",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-2-a",
+            "PRIN2A.5.3-2-b",
+            "PRIN2A.5.3-2-c"
+          ],
           "known_gap": false
         },
         {
@@ -100,7 +123,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         }
       ]
@@ -122,7 +148,10 @@
           "marker": "G",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.7-3-a",
+            "PRIN2A.5.7-3-b"
+          ],
           "known_gap": false
         },
         {
@@ -131,7 +160,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         }
       ]
@@ -149,7 +181,10 @@
           "marker": "G",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.2.3-b-a",
+            "PRIN2A.2.10-2-a"
+          ],
           "known_gap": false
         },
         {
@@ -158,7 +193,9 @@
           "marker": "G",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.2.10-2-a"
+          ],
           "known_gap": false
         },
         {
@@ -167,7 +204,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         }
       ]
@@ -185,7 +225,9 @@
           "marker": "G",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.7-2-a"
+          ],
           "known_gap": false
         },
         {
@@ -194,7 +236,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         }
       ]
@@ -212,7 +257,10 @@
           "marker": "G",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.2.3-c-a",
+            "PRIN2A.2.10-2-b"
+          ],
           "known_gap": false
         },
         {
@@ -221,7 +269,11 @@
           "marker": "R",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-2-a",
+            "PRIN2A.5.3-2-b",
+            "PRIN2A.5.3-2-c"
+          ],
           "known_gap": false
         },
         {
@@ -230,7 +282,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         }
       ]
@@ -247,7 +302,11 @@
           "marker": "R",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-2-a",
+            "PRIN2A.5.3-2-b",
+            "PRIN2A.5.3-2-c"
+          ],
           "known_gap": false
         },
         {
@@ -256,7 +315,10 @@
           "marker": "R",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         }
       ]
@@ -274,7 +336,11 @@
           "marker": "R",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-2-a",
+            "PRIN2A.5.3-2-b",
+            "PRIN2A.5.3-2-c"
+          ],
           "known_gap": false
         },
         {
@@ -283,7 +349,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         }
       ]
@@ -305,7 +374,11 @@
           "marker": "R",
           "kind": "content",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-2-a",
+            "PRIN2A.5.3-2-b",
+            "PRIN2A.5.3-2-c"
+          ],
           "known_gap": false
         },
         {
@@ -314,7 +387,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         }
       ]
@@ -332,7 +408,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         },
         {
@@ -341,7 +420,11 @@
           "marker": "R",
           "kind": "content",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-2-a",
+            "PRIN2A.5.3-2-b",
+            "PRIN2A.5.3-2-c"
+          ],
           "known_gap": false
         }
       ]
@@ -359,7 +442,9 @@
           "marker": "G",
           "kind": "content",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.2.3-b-a"
+          ],
           "known_gap": false
         },
         {
@@ -368,7 +453,11 @@
           "marker": "R",
           "kind": "content",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-2-a",
+            "PRIN2A.5.3-2-b",
+            "PRIN2A.5.3-2-c"
+          ],
           "known_gap": false
         }
       ]
@@ -386,7 +475,11 @@
           "marker": "R",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-2-a",
+            "PRIN2A.5.3-2-b",
+            "PRIN2A.5.3-2-c"
+          ],
           "known_gap": false
         },
         {
@@ -396,7 +489,8 @@
           "kind": "content",
           "expected": "fail",
           "rule_ids": [],
-          "known_gap": false
+          "known_gap": true,
+          "gap_note": "PRIN 2A.2.1/2A.2.2 (open dealing) has no approved rule: 2A.2.2-a/-c were rejected by the ingest critic; 2A.2.2-b covers only manipulative wording."
         },
         {
           "concept": "the fee, which is key information, is not prominent",
@@ -404,7 +498,10 @@
           "marker": "G",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.7-3-a",
+            "PRIN2A.5.7-3-b"
+          ],
           "known_gap": false
         }
       ]
@@ -422,7 +519,11 @@
           "marker": "R",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-2-a",
+            "PRIN2A.5.3-2-b",
+            "PRIN2A.5.3-2-c"
+          ],
           "known_gap": false
         },
         {
@@ -431,7 +532,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         }
       ]
@@ -449,7 +553,9 @@
           "marker": "R",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1b-a"
+          ],
           "known_gap": false
         },
         {
@@ -458,7 +564,9 @@
           "marker": "R",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.8-2-a"
+          ],
           "known_gap": false
         },
         {
@@ -467,7 +575,11 @@
           "marker": "R",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-2-a",
+            "PRIN2A.5.3-2-b",
+            "PRIN2A.5.3-2-c"
+          ],
           "known_gap": false
         }
       ]
@@ -485,7 +597,10 @@
           "marker": "G",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.2.3-c-a",
+            "PRIN2A.2.10-2-b"
+          ],
           "known_gap": false
         },
         {
@@ -495,7 +610,8 @@
           "kind": "content",
           "expected": "fail",
           "rule_ids": [],
-          "known_gap": false
+          "known_gap": true,
+          "gap_note": "PRIN 2A.5.8(1) (tailoring to customer characteristics): all drafts rejected by the ingest critic (faithful=1)."
         },
         {
           "concept": "no information about the risk of losing pension savings",
@@ -503,7 +619,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         },
         {
@@ -512,7 +631,11 @@
           "marker": "R",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-2-a",
+            "PRIN2A.5.3-2-b",
+            "PRIN2A.5.3-2-c"
+          ],
           "known_gap": false
         }
       ]
@@ -530,7 +653,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1a-a",
+            "PRIN2A.2.20-2-a"
+          ],
           "known_gap": false
         },
         {
@@ -539,7 +665,9 @@
           "marker": "G",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.2.3-b-a"
+          ],
           "known_gap": false
         }
       ]
@@ -561,7 +689,10 @@
           "marker": "G",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.2.3-b-a",
+            "PRIN2A.2.10-2-a"
+          ],
           "known_gap": false
         },
         {
@@ -570,7 +701,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         }
       ]
@@ -588,7 +722,9 @@
           "marker": "G",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.7-4-a"
+          ],
           "known_gap": false
         },
         {
@@ -597,7 +733,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         },
         {
@@ -606,7 +745,11 @@
           "marker": "R",
           "kind": "content",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-2-a",
+            "PRIN2A.5.3-2-b",
+            "PRIN2A.5.3-2-c"
+          ],
           "known_gap": false
         }
       ]
@@ -624,7 +767,10 @@
           "marker": "G",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.7-5-a",
+            "PRIN2A.5.7-5-b"
+          ],
           "known_gap": false
         },
         {
@@ -633,7 +779,11 @@
           "marker": "G",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.7-1-a",
+            "PRIN2A.5.7-3-a",
+            "PRIN2A.5.7-3-b"
+          ],
           "known_gap": false
         },
         {
@@ -642,7 +792,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         }
       ]
@@ -664,7 +817,9 @@
           "marker": "G",
           "kind": "content",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.2.10-5iii-a"
+          ],
           "known_gap": false
         },
         {
@@ -674,7 +829,8 @@
           "kind": "content",
           "expected": "fail",
           "rule_ids": [],
-          "known_gap": false
+          "known_gap": true,
+          "gap_note": "PRIN 2A.2.3(d) was dropped by the ingest filter; no rule."
         }
       ]
     },
@@ -691,7 +847,10 @@
           "marker": "R",
           "kind": "omission",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c"
+          ],
           "known_gap": false
         },
         {
@@ -700,7 +859,9 @@
           "marker": "R",
           "kind": "omission",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1a-a"
+          ],
           "known_gap": false
         },
         {
@@ -709,7 +870,9 @@
           "marker": "G",
           "kind": "content",
           "expected": "pass",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.2.3-b-a"
+          ],
           "known_gap": false
         }
       ]
@@ -731,7 +894,12 @@
           "marker": "R",
           "kind": "omission",
           "expected": "fail",
-          "rule_ids": [],
+          "rule_ids": [
+            "PRIN2A.5.3-1a-a",
+            "PRIN2A.5.3-1c-b",
+            "PRIN2A.5.3-1c-c",
+            "PRIN2A.2.20-2-a"
+          ],
           "known_gap": false
         },
         {
@@ -741,7 +909,8 @@
           "kind": "omission",
           "expected": "fail",
           "rule_ids": [],
-          "known_gap": false
+          "known_gap": true,
+          "gap_note": "PRIN 2A.5.6(2) (opportunity to review information) was dropped by the ingest filter; no rule."
         }
       ]
     }
