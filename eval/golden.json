@@ -1,0 +1,749 @@
+{
+  "meta": {
+    "version": 1,
+    "written_before_ingest": true,
+    "source": "FCA PS22/9, Appendix 1 (PRIN 2A)",
+    "notes": "Expectations are written in plain language and reference PRIN 2A provisions. rule_ids are intentionally empty and are filled in stage 2 (eval coverage) after rules are generated. 'kind' says whether a failure is something present in the text (content) or something missing (omission). 'acceptable_overall' lists the overall verdicts accepted for borderline cases; if absent, only expected_overall is accepted."
+  },
+  "cases": [
+    {
+      "id": "get-rich-tomorrow",
+      "channel": "push notification",
+      "text": "Install our app and get rich tomorrow 🚀🚀🚀",
+      "expected_overall": "FAIL",
+      "notes": "Reference case from the task.",
+      "expectations": [
+        {
+          "concept": "promises fast, certain wealth; misleading about likely outcomes",
+          "provision": "PRIN 2A.5.3(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "no information about risk of loss, so the customer cannot make a properly informed decision",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "rocket emojis and 'tomorrow' play on excitement and urgency to create demand",
+          "provision": "PRIN 2A.2.3(b); PRIN 2A.2.10(2)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "compliant-balanced-landing",
+      "channel": "landing page",
+      "text": "Build a long-term portfolio with access to over 3,000 stocks and ETFs. Set up regular investments from £10 a month and track everything in one app. Capital at risk. The value of your investments can go down as well as up, and you may get back less than you invest. Past performance is not a reliable indicator of future results.",
+      "expected_overall": "PASS",
+      "notes": "Balanced text with prominent, plain-language risk information and no promises.",
+      "expectations": [
+        {
+          "concept": "no promise or implication of certain returns",
+          "provision": "PRIN 2A.5.3(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "risk of loss is stated clearly",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "no pressure or emotional manipulation",
+          "provision": "PRIN 2A.2.3(b)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "up-to-12-percent",
+      "channel": "social post",
+      "text": "Your cash should work as hard as you do 💪 Earn up to 12% p.a. with our Yield Boost product. Start today in two taps.",
+      "expected_overall": "FAIL",
+      "notes": "Headline 'up to' rate with no conditions or risks.",
+      "expectations": [
+        {
+          "concept": "'up to 12%' headline rate presented without conditions, implying it is typical or achievable",
+          "provision": "PRIN 2A.5.3(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "no information about risks or what the return depends on",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "buried-disclaimer-email",
+      "channel": "email",
+      "text": "Subject: Your portfolio could be doing more\n\nHi Alex,\n\nMarkets moved fast this quarter and investors who stayed active saw the biggest opportunities. With our new Smart Rebalance feature, your portfolio adjusts automatically so you never miss a move. Thousands of customers have already switched it on.\n\nTurn on Smart Rebalance now →\n\nYou are receiving this email because you have an account with us. Unsubscribe | Privacy policy | Terms apply. Capital at risk; investments can fall in value.",
+      "expected_overall": "NEEDS_HUMAN_REVIEW",
+      "acceptable_overall": [
+        "NEEDS_HUMAN_REVIEW",
+        "FAIL"
+      ],
+      "notes": "Borderline: the risk statement exists but is placed in the footer among legal boilerplate. Prominence is guidance (G), so advisory; a model may also judge 'never miss a move' as misleading (R), hence FAIL is acceptable.",
+      "expectations": [
+        {
+          "concept": "key risk information is not prominent; buried in footer boilerplate",
+          "provision": "PRIN 2A.5.7(3)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "a risk statement is present",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "fomo-free-share",
+      "channel": "push notification",
+      "text": "2 million people already joined. Only 3 hours left to claim your free share — don't miss out! Capital at risk.",
+      "expected_overall": "NEEDS_HUMAN_REVIEW",
+      "notes": "Tests the R/G severity mapping: only guidance-level (advisory) failures, so the overall verdict is review, not FAIL.",
+      "expectations": [
+        {
+          "concept": "countdown and 'don't miss out' create artificial urgency",
+          "provision": "PRIN 2A.2.3(b); PRIN 2A.2.10(2)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "social proof ('2 million people') used to exploit herd behaviour",
+          "provision": "PRIN 2A.2.10(2)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "basic risk statement is present",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "unexplained-jargon",
+      "channel": "product description",
+      "text": "Trade CFDs on indices and FX with leverage up to 1:30, tight spreads and no overnight swap on selected instruments. CFDs are high risk and you can lose money rapidly due to leverage.",
+      "expected_overall": "NEEDS_HUMAN_REVIEW",
+      "notes": "Risk is stated, but key terms are not explained for a retail audience.",
+      "expectations": [
+        {
+          "concept": "technical terms (CFD, leverage 1:30, spread, swap) used without plain-language explanation",
+          "provision": "PRIN 2A.5.7(2)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "risk of loss is stated",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "targets-financial-hardship",
+      "channel": "display ad",
+      "text": "Struggling with bills this month? Turn your last £100 into a second income with copy trading. Join now.",
+      "expected_overall": "FAIL",
+      "notes": "Conditional (vulnerability) rules should be selected by the classifier here.",
+      "expectations": [
+        {
+          "concept": "targets people in financial difficulty and invites them to risk their last money",
+          "provision": "PRIN 2A.2.3(c)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "'second income' implies reliable earnings from trading",
+          "provision": "PRIN 2A.5.3(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "no risk information",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "guaranteed-staking",
+      "channel": "social post",
+      "text": "Crypto never sleeps and neither do your profits. Guaranteed passive income with our staking — zero risk, withdraw anytime.",
+      "expected_overall": "FAIL",
+      "expectations": [
+        {
+          "concept": "'guaranteed' income and 'zero risk' are false certainty claims",
+          "provision": "PRIN 2A.5.3(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "risks are denied rather than explained",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "copy-top-trader-returns",
+      "channel": "display ad",
+      "text": "Copy the trader who made 87% last year. One click and their moves become your moves.",
+      "expected_overall": "FAIL",
+      "notes": "Selective past performance presented as a reason to expect the same.",
+      "expectations": [
+        {
+          "concept": "single best-case past return presented as if repeatable",
+          "provision": "PRIN 2A.5.3(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "no statement that past performance does not predict future results or that capital is at risk",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "past-performance-with-caveat",
+      "channel": "landing page",
+      "text": "Our Growth portfolio returned 14% in 2025 and an average of 6% a year over the last five years. Past performance is not a reliable indicator of future results. Your capital is at risk and you may get back less than you invest.",
+      "expected_overall": "PASS",
+      "acceptable_overall": [
+        "PASS",
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "notes": "Borderline: performance figures with a multi-year context and clear caveats. Review is an acceptable cautious outcome; FAIL is not.",
+      "expectations": [
+        {
+          "concept": "performance figures balanced by longer-term context and caveats",
+          "provision": "PRIN 2A.5.3(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "risk of loss is stated",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "service-update-no-promotion",
+      "channel": "email",
+      "text": "Subject: New in the app\n\nYou can now set price alerts on any instrument and switch the app to dark mode from Settings. Thanks for being with us.",
+      "expected_overall": "PASS",
+      "notes": "Non-promotional service message: conditional rules should not be selected, and the risk-omission check should not fire because nothing is being promoted.",
+      "expectations": [
+        {
+          "concept": "no investment is promoted, so missing risk information is not a failure",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "no misleading statements",
+          "provision": "PRIN 2A.5.3(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "neutral-market-reminder",
+      "channel": "push notification",
+      "text": "US markets open in 30 minutes. Review your watchlist.",
+      "expected_overall": "PASS",
+      "notes": "Short neutral reminder; tests that the agent does not over-flag.",
+      "expectations": [
+        {
+          "concept": "no pressure, promise or manipulation",
+          "provision": "PRIN 2A.2.3(b)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "no misleading statements",
+          "provision": "PRIN 2A.5.3(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "free-headline-fee-footnote",
+      "channel": "display ad",
+      "text": "100% free investing. No fees, ever.*\n\n*A 1.5% currency conversion fee applies to all trades in non-GBP instruments.",
+      "expected_overall": "FAIL",
+      "notes": "Headline contradicted by the footnote.",
+      "expectations": [
+        {
+          "concept": "'No fees, ever' is contradicted by the footnote; the headline misleads about cost",
+          "provision": "PRIN 2A.5.3(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "not open and honest dealing: the real cost is hidden behind an asterisk",
+          "provision": "PRIN 2A.2.1; PRIN 2A.2.2",
+          "marker": "R",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "the fee, which is key information, is not prominent",
+          "provision": "PRIN 2A.5.7(3)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "isa-vs-savings-comparison",
+      "channel": "social post",
+      "text": "Beat the bank 🏦 Our Stocks & Shares ISA has returned 5x more than the average savings account. Why settle for less?",
+      "expected_overall": "FAIL",
+      "notes": "Compares an investment with cash savings without explaining that one carries risk of loss.",
+      "expectations": [
+        {
+          "concept": "comparison with savings accounts ignores the different risk; misleading",
+          "provision": "PRIN 2A.5.3(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "no information that an investment ISA can lose value, unlike savings",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "leveraged-product-for-beginners",
+      "channel": "landing page",
+      "text": "Never invested before? Start with our 3x Leveraged Nasdaq ETP — the easy way to grow your money faster. Capital at risk.",
+      "expected_overall": "FAIL",
+      "notes": "Complex product marketed to novices as 'easy'.",
+      "expectations": [
+        {
+          "concept": "a leveraged product is described as 'easy' for first-time investors; unlikely to be understood by the intended audience",
+          "provision": "PRIN 2A.5.3(1)(b)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "communication is not tailored to product complexity for an audience of beginners",
+          "provision": "PRIN 2A.5.8(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "'grow your money faster' implies a positive outcome without explaining leverage magnifies losses",
+          "provision": "PRIN 2A.5.3(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "retiree-pension-crypto",
+      "channel": "email",
+      "text": "Subject: Retired? Make your pension work harder\n\nYou've worked hard for your pension pot. Now let it work for you: move it into our High-Growth Crypto Basket — the smart move at your age.",
+      "expected_overall": "FAIL",
+      "notes": "Targets a potentially vulnerable group with a high-risk product.",
+      "expectations": [
+        {
+          "concept": "targets retirees' pension savings into a high-risk product, taking advantage of their circumstances",
+          "provision": "PRIN 2A.2.3(c)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "not tailored to customer characteristics, including potential vulnerability",
+          "provision": "PRIN 2A.5.8(1)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "no information about the risk of losing pension savings",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "'the smart move at your age' presents a high-risk choice as sensible",
+          "provision": "PRIN 2A.5.3(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "welcome-bonus-no-conditions",
+      "channel": "push notification",
+      "text": "Get a £200 welcome bonus when you open an account today 🎁",
+      "expected_overall": "FAIL",
+      "notes": "Offer without the conditions a customer needs to decide.",
+      "expectations": [
+        {
+          "concept": "conditions of the bonus (minimum deposit, holding period, eligibility) are missing; information needs not met",
+          "provision": "PRIN 2A.5.3(1)(a)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "'today' adds time pressure to an account-opening decision",
+          "provision": "PRIN 2A.2.3(b)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "regret-and-inflation-fear",
+      "channel": "social post",
+      "text": "Every day you wait, inflation eats your savings. People who didn't buy Bitcoin in 2015 still regret it. Don't be one of them. Crypto is volatile and you could lose all the money you invest.",
+      "expected_overall": "NEEDS_HUMAN_REVIEW",
+      "acceptable_overall": [
+        "NEEDS_HUMAN_REVIEW",
+        "FAIL"
+      ],
+      "notes": "Risk is stated clearly; the problem is fear and regret framing (guidance level). FAIL acceptable if a model reads the Bitcoin example as misleading.",
+      "expectations": [
+        {
+          "concept": "fear of missing out and anticipated regret used to push a decision",
+          "provision": "PRIN 2A.2.10(2); PRIN 2A.2.3(b)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "risk of total loss is stated",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "disclaimer-overload",
+      "channel": "display ad",
+      "text": "Invest in global ETFs from £1. Capital at risk. This is not investment advice. Past performance is not a reliable indicator of future results. Forecasts are not a reliable indicator of future performance. Tax treatment depends on individual circumstances and may change. Eligibility criteria apply. Terms and conditions apply. Fees and charges may apply. See website for details.",
+      "expected_overall": "NEEDS_HUMAN_REVIEW",
+      "notes": "The message is honest but drowned in boilerplate; tests guidance on unnecessary disclaimers.",
+      "expectations": [
+        {
+          "concept": "a stack of generic disclaimers obscures the key information",
+          "provision": "PRIN 2A.5.7(4)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "risk of loss is stated",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "no misleading claims",
+          "provision": "PRIN 2A.5.3(2)",
+          "marker": "R",
+          "kind": "content",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "wall-of-text-product-page",
+      "channel": "product description",
+      "text": "Our Managed Portfolios combine strategic and tactical asset allocation across equities, fixed income, alternatives and cash, rebalanced quarterly or when drift exceeds tolerance bands, with an ongoing charge of 0.25% plus underlying fund costs averaging 0.18%, transaction costs of 0.03%, and a platform fee tiered from 0.15% to 0.45% depending on balance; portfolios are risk-rated 1 to 7 using a proprietary volatility model calibrated on 20 years of data, and while historic annualised returns ranged from 3.1% to 8.7% depending on risk level, values can fall as well as rise and you may get back less than you invested, and your choice of risk level should reflect your time horizon, capacity for loss and attitude to risk, which you can assess using our questionnaire.",
+      "expected_overall": "NEEDS_HUMAN_REVIEW",
+      "notes": "All the information is there, but in one sentence with no structure.",
+      "expectations": [
+        {
+          "concept": "too much detail in one block makes it hard to make an effective decision",
+          "provision": "PRIN 2A.5.7(5)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "information is not presented in a logical, structured way and key facts (total cost, risk) are not prominent",
+          "provision": "PRIN 2A.5.7(1); PRIN 2A.5.7(3)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "risk of loss is stated",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "exit-barrier-retention",
+      "channel": "email",
+      "text": "Subject: Before you go\n\nWe noticed you started a transfer out. Online transfers cost £25 per holding. To have this fee waived, call our retention team on weekdays between 10am and 12pm.",
+      "expected_overall": "NEEDS_HUMAN_REVIEW",
+      "acceptable_overall": [
+        "NEEDS_HUMAN_REVIEW",
+        "FAIL"
+      ],
+      "notes": "Post-sale communication that discourages leaving. Guidance-level failures; FAIL acceptable if a model sees bad faith under the R provision.",
+      "expectations": [
+        {
+          "concept": "fees and a narrow phone window create unreasonable barriers to switching or exiting",
+          "provision": "PRIN 2A.2.20(3); PRIN 2A.2.10(5)(iii)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "acting more slowly or making things harder when it benefits the customer rather than the firm",
+          "provision": "PRIN 2A.2.3(d)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "compliant-crypto-explained",
+      "channel": "landing page",
+      "text": "Buy and sell Bitcoin and Ethereum in the app. Crypto prices can move sharply in either direction within minutes, and crypto is not covered by the Financial Services Compensation Scheme. Only invest money you can afford to lose. Our fee is 1% per trade, shown before you confirm.",
+      "expected_overall": "PASS",
+      "notes": "High-risk product communicated clearly; tests that the agent does not fail a text just because the product is risky.",
+      "expectations": [
+        {
+          "concept": "risks explained in plain language",
+          "provision": "PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "cost stated clearly",
+          "provision": "PRIN 2A.5.3(1)(a)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "no pressure or promises",
+          "provision": "PRIN 2A.2.3(b)",
+          "marker": "G",
+          "kind": "content",
+          "expected": "pass",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    },
+    {
+      "id": "account-change-accept-now",
+      "channel": "push notification",
+      "text": "Important: your account moves to our new pricing plan on 1 November. Tap Accept to continue trading.",
+      "expected_overall": "FAIL",
+      "acceptable_overall": [
+        "FAIL",
+        "NEEDS_HUMAN_REVIEW"
+      ],
+      "notes": "Prompts a decision without the information needed to make it.",
+      "expectations": [
+        {
+          "concept": "asks the customer to accept a pricing change without saying what changes or how it affects them",
+          "provision": "PRIN 2A.5.3(1)(a); PRIN 2A.5.3(1)(c)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        },
+        {
+          "concept": "the push channel and 'Tap Accept' do not give an appropriate opportunity to review the information",
+          "provision": "PRIN 2A.5.6(2)",
+          "marker": "R",
+          "kind": "omission",
+          "expected": "fail",
+          "rule_ids": [],
+          "known_gap": false
+        }
+      ]
+    }
+  ]
+}
