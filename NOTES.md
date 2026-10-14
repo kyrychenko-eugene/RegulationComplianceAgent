@@ -193,3 +193,8 @@ Extra filtering beyond the spec: judge entries are also dropped when a "missed" 
 
 `ui/` (Streamlit, 4 files) is a thin layer: `agent.check()`, `runs.jsonl` (fallback `examples/runs.sample.jsonl`, 2 real runs with prompts stripped) and `data/rules.json`. Design choice from the user: PASS shows only "N rules checked"; FAIL lists only failing rules with reason and quote; unclear rules are amber. Live reference case in the UI: FAIL, 13 of 18 rules (7 blocking), quote "get rich tomorrow" highlighted. Not measured: time spent. Only one distinct text exists in the sample history (the reference case twice).
 Surprise: highlight text used `color: inherit` and was white on pale pink in dark mode; caught in the screenshot.
+
+
+## Stage 8 — ingest retry (postponed)
+
+Postponed on 2026-10-14. It was a decision to reduce the scope; the stage was optional from the beginning (spec §4.2 step 7, marked "optional"). Nothing was built: `rules.json` has no `attempts` field and no regenerate prompt exists. Consequence: the rule-set weaknesses seen in stages 2 and 5 (e.g. `5.3-1c-b/c` too broad, see the stage 5 notes) stay as they are; a manual edit or this retry loop is the way to address them later.

@@ -1,6 +1,6 @@
 # Stage 8 — Ingest retry with critic feedback (optional)
 
-Block: Optional (second iteration on data) · Status: pending
+Block: Optional (second iteration on data) · Status: postponed
 
 ## Goal
 Recover rules that failed the quality gate by regenerating them with the critic's feedback, without letting them drift from the source.
@@ -26,10 +26,13 @@ Human approval.
 - `NOTES.md` compares approved counts before/after retry.
 - `python -m eval coverage` still passes its checks.
 
+## Postponed
+Decision (2026-10-14): scope reduced; this stage was optional from the beginning and is postponed. Nothing in it was built. README lists it under "with more time".
+
 ## If cut
 Keep this file with status "cut" and the reason; README lists it under "with more time".
 
 ## Execution log
-_Executor model:_ —
+_Executor model:_ — (not run, postponed)
 _Review findings:_ —
 _Fixes:_ —
