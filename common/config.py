@@ -35,7 +35,7 @@ def load_config() -> Config:
         classifier_model=env("CLASSIFIER_MODEL", "gpt-6-luna"),
         classifier_threshold=float(env("CLASSIFIER_THRESHOLD", "0.2")),
         strong_model=env("STRONG_MODEL", "gpt-6.1-sol"),
-        max_concurrency=int(env("MAX_CONCURRENCY", "5")),
+        max_concurrency=int(env("MAX_CONCURRENCY", "20")),
         prompt_cache=env("PROMPT_CACHE", "on").strip().lower() == "on",
     )
 

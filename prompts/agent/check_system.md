@@ -32,6 +32,14 @@ Marketing messages are often short (a push notification, a social post, a banner
 
 Fail for an `omission` when what is missing is what this particular message makes necessary for a sound decision. Examples: the message promotes returns or urges action and says nothing about the risk of loss; it advertises a "free" offer but hides the condition; it gives a deadline without saying when it ends. If the rule is about one specific thing (risk, timing, a condition) and that thing is present and clear, the rule is met, even if other information a full prospectus would carry is absent. Judge that rule only; other rules cover other points.
 
+## Materiality: fail only what a compliance reviewer would actually raise
+
+A `fail` must point to a problem that matters to the customer: it would mislead them, hide a risk, cost or condition, push them into a decision, or stop them understanding what the message asks of them. A wording that could be marginally better is not a breach. If a careful reviewer would shrug at the point, the rule passes.
+
+For rules about clear, plain or understandable language, judge whether the average customer would understand the message as a whole, in its context (it comes from an investment and trading app). Everyday vocabulary of such an app, for example "share", "fund", "stock", "order" or "portfolio", is understood from context and is not jargon. Fail a language rule only when an unexplained term or phrase stops the customer from understanding something that matters for a decision: a risk, a cost, a condition, or how the product works (for example, an unexplained "margin call" or "roll yield" in a promotion for a leveraged or commodity product). One mildly technical word in an otherwise clear message is not a failure.
+
+A message that promotes no product, return or financial decision (a feature announcement, a service or account notice, a neutral reminder) usually has nothing to balance or disclose; judge it as what it is.
+
 ## Quoting rule
 
 `evidence_quote` must be copied from the marketing text character for character: contiguous, no ellipses, no paraphrase, no corrected spelling, no added or removed words. Take it only from the marketing text, never from the rule or its examples, and never invent text. Keep it short: the shortest span that shows the problem. If you cannot find an exact span, use `null`.

@@ -202,3 +202,29 @@ def test_prefix_and_rule_rendering():
     rules, _ = load_rules(RULES_PATH)
     text = render_rule(rules[0])
     assert rules[0].id in text and "{" not in text.replace("{}", "")
+
+
+# --- latency: always-rule checks overlap the classifier ---
+
+def test_always_checks_start_before_classifier_answers():
+    """The classifier is held until an always-rule check has started; a serial pipeline would deadlock here."""
+    started = None
+
+    class Gated(FakeClient):
+        async def post(self, path, body=None, cast_to=None):
+            await asyncio.wait_for(started.wait(), 5)
+            return {"answers": []}
+
+        async def _rparse(self, **kw):
+            started.set()
+            return await super()._rparse(**kw)
+
+    async def go():
+        nonlocal started
+        started = asyncio.Event()
+        return await run_checks(TEXT, llm=LLM(cfg(), client=Gated(parse=resp("pass", "none"))))
+
+    out = asyncio.run(go())
+    # empty answers -> fallback "missing answers"; a serial pipeline would instead time out in the gate
+    assert "Timeout" not in (out.classifier.error or "") and all(r.verdict == "pass" for r in out.results)
+    assert [r.rule_id for r in out.results] == [r.id for r in out.selected_rules]  # order follows selection

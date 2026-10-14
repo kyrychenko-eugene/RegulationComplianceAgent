@@ -21,7 +21,7 @@ RESULTS = [RuleResult(rule_id="b1", verdict="pass", reasoning="ok"), RuleResult(
 
 
 def _resp(missed=(), disputed=()):
-    return JudgeResponse(reasoning="r", missed_rules=[MissedRule(rule_id=i, reason="x") for i in missed],
+    return JudgeResponse(reasoning="r", missed_rules=[MissedRule(rule_id=i, judge_verdict="fail", reason="x") for i in missed],
                          disputed_verdicts=[DisputedVerdict(rule_id=i, agent_verdict="pass", judge_verdict=v, reason="x")
                                             for i, v in disputed])
 
@@ -98,9 +98,84 @@ def test_forced_judge_failure_leaves_run_unchanged(monkeypatch, tmp_path: Path):
     runs = []
     for judge in (good, bad):
         monkeypatch.setattr(agent, "run_judge", judge)
-        runs.append(asyncio.run(agent.acheck("t", config=cfg, llm=llm, log_path=tmp_path / "r.jsonl")))
+        runs.append(asyncio.run(agent.acheck("t", config=cfg, llm=llm, log_path=tmp_path / "r.jsonl", judge="sync")))
     ok, down = runs
     assert ok.judge.status == "ok" and down.judge.status == "unavailable"
     assert (ok.verdict, ok.summary, ok.errors) == (down.verdict, down.summary, down.errors)
     assert down.errors == [] and down.verdict == "NEEDS_HUMAN_REVIEW"
     assert '"judge":{"status":"unavailable"' in (tmp_path / "r.jsonl").read_text().splitlines()[-1]
+
+
+def test_verdict_level_separate_from_rule_level():
+    # agent: b1 pass, a1 fail (advisory) -> NEEDS_HUMAN_REVIEW
+    j = rate(_resp(disputed=[("a1", "pass")]), CATALOG, RESULTS)
+    assert j.rating == "partial" and j.overall_verdict == "PASS" and j.verdict_agrees is False
+    # disputing a blocking rule into a fail changes the overall verdict to FAIL
+    j = rate(_resp(disputed=[("b1", "fail")]), CATALOG, RESULTS)
+    assert j.rating == "disagree" and j.overall_verdict == "FAIL" and not j.verdict_agrees
+    # rule-level disagreement that leaves the outcome unchanged: the case the History tab used to mislabel
+    results = RESULTS + [RuleResult(rule_id="b2", verdict="fail")]
+    cat = CATALOG + [_rule("b2", "blocking")]
+    j = rate(_resp(disputed=[("b1", "fail")]), cat, results)
+    assert j.rating == "disagree" and j.overall_verdict == "FAIL" and j.verdict_agrees is True
+    # a missed rule counts with the judge's expected verdict; technical errors cap the counterfactual too
+    j = rate(_resp(missed=["a2"]), CATALOG, [RuleResult(rule_id="b1", verdict="pass", reasoning="ok")])
+    assert j.overall_verdict == "NEEDS_HUMAN_REVIEW" and j.verdict_agrees is False
+    j = rate(_resp(disputed=[("a1", "pass")]), CATALOG, RESULTS, errors=["prewarm: boom"])
+    assert j.overall_verdict == "NEEDS_HUMAN_REVIEW" and j.verdict_agrees is True
+
+
+def test_background_judge_appends_record_merged_by_run_id(monkeypatch, tmp_path: Path):
+    from agent.checker import CheckOutcome
+
+    async def fake_checks(text, **kw):
+        return CheckOutcome(text=text, catalog=CATALOG, selected_rules=CATALOG[:2], results=[
+            RuleResult(rule_id="b1", verdict="pass", reasoning="ok"),
+            RuleResult(rule_id="a1", verdict="fail", reasoning="bad", violation_type="omission")])
+
+    async def fake_judge(llm, config, text, catalog, results, errors=None):
+        return rate(_resp(disputed=[("a1", "pass")]), catalog, results, errors), 7
+
+    monkeypatch.setattr(agent, "run_checks", fake_checks)
+    monkeypatch.setattr(agent, "run_judge", fake_judge)
+    log = tmp_path / "r.jsonl"
+    llm = SimpleNamespace(config=CFG, total_usage={})
+    run = asyncio.run(agent.acheck("t", config=CFG, llm=llm, log_path=log))
+    assert run.judge.status == "pending" and run.timings.judge_ms is None
+    done = agent.wait_for_judges(timeout=10)
+    assert done[run.run_id].status == "ok"
+    lines = log.read_text().splitlines()
+    assert len(lines) == 2 and '"record": "judge"' in lines[1]
+    merged = agent.read_runs(log)
+    assert len(merged) == 1 and merged[0]["run_id"] == run.run_id
+    assert merged[0]["judge"]["overall_verdict"] == "PASS" and merged[0]["timings"]["judge_ms"] == 7
+    assert merged[0]["verdict"] == "NEEDS_HUMAN_REVIEW"  # the judge never changes the verdict
+
+
+def test_background_without_log_runs_sync_and_off_skips(monkeypatch):
+    from agent.checker import CheckOutcome
+
+    async def fake_checks(text, **kw):
+        return CheckOutcome(text=text, catalog=CATALOG, selected_rules=CATALOG[:1],
+                            results=[RuleResult(rule_id="b1", verdict="pass", reasoning="ok")])
+
+    async def fake_judge(*a, **k):
+        return JudgeInfo(status="ok", rating="agree"), 3
+
+    monkeypatch.setattr(agent, "run_checks", fake_checks)
+    monkeypatch.setattr(agent, "run_judge", fake_judge)
+    llm = SimpleNamespace(config=CFG, total_usage={})
+    assert asyncio.run(agent.acheck("t", config=CFG, llm=llm, log_path=None)).judge.status == "ok"
+    assert asyncio.run(agent.acheck("t", config=CFG, llm=llm, log_path=None, judge="off")).judge.status == "not_run"
+
+
+def test_read_runs_skips_orphans_and_corrupt_lines(tmp_path: Path):
+    log = tmp_path / "r.jsonl"
+    log.write_text('{"run_id": "a", "verdict": "PASS", "usage": {"cost_usd": 0.001, "input": 10}}\n'
+                   'not json\n'
+                   '{"record": "judge", "run_id": "ghost", "judge": {"status": "ok"}}\n'
+                   '{"record": "judge", "run_id": "a", "judge": {"status": "ok"}, "judge_ms": 5, '
+                   '"usage": {"cost_usd": 0.01, "input": 100}}\n')
+    runs = agent.read_runs(log)
+    assert len(runs) == 1 and runs[0]["judge"]["status"] == "ok"
+    assert runs[0]["usage"] == {"cost_usd": 0.011, "input": 110}

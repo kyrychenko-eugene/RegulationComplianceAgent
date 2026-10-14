@@ -1,6 +1,6 @@
 # Stage 9 — Final review, README, NOTES
 
-Block: Optional / closing · Status: pending
+Block: Optional / closing · Status: done
 
 ## Goal
 Check the result against this spec and the original task with a strong model (Opus), fix what it finds, and write the thinking doc.
@@ -27,6 +27,7 @@ All completed stages. Spec §1, §13, §14. Task PDF (deliverables and "what we 
 - README answers every "Thinking Doc" bullet from the task.
 
 ## Execution log
-_Executor model:_ —
-_Review findings:_ —
-_Fixes:_ —
+_Executor model:_ Claude Opus 5.5 (claude-opus-5-5).
+_Review findings:_ 16 issues, listed in `docs/final-review.md` §6. Main ones: serial pipeline plus a synchronous judge (≈ 25 s per run); concurrency 5 for ~18 rules; the History judge banner presented rule-level disputes as verdict disagreement; over-strict language rules (the "instrument" case); no README; NOTES wrongly claimed the threshold had been changed; stage logs incomplete. The task PDF could not be read (image-only, extraction not permitted), so the checklist uses the requirements quoted in this file and spec §14.
+_Fixes:_ concurrent classifier/prewarm with early `always` checks; `MAX_CONCURRENCY=20`; background judge keyed by `run_id`, with `agent.read_runs()` merging the record; verdict-level judge comparison (code) in the UI and report; Materiality section in the check prompt; bounded client close; README; NOTES correction and stage 9 section; stage 0/6/8 logs; spec §2.1/§5.3/§6/§7/§10 and `CLAUDE.md` updated. 75 offline tests; clean-copy quickstart verified; full eval re-run (`examples/eval_report.md`).
+_Open (owner's decisions):_ golden NEEDS_HUMAN_REVIEW labels vs blocking R rules; rule-set cleanup (stage 8 or a manual edit); confirming blocking fails with a second call; the `5.3-2-a` golden mapping.

@@ -50,17 +50,16 @@ Rules of separation:
 input text
    │
    ▼
-[1] classifier (Decisions API, gpt-6-luna) ──► P(tag) per tag
-   │     code: tags = {t : P(t) ≥ CLASSIFIER_THRESHOLD}
-   │     on failure / refusal: run ALL approved rules
+[1] classifier (Decisions API, gpt-6-luna) ──► P(tag) per tag        ┐ run concurrently
+   │     code: tags = {t : P(t) ≥ CLASSIFIER_THRESHOLD}                │
+   │     on failure / refusal: run ALL approved rules                  │
+[3] cache prewarm: shared prefix (system prompt + input text)         ┘
+   │     then `always` rule checks start at once (they do not need the classifier)
    ▼
-[2] rule selection (code): scope=always ∪ conditional rules matching tags
+[2] rule selection (code): scope=always ∪ conditional rules matching tags; conditional checks start
    │
    ▼
-[3] cache prewarm: shared prefix (system prompt + input text)
-   │
-   ▼
-[4] per-rule checks in parallel (FAST_MODEL, semaphore = MAX_CONCURRENCY)
+[4] per-rule checks in parallel (FAST_MODEL, semaphore = MAX_CONCURRENCY ≥ rules per run)
    │
    ▼
 [5] validation (code): normalize each answer into pass / fail / unclear
@@ -69,11 +68,13 @@ input text
 [6] aggregation (code): PASS / FAIL / NEEDS_HUMAN_REVIEW + template summary
    │
    ▼
-[7] judge (STRONG_MODEL): monitoring only, never changes the verdict
+[8] report (Markdown + JSON) and one line appended to runs.jsonl  ──► agent.check() returns here
    │
-   ▼
-[8] report (Markdown + JSON) and one line appended to runs.jsonl
+   ▼ (background thread, same run_id)
+[7] judge (STRONG_MODEL): monitoring only, never changes the verdict; appends a judge record to runs.jsonl
 ```
+
+Latency decision (stage 9, 2026-10-14, requested by the owner): the judge is off the critical path. `agent.check(text, judge=...)`: `background` (default) returns with `judge.status = pending` and appends the judge record later; `sync` waits (used by `eval run`, and automatically when there is no run log); `off` skips it. The CLI prints the verdict first, then waits for the judge and prints it.
 
 LLMs make narrow judgments (which tags, does this one rule pass). Everything that decides the outcome — selection, validation, aggregation, judge rating — is deterministic code.
 
@@ -195,6 +196,8 @@ Order matters for caching: everything shared across rules comes first, the rule 
    - Verdict definitions, `content` vs `omission` violations, with examples of each.
    - Quoting rule: `evidence_quote` must be copied character for character, contiguous, no ellipses, no paraphrase, taken **only** from the marketing text; never invent text.
    - Prefer `unclear` over guessing when the text does not contain enough information.
+   - Proportionality (stage 5): judge the message, not a full disclosure document; fail an omission only when this message makes the missing item necessary.
+   - Materiality (stage 9): fail only what a compliance reviewer would raise; language rules are judged on the message as a whole in its app context, so everyday platform vocabulary is not jargon. Its examples are deliberately not taken from golden texts.
    - Reasoning must be written before the verdict.
 2. **The marketing text**, in the same shared block.
    → explicit cache breakpoint here (§5.5).
@@ -286,7 +289,9 @@ One function builds both outputs:
   - both lists empty → `agree`
   - only advisory rules involved → `partial`
   - any blocking rule missed or disputed → `disagree`
-- The judge never changes the agent's verdict. If the judge call fails, `judge.status = unavailable`.
+- **Verdict level** (added in stage 9, 2026-10-14): code applies the judge's rule verdicts (disputes replace the agent's verdict; missed rules count with the verdict the judge expects for them, `fail` or `unclear`) and runs the same aggregation (§5.7), giving `overall_verdict` and `verdict_agrees`. The UI and the report show this first and the rule-level rating second, because a judge can dispute single rules and still reach the same overall verdict; showing only the rule-level rating read as "the judge disagrees with the verdict".
+- `missed_rules` entries carry `judge_verdict: fail | unclear`.
+- The judge never changes the agent's verdict. If the judge call fails, `judge.status = unavailable`. While it runs in the background, `judge.status = pending`.
 - Calibration: `eval run` reports how often the judge's rating agrees with the golden labels.
 
 ## 7. Run log (`runs.jsonl`)
@@ -304,8 +309,10 @@ verdict, summary, errors [],
 timings {total_ms, classify_ms, prewarm_ms, checks_wall_ms,
          rule_latency_avg_ms, rule_latency_max_ms, judge_ms},
 usage {input, cached, cache_write, output, cost_usd},
-judge {status, rating, missed_rules, disputed_verdicts, reasoning}
+judge {status, rating, overall_verdict, verdict_agrees, missed_rules, disputed_verdicts, reasoning}
 ```
+
+With the background judge (§2.1), the run line is written with `judge.status = pending`, and a second line follows when the judge finishes: `{record: "judge", run_id, finished_at, judge {...}, judge_ms, usage {..., cost_usd}}`. `agent.read_runs()` merges it into the run with the same `run_id` (judge block, `timings.judge_ms`, usage and cost added). Readers (UI) go through `agent.read_runs()` rather than parsing lines themselves.
 
 `rule_latency_max_ms` is logged because the parallel stage waits for the slowest call; it explains `checks_wall_ms` better than the average. Cost is computed from a dated price table in `common/config.py`.
 
@@ -366,7 +373,7 @@ FAST_MODEL=gpt-6-luna        # cheap model: parallel rule checks
 CLASSIFIER_MODEL=gpt-6-luna  # Decisions API classifier (only gpt-6-luna is supported in beta)
 CLASSIFIER_THRESHOLD=0.2     # select a tag when P(tag) >= threshold; tuned on the golden set
 STRONG_MODEL=gpt-6.1-sol     # strong model: ingest, critic, judge
-MAX_CONCURRENCY=5            # max simultaneous OpenAI requests
+MAX_CONCURRENCY=20           # max simultaneous OpenAI requests (≥ rules per run, so checks go out in one wave)
 PROMPT_CACHE=on              # explicit prompt caching for rule checks
 ```
 

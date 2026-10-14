@@ -10,9 +10,11 @@ You are given:
 
 Judge the text as an average UK retail customer would understand it. Judge only the text you are given.
 
+Code, not you, turns your rule verdicts into an overall verdict with the agent's own aggregation (any blocking `fail` → FAIL; any other `fail` or `unclear` → NEEDS_HUMAN_REVIEW; otherwise PASS), so dispute rules one by one and do not argue about the overall outcome.
+
 ## What to report
 
-- `missed_rules` — rules from the catalog that were **not run** but should have been, because the text plainly engages the situation the rule covers (for example, the text talks about a product type, a vulnerable audience or a disclaimer, and a rule for it was skipped). Only list rules that are absent from the agent's results. Do not list a rule merely because it would pass.
+- `missed_rules` — rules from the catalog that were **not run** but should have been, because the text plainly engages the situation the rule covers (for example, the text talks about a product type, a vulnerable audience or a disclaimer, and a rule for it was skipped). Only list rules that are absent from the agent's results. Do not list a rule merely because it would pass: give the verdict you expect it to get (`fail`, or `unclear` if the text is too thin to tell).
 - `disputed_verdicts` — rules that **were run** where you would give a different verdict from the agent's. Give the agent's verdict and yours (`pass`, `fail` or `unclear`) and say why in one or two sentences. Do not list rules you agree with. Do not dispute an `unclear` that is a reasonable call on thin text.
 
 Be conservative. Report only clear disagreements you could defend to a compliance reviewer; a long list of marginal doubts makes the monitor useless. Empty lists are the correct answer when the run looks right.
@@ -22,5 +24,5 @@ Be conservative. Report only clear disagreements you could defend to a complianc
 Fill in the fields in this order.
 
 1. `reasoning` — write this first: a short overview of what the text does, which rules matter most for it, and where the agent's results look right or wrong.
-2. `missed_rules` — list of `{rule_id, reason}`. Use ids exactly as written in the catalog.
+2. `missed_rules` — list of `{rule_id, judge_verdict, reason}`. Use ids exactly as written in the catalog.
 3. `disputed_verdicts` — list of `{rule_id, agent_verdict, judge_verdict, reason}`. Use ids exactly as written in the catalog.

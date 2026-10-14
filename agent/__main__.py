@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 import agent
-from agent.report import build_report
+from agent.report import build_report, judge_section
 
 
 def main(argv=None) -> int:
@@ -33,6 +33,11 @@ def main(argv=None) -> int:
     print(markdown)
     if args.json:
         Path(args.json).write_text(json_text + "\n", encoding="utf-8")
+    if run.judge.status == "pending":  # verdict is out; now wait for the background judge and show it too
+        sys.stdout.flush()
+        judged = agent.wait_for_judges().get(run.run_id)
+        if judged is not None:
+            print("\n".join(judge_section(judged, run.verdict)))
     return 0
 
 

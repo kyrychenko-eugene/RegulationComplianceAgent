@@ -1,6 +1,6 @@
 # Stage 8 — Ingest retry with critic feedback (optional)
 
-Block: Optional (second iteration on data) · Status: postponed
+Block: Optional (second iteration on data) · Status: cut (postponed 2026-10-14 to reduce scope; optional by spec §12, first in the cut order)
 
 ## Goal
 Recover rules that failed the quality gate by regenerating them with the critic's feedback, without letting them drift from the source.

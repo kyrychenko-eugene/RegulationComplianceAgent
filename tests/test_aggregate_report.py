@@ -75,7 +75,7 @@ def test_check_end_to_end_with_mock_and_log(tmp_path):
     good = CheckResponse(reasoning="because", violation_type="content", evidence_quote="get rich", verdict="fail")
     llm = LLM(cfg(), client=FakeClient(post={"answers": []}, parse=good))
     log = tmp_path / "runs.jsonl"
-    run = agent.check(TEXT, llm=llm, log_path=log)
+    run = agent.check(TEXT, llm=llm, log_path=log, judge="sync")
     assert run.verdict == "FAIL" and run.results and all(r.title and r.source_ref for r in run.results)
     assert run.selected_rules and run.rules_hash
     # this fake client answers the judge call with a CheckResponse: the judge degrades, the run does not
@@ -96,7 +96,7 @@ def test_check_end_to_end_with_mock_and_log(tmp_path):
 
 def test_check_never_raises_on_outage(tmp_path):
     llm = LLM(cfg(), client=FakeClient(post=RuntimeError("down"), parse=RuntimeError("down")))
-    run = agent.check(TEXT, llm=llm, log_path=tmp_path / "runs.jsonl")
+    run = agent.check(TEXT, llm=llm, log_path=tmp_path / "runs.jsonl", judge="sync")
     assert run.verdict == "NEEDS_HUMAN_REVIEW" and run.errors
 
 

@@ -130,10 +130,15 @@ class RunUsage(TokenUsage):
 
 
 class JudgeInfo(BaseModel):
-    """Filled in stage 6; until then `status` is `not_run`."""
+    """Monitoring block (spec §6). `pending` while the judge runs in the background."""
 
-    status: Literal["not_run", "ok", "unavailable"] = "not_run"
+    status: Literal["not_run", "pending", "ok", "unavailable"] = "not_run"
+    # Rule level: none involved → agree; only advisory → partial; any blocking → disagree.
     rating: Optional[Literal["agree", "partial", "disagree"]] = None
+    # Verdict level: the overall verdict code computes from the judge's per-rule verdicts, and whether it
+    # equals the agent's. Rule-level disputes can leave the overall verdict unchanged.
+    overall_verdict: Optional[Verdict] = None
+    verdict_agrees: Optional[bool] = None
     missed_rules: List[dict] = Field(default_factory=list)
     disputed_verdicts: List[dict] = Field(default_factory=list)
     reasoning: str = ""

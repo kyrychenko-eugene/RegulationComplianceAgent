@@ -18,6 +18,7 @@ from common.config import CACHE_READ_FACTOR, CACHE_WRITE_FACTOR, PRICES, Config
 T = TypeVar("T", bound=BaseModel)
 
 SDK_MAX_RETRIES = 4
+CLOSE_TIMEOUT_S = 5
 
 
 class LLMError(RuntimeError):
@@ -131,6 +132,12 @@ class LLM:
         self.total_usage.setdefault(model, Usage())
         self.total_usage[model] += usage
         return LLMResult(parsed=parsed, usage=usage, latency_ms=latency_ms, model=model)
+
+    async def aclose(self) -> None:
+        """Close the HTTP client while its event loop is still running (avoids 'Event loop is closed' noise)."""
+        close = getattr(self.client, "close", None)
+        if close is not None:
+            await asyncio.wait_for(close(), CLOSE_TIMEOUT_S)  # a stalled connection must not hold the caller
 
     async def prewarm(self, *, model: str, input: list) -> Usage:
         """Send a shared prefix once, with a minimal output, so later calls can read it from cache."""

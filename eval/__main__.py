@@ -98,7 +98,7 @@ def run_golden(golden: dict, only: Optional[List[str]] = None, check=None) -> Di
     """Run each case through `agent.check` (sequentially, no run log). Returns case id -> RunResult."""
     if check is None:
         import agent
-        check = lambda text: agent.check(text, log_path=None)  # noqa: E731
+        check = lambda text: agent.check(text, log_path=None, judge="sync")  # noqa: E731
     runs = {}
     for i, c in enumerate(golden["cases"], 1):
         if only and c["id"] not in only:
@@ -134,17 +134,28 @@ def judge_calibration(cases: List[dict], rows: list, runs: Dict[str, object]) ->
     caught = [c for c in bad if runs[c["id"]].judge.rating != "agree"]
     out.append(f"  - agent-wrong cases the judge flagged (recall): {_pct(len(caught), len(bad))}")
     out.append(f"  - agent-right cases the judge flagged anyway (false alarms): {_pct(len(flagged_right), len(right))}")
+    acc = lambda c: c.get("acceptable_overall") or [c["expected_overall"]]  # noqa: E731
+    with_overall = [c for c in judged if runs[c["id"]].judge.overall_verdict]
+    if with_overall:
+        j_ok = [c for c in with_overall if runs[c["id"]].judge.overall_verdict in acc(c)]
+        a_ok = [c for c in with_overall if runs[c["id"]].verdict in acc(c)]
+        out.append(f"- **Overall-verdict agreement if the judge's rule verdicts were applied**: "
+                   f"**{_pct(len(j_ok), len(with_overall))}** (agent on the same cases: {_pct(len(a_ok), len(with_overall))}). "
+                   "Diagnostic only: the judge never changes the verdict.")
+        same = [c for c in with_overall if runs[c["id"]].judge.verdict_agrees]
+        out.append(f"  - judge reaches the same overall verdict as the agent: {_pct(len(same), len(with_overall))}")
     ratings = Counter(runs[c["id"]].judge.rating for c in judged)
     out.append("  - ratings: " + ", ".join(f"{k}={ratings.get(k, 0)}" for k in ("agree", "partial", "disagree")))
     missed = Counter(m["rule_id"] for c in judged for m in runs[c["id"]].judge.missed_rules)
     out.append(f"  - rules the judge reported as missed (classifier misses): "
                + (", ".join(f"`{k}`×{v}" for k, v in missed.most_common()) or "none"))
     out.append("")
-    out.append("| case | agent vs labels | judge rating | missed | disputed | consistent |")
-    out.append("|---|---|---|---|---|---|")
+    out.append("| case | expected | agent | judge overall | agent vs labels | judge rule rating | missed | disputed | consistent |")
+    out.append("|---|---|---|---|---|---|---|---|---|")
     for c in judged:
         j = runs[c["id"]].judge
-        out.append(f"| {c['id']} | {'wrong' if c['id'] in wrong else 'right'} | {j.rating} | {len(j.missed_rules)} | "
+        out.append(f"| {c['id']} | {'/'.join(acc(c))} | {runs[c['id']].verdict} | {j.overall_verdict or '-'} | "
+                   f"{'wrong' if c['id'] in wrong else 'right'} | {j.rating} | {len(j.missed_rules)} | "
                    f"{len(j.disputed_verdicts)} | {'yes' if c in consistent else '**NO**'} |")
     return out
 

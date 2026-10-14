@@ -1,4 +1,4 @@
-"""Check tab: text in, colour-coded verdict out. Passing rules are summarised as a count, never listed."""
+"""Check tab: text in, colour-coded verdict out. Failed/unclear rules get cards; passed rules a collapsed short list."""
 import html
 
 import streamlit as st
@@ -82,8 +82,23 @@ def render_run(run: dict) -> None:
     for err in run.get("errors", []):
         st.warning(err)
 
-    if verdict == "PASS":
+    if verdict != "PASS":
+        _flagged(run, failed, unclear)
+    _passed_list([r for r in results if r["verdict"] == "pass"])
+
+
+def _passed_list(passed: list) -> None:
+    """Collapsed short list of the rules that were checked and passed: one line each, no reasoning."""
+    if not passed:
         return
+    with st.expander(f"✓ {len(passed)} rules passed"):
+        st.markdown("\n".join(
+            f"- {r.get('source_ref') or r['rule_id']} : {r.get('title') or r['rule_id']}"
+            + (f" · {LEVEL[r['severity']]}" if r.get("severity") in LEVEL else "")
+            for r in passed))
+
+
+def _flagged(run: dict, failed: list, unclear: list) -> None:
     spans = [r["span"] for r in failed if r.get("span")]
     if spans and run.get("input_text"):
         st.markdown("**Flagged text**")
@@ -92,15 +107,22 @@ def render_run(run: dict) -> None:
             f'{_highlighted(run["input_text"], spans)}</div>', unsafe_allow_html=True)
     for res in failed + unclear:
         _card(res)
-    passed = total - len(failed) - len(unclear)
-    if passed:
-        st.caption(f"{passed} other rules passed.")
 
 
 def render() -> None:
-    text = st.text_area("Marketing text", height=160, placeholder="Paste the marketing text to check…")
-    if st.button("Check", type="primary", disabled=not text.strip()):
-        with st.spinner("Checking against the rules…"):
-            st.session_state["last_run"] = agent.check(text).model_dump()
+    # A form sends the text area's current value with the click. A plain button disabled on `not text` only saw
+    # the value after the text area lost focus, so the first click after typing or pasting did nothing.
+    with st.form("check_form", border=False):
+        text = st.text_area("Marketing text", height=160, placeholder="Paste the marketing text to check…")
+        submitted = st.form_submit_button("Check", type="primary")
+    if submitted:
+        if not text.strip():
+            st.warning("Paste or type a marketing text first.")
+        else:
+            with st.spinner("Checking against the rules…"):
+                st.session_state["last_run"] = agent.check(text).model_dump()
     if "last_run" in st.session_state:
         render_run(st.session_state["last_run"])
+        if st.session_state["last_run"].get("judge", {}).get("status") == "pending":
+            st.caption("A second-opinion judge is reviewing this run in the background; "
+                       "its result appears in the History tab.")

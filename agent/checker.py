@@ -119,11 +119,10 @@ async def run_checks(
             outcome.errors.append("rules: no approved rules in rules file")
             return outcome
 
-        outcome.classifier = await classify(llm, text, rules)
-        if outcome.classifier.error:
-            outcome.errors.append(f"classifier: {outcome.classifier.error} (running all approved rules)")
-        outcome.selected_rules = select_rules(rules, outcome.classifier.tags, outcome.classifier.fallback_all_rules)
-
+        # Latency: the classifier and the cache prewarm run concurrently; `always` rules do not depend on the
+        # classifier, so their checks start as soon as the prefix is warm. Conditional rules start once the
+        # classifier answers. Selection itself is unchanged (spec §5.2).
+        classify_task = asyncio.ensure_future(classify(llm, text, rules))
         prefix = shared_prefix(text, config.prompt_cache)
         if config.prompt_cache:
             t0 = time.perf_counter()
@@ -136,9 +135,15 @@ async def run_checks(
             outcome.prewarm_ms = int((time.perf_counter() - t0) * 1000)
 
         t0 = time.perf_counter()
-        outcome.results = list(await asyncio.gather(
-            *(_check_one(llm, prefix, r, text) for r in outcome.selected_rules)
-        ))
+        tasks = {r.id: asyncio.ensure_future(_check_one(llm, prefix, r, text)) for r in rules if r.scope == "always"}
+        outcome.classifier = await classify_task
+        if outcome.classifier.error:
+            outcome.errors.append(f"classifier: {outcome.classifier.error} (running all approved rules)")
+        outcome.selected_rules = select_rules(rules, outcome.classifier.tags, outcome.classifier.fallback_all_rules)
+        for r in outcome.selected_rules:
+            if r.id not in tasks:
+                tasks[r.id] = asyncio.ensure_future(_check_one(llm, prefix, r, text))
+        outcome.results = list(await asyncio.gather(*(tasks[r.id] for r in outcome.selected_rules)))
         outcome.checks_wall_ms = int((time.perf_counter() - t0) * 1000)
         for r in outcome.results:
             if r.unclear_reason == "technical":

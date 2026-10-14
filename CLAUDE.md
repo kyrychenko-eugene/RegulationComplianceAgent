@@ -17,7 +17,8 @@ When the spec and the code disagree, or the spec is silent on a decision that ma
 
 - **Deterministic outcome.** LLMs make narrow judgments (tag probabilities, one rule's verdict). Code decides selection, validation, aggregation and the judge rating.
 - **Never raise.** `agent.check(text)` always returns a `RunResult`; any failure becomes `unclear` (`technical`) plus an entry in `errors`, and a run with a technical problem is at most `NEEDS_HUMAN_REVIEW`.
-- **One-way dependencies:** `ingest → data/rules.json → agent → eval / ui`. The agent imports only `common/`; eval and UI call the public `agent.check()` and read files.
+- **One-way dependencies:** `ingest → data/rules.json → agent → eval / ui`. The agent imports only `common/`; eval and UI call the public `agent.check()` and read files. `runs.jsonl` is read through `agent.read_runs()`, which merges background judge records by `run_id`.
+- **The judge is monitoring, off the critical path.** `agent.check()` returns with `judge.status = pending` and the judge appends its record later; eval passes `judge="sync"`; offline tests must use `sync`/`off` or monkeypatch `run_judge` (a background thread with a real client would hit the network).
 - **Prompts are documents.** Every prompt lives in `prompts/` as its own `.md` file, loaded by code.
 - **Verbatim evidence.** Quotes from the source and from the marketing text are checked by code with exact (whitespace-normalised) matching.
 - **APIs:** classification uses the OpenAI Decisions API; every other LLM call uses the Responses API with Pydantic structured outputs. Raw `openai` SDK, no orchestration framework.
