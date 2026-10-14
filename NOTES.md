@@ -187,3 +187,9 @@ Implemented `agent/judge.py` + `prompts/judge/judge.md`; the judge runs after th
 **Not measured:** full-golden-set judge agreement (run stopped to save cost). Run `python -m eval run --out examples/eval_report.md` to produce it.
 
 Extra filtering beyond the spec: judge entries are also dropped when a "missed" rule was actually run, when a disputed rule was not run, or when judge verdict equals the agent's.
+
+
+## Stage 7 — UI
+
+`ui/` (Streamlit, 4 files) is a thin layer: `agent.check()`, `runs.jsonl` (fallback `examples/runs.sample.jsonl`, 2 real runs with prompts stripped) and `data/rules.json`. Design choice from the user: PASS shows only "N rules checked"; FAIL lists only failing rules with reason and quote; unclear rules are amber. Live reference case in the UI: FAIL, 13 of 18 rules (7 blocking), quote "get rich tomorrow" highlighted. Not measured: time spent. Only one distinct text exists in the sample history (the reference case twice).
+Surprise: highlight text used `color: inherit` and was white on pale pink in dark mode; caught in the screenshot.
